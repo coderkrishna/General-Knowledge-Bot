@@ -1,12 +1,13 @@
 ﻿using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Connector;
-
 namespace GenKnowBotV3
 {
+    using System;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using Microsoft.Bot.Builder.Dialogs;
+    using Microsoft.Bot.Connector;
+
     [BotAuthentication]
     public class MessagesController : ApiController
     {
@@ -16,46 +17,31 @@ namespace GenKnowBotV3
         /// </summary>
         public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
         {
-            if (activity.GetActivityType() == ActivityTypes.Message)
+            using (var connectorClient = new ConnectorClient(new Uri(activity.ServiceUrl)))
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
+                if (activity.Type == ActivityTypes.Message)
+                {
+                    await this.HandleMessageActivity(connectorClient, activity);
+                }
+                else
+                {
+                    await this.HandleSystemActivity(connectorClient, activity);
+                }
             }
-            else
-            {
-                HandleSystemMessage(activity);
-            }
-            var response = Request.CreateResponse(HttpStatusCode.OK);
-            return response;
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        private Activity HandleSystemMessage(Activity message)
+        private async Task HandleMessageActivity(ConnectorClient connectorClient, Activity activity)
         {
-            string messageType = message.GetActivityType();
-            if (messageType == ActivityTypes.DeleteUserData)
-            {
-                // Implement user deletion here
-                // If we handle user deletion, return a real message
-            }
-            else if (messageType == ActivityTypes.ConversationUpdate)
-            {
-                // Handle conversation state changes, like members being added and removed
-                // Use Activity.MembersAdded and Activity.MembersRemoved and Activity.Action for info
-                // Not available in all channels
-            }
-            else if (messageType == ActivityTypes.ContactRelationUpdate)
-            {
-                // Handle add/remove from contact lists
-                // Activity.From + Activity.Action represent what happened
-            }
-            else if (messageType == ActivityTypes.Typing)
-            {
-                // Handle knowing that the user is typing
-            }
-            else if (messageType == ActivityTypes.Ping)
-            {
-            }
+            var handleMessageReply = activity.CreateReply("You hit the reply message activity");
+            await connectorClient.Conversations.ReplyToActivityAsync(handleMessageReply);
+        }
 
-            return null;
+        private async Task HandleSystemActivity(ConnectorClient connectorClient, Activity activity)
+        {
+            var handleSystemReply = activity.CreateReply("System activity method hit");
+            await connectorClient.Conversations.ReplyToActivityAsync(handleSystemReply);
         }
     }
 }
