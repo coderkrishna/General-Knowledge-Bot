@@ -3,4 +3,10 @@
 ################################################################################
 
 /Source/GenKnowBotV3/.vs/GenKnowBotV3/v15/Server/sqlite3
-/Source/GenKnowBotV3/.vs/GenKnowBotV3/v15/.suo
+Source/GenKnowBotV3/.vs/GenKnowBotV3/v15/.suo
+Source/GenKnowBotV3/.vs/GenKnowBotV3/v15/.suo
+Source/General-Knowledge-Bot/.vs/General-Knowledge-Bot/v16/.suo
+*.lock
+*.ide-shm
+*.ide
+*.ide-wal
