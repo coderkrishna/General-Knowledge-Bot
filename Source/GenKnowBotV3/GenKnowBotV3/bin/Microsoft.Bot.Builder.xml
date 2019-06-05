@@ -83,7 +83,7 @@
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.Internals.InMemoryDataStore">
             <summary>
-            Volitile in-memory implementation of <see cref="T:Microsoft.Bot.Builder.Dialogs.Internals.IBotDataStore`1"/>
+            Volatile in-memory implementation of <see cref="T:Microsoft.Bot.Builder.Dialogs.Internals.IBotDataStore`1"/>
             </summary>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.Internals.ConnectorStore">
@@ -212,12 +212,25 @@
             </summary>
             <returns>The <see cref="T:Microsoft.Bot.Connector.IStateClient"/> implementation.</returns>
         </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Internals.IConnectorClientFactory.MakeOAuthClient">
+            <summary>
+            Make the <see cref="T:Microsoft.Bot.Connector.IOAuthClient"/> implementation.
+            </summary>
+            <returns>The <see cref="T:Microsoft.Bot.Connector.IOAuthClient"/> implementation.</returns>
+        </member>
         <member name="M:Microsoft.Bot.Builder.Dialogs.Internals.ConnectorClientFactory.GetSettingsStateApiUrl(System.String)">
             <summary>
             Get the state api endpoint from settings. 
             </summary>
             <param name="key">The key.</param>
             <returns>The state api endpoint from settings.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Internals.ConnectorClientFactory.GetOAuthApiFromSettingsUrl(System.String)">
+            <summary>
+            Get the OAuth API endpoint from settings. 
+            </summary>
+            <param name="key">The key.</param>
+            <returns>The OAuth API endpoint from settings.</returns>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack">
             <summary>
@@ -379,6 +392,35 @@
             <param name="handler"> Handler to call if no match. </param>
             <param name="resultHandler"> Optional result handler to be called if handler is creating a chaild dialog. </param>
             <returns> A CommandDialog. </returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.GetTokenDialog">
+            <summary>
+            A Dialog to rerieve a user token for a configured OAuth connection
+            This Dialog will first attempt to rerieve the user token from the Azure Bot Service
+            If the Azure Bot Service does not already have a token, the GetTokenDialog will send
+            the user an OAuthCard.
+            The GetTokenDialog will then wait for either the user to come back, or for the user to send
+            a validation code. The Dialog will attempt to exchange whatever response is sent for the 
+            user token. If successful, the dialog will return the token and otherwise will retry the
+            specified number of times.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.GetTokenResponse">
+            <summary>
+            Result object from the GetTokenDialog
+            If the GetToken action is successful in retrieving a user token, the GetTokenDialog will be populated with the Token property
+            If the GetToken action is unsuccessful in retrieving a user token, the GetTokenDialog will be populated with the NonTokenResponse property
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.GetTokenResponse.Token">
+            <summary>
+            The user token
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.GetTokenResponse.NonTokenResponse">
+            <summary>
+            The text that the user typed when the GetTokenDialog is unable to retrieve a user token
+            </summary>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.EndConversationEvent">
             <summary>
@@ -1069,6 +1111,26 @@
             </summary>
             <param name="str"> The Base64 encoded string.</param>
             <returns> An instance of <see cref="T:Microsoft.Bot.Builder.Dialogs.ResumptionCookie"/></returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.LuisTraceInfo">
+            <summary>
+            The schema for the LUIS trace info
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.LuisTraceInfo.LuisResult">
+            <summary>
+            The raw response coming back from the LUIS service
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.LuisTraceInfo.LuisOptions">
+            <summary>
+            The options passed to the LUIS service
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.LuisTraceInfo.LuisModel">
+            <summary>
+            The metadata about the LUIS app
+            </summary>
         </member>
         <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptRecognizeNumbersOptions.MinValue">
             <summary>
