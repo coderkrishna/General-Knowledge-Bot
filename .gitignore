@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Source/GenKnowBotV3/.vs/GenKnowBotV3/v15/Server/sqlite3
