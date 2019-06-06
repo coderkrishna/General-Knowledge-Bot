@@ -1,4 +1,4 @@
-﻿# General_Knowledge_Bot
+﻿# General Knowledge Bot
 
 Bot Framework v4 echo bot sample.
 
