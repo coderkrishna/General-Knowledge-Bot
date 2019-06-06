@@ -9,12 +9,21 @@ using System.Threading.Tasks;
 using General_Knowledge_Bot.Helpers.AdaptiveCards;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Protocols;
 using Newtonsoft.Json;
 
 namespace General_Knowledge_Bot.Bots
 {
     public class GenKnowledgeBot : ActivityHandler
     {
+        private readonly IConfiguration _configuration;
+
+        public GenKnowledgeBot(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
             await turnContext.SendActivityAsync(MessageFactory.Text($"Echo: {turnContext.Activity.Text}"), cancellationToken);
@@ -26,15 +35,16 @@ namespace General_Knowledge_Bot.Bots
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
-                    var welcomeCardAttachment = CreateWelcomeCardAttachment();
+                    var botDisplayName = _configuration["BotDisplayName"];
+                    var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
                     await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
                 }
             }
         }
 
-        private static Attachment CreateWelcomeCardAttachment()
+        private static Attachment CreateWelcomeCardAttachment(string botName)
         {
-            var cardString = WelcomeMessageAdaptiveCard.GetCard();
+            var cardString = WelcomeMessageAdaptiveCard.GetCard(botName);
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",

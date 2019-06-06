@@ -14,7 +14,7 @@
             CardTemplate = File.ReadAllText(cardJsonFilePath);
         }
 
-        public static string GetCard()
+        public static string GetCard(string botName)
         {
             var welcomeCardTitleText = Resource.WelcomeCardTitleText;
             var welcomeCardContentPart1 = Resource.WelcomeCardContentPart1;
