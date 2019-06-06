@@ -11,7 +11,7 @@ using Microsoft.Bot.Schema;
 
 namespace General_Knowledge_Bot.Bots
 {
-    public class EchoBot : ActivityHandler
+    public class GenKnowledgeBot : ActivityHandler
     {
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
