@@ -1,6 +1,6 @@
-﻿namespace General_Knowledge_Bot.Helpers.AdaptiveCards
+﻿namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
-    using General_Knowledge_Bot.Properties;
+    using GeneralKnowledgeBot.Properties;
     using System.Collections.Generic;
     using System.IO;
 
@@ -17,14 +17,20 @@
         public static string GetCard(string botName)
         {
             var welcomeCardTitleText = Resource.WelcomeCardTitleText;
-            var welcomeCardContentPart1 = Resource.WelcomeCardContentPart1;
+            var welcomeCardContentPart1 = string.Format(Resource.WelcomeCardContentPart1, botName);
             var welcomeCardContentPart2 = Resource.WelcomeCardContentPart2;
+            var bulletListItem1 = Resource.BulletListItem1;
+            var bulletListItem2 = Resource.BulletListItem2;
+            var bulletListItem3 = Resource.BulletListItem3;
 
             var variablesToValues = new Dictionary<string, string>()
             {
                 { "welcomeCardTitleText", welcomeCardTitleText },
                 { "welcomeCardContentPart1", welcomeCardContentPart1 },
-                { "welcomeCardContentPart2", welcomeCardContentPart2 }
+                { "welcomeCardContentPart2", welcomeCardContentPart2 },
+                { "bulletListItem1", bulletListItem1 },
+                { "bulletListItem2", bulletListItem2 },
+                { "bulletListItem3", bulletListItem3 }
             };
 
             var cardBody = CardTemplate;

@@ -117,9 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BulletListItem1" xml:space="preserve">
+    <value>* You can ask me questions and for that I'll provide answers</value>
+    <comment>Bulleted list item 1</comment>
+  </data>
+  <data name="BulletListItem2" xml:space="preserve">
+    <value>* You can also take a tour if (if you wanted to)</value>
+    <comment>Bulleted list item 2</comment>
+  </data>
+  <data name="BulletListItem3" xml:space="preserve">
+    <value>* If I can't help you (which I should still 🤣) I will then bring in a 👴</value>
+    <comment>Bulleted list item 3</comment>
+  </data>
   <data name="WelcomeCardContentPart1" xml:space="preserve">
-    <value>If you are reading this, it is because you are wondering about what I do. I am a simple bot that will query against a knowledge base and return you an answer.</value>
-    <comment>The first part of the welcome card content</comment>
+    <value>If you are reading this, it is because you are wondering about what I do. I am {0}, a simple bot that will query against a knowledge base and return you an answer.</value>
+    <comment>The first part of the welcome card content with {0} as the bot display name</comment>
   </data>
   <data name="WelcomeCardContentPart2" xml:space="preserve">
     <value>There are times where your questions could be a bit much for my 🤖 🧠 - so make sure you word your queries such that I am able to return a satisfactory answer for you.</value>

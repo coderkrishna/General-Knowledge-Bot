@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace General_Knowledge_Bot.Properties {
+namespace GeneralKnowledgeBot.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace General_Knowledge_Bot.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("General-Knowledge-Bot.Properties.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeneralKnowledgeBot.Properties.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,34 @@ namespace General_Knowledge_Bot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you are reading this, it is because you are wondering about what I do. I am a simple bot that will query against a knowledge base and return you an answer..
+        ///   Looks up a localized string similar to * You can ask me questions and for that I&apos;ll provide answers.
+        /// </summary>
+        public static string BulletListItem1 {
+            get {
+                return ResourceManager.GetString("BulletListItem1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to * You can also take a tour if (if you wanted to).
+        /// </summary>
+        public static string BulletListItem2 {
+            get {
+                return ResourceManager.GetString("BulletListItem2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to * If I can&apos;t help you (which I should still 🤣) I will then bring in a 👴.
+        /// </summary>
+        public static string BulletListItem3 {
+            get {
+                return ResourceManager.GetString("BulletListItem3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you are reading this, it is because you are wondering about what I do. I am {0}, a simple bot that will query against a knowledge base and return you an answer..
         /// </summary>
         public static string WelcomeCardContentPart1 {
             get {
