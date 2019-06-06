@@ -10,3 +10,7 @@ Source/General-Knowledge-Bot/.vs/General-Knowledge-Bot/v16/.suo
 *.ide-shm
 *.ide
 *.ide-wal
+*.cache
+General-Knowledge-Bot/General-Knowledge-Bot/obj/General-Knowledge-Bot.csproj.nuget.dgspec.json
+General-Knowledge-Bot/General-Knowledge-Bot/obj/project.assets.json
+General-Knowledge-Bot/General-Knowledge-Bot/obj/Debug/netcoreapp2.1/General-Knowledge-Bot.csproj.FileListAbsolute.txt

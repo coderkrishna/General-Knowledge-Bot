@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\coderkrishna\\General-Knowledge-Bot\\Source\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot.csproj": {}
+    "C:\\coderkrishna\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot.csproj": {}
   },
   "projects": {
-    "C:\\coderkrishna\\General-Knowledge-Bot\\Source\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot.csproj": {
+    "C:\\coderkrishna\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\coderkrishna\\General-Knowledge-Bot\\Source\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot.csproj",
+        "projectUniqueName": "C:\\coderkrishna\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot.csproj",
         "projectName": "General-Knowledge-Bot",
-        "projectPath": "C:\\coderkrishna\\General-Knowledge-Bot\\Source\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot.csproj",
+        "projectPath": "C:\\coderkrishna\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot.csproj",
         "packagesPath": "C:\\Users\\v-prkris\\.nuget\\packages\\",
-        "outputPath": "C:\\coderkrishna\\General-Knowledge-Bot\\Source\\General-Knowledge-Bot\\General-Knowledge-Bot\\obj\\",
+        "outputPath": "C:\\coderkrishna\\General-Knowledge-Bot\\General-Knowledge-Bot\\General-Knowledge-Bot\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
