@@ -6,14 +6,14 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using General_Knowledge_Bot.Helpers.AdaptiveCards;
+using GeneralKnowledgeBot.Helpers.AdaptiveCards;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Protocols;
 using Newtonsoft.Json;
 
-namespace General_Knowledge_Bot.Bots
+namespace GeneralKnowledgeBot.Bots
 {
     public class GenKnowledgeBot : ActivityHandler
     {

@@ -6,7 +6,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace General_Knowledge_Bot
+namespace GeneralKnowledgeBot
 {
     public class Program
     {

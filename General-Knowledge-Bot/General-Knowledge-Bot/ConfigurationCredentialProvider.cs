@@ -6,7 +6,7 @@
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 
-namespace General_Knowledge_Bot
+namespace GeneralKnowledgeBot
 {
     public class ConfigurationCredentialProvider : SimpleCredentialProvider
     {

@@ -14,11 +14,6 @@ C:\coderkrishna\General-Knowledge-Bot\Source\General-Knowledge-Bot\General-Knowl
 C:\coderkrishna\General-Knowledge-Bot\Source\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.dll
 C:\coderkrishna\General-Knowledge-Bot\Source\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.pdb
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\appsettings.json
-C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\General-Knowledge-Bot.deps.json
-C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\General-Knowledge-Bot.runtimeconfig.json
-C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\General-Knowledge-Bot.runtimeconfig.dev.json
-C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\General-Knowledge-Bot.dll
-C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\General-Knowledge-Bot.pdb
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.csprojAssemblyReference.cache
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.csproj.CoreCompileInputs.cache
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.RazorAssemblyInfo.cache
@@ -26,7 +21,12 @@ C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bo
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.AssemblyInfoInputs.cache
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.AssemblyInfo.cs
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.RazorTargetAssemblyInfo.cache
-C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.dll
-C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.pdb
-C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.Properties.Resource.resources
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.csproj.GenerateResource.cache
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\GeneralKnowledgeBot.deps.json
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\GeneralKnowledgeBot.runtimeconfig.json
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\GeneralKnowledgeBot.runtimeconfig.dev.json
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\GeneralKnowledgeBot.dll
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\bin\Debug\netcoreapp2.1\GeneralKnowledgeBot.pdb
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\GeneralKnowledgeBot.Properties.Resource.resources
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\GeneralKnowledgeBot.dll
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\GeneralKnowledgeBot.pdb

@@ -28,6 +28,29 @@
           "wrap": true
         }
       ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "%bulletListItem1%",
+          "wrap": true,
+          "spacing":  "Default"
+        },
+        {
+          "type": "TextBlock",
+          "text": "%bulletListItem2%",
+          "wrap": true,
+          "spacing": "Default"
+        },
+        {
+          "type": "TextBlock",
+          "text": "%bulletListItem3%",
+          "wrap": true,
+          "spacing": "Default"
+        }
+      ]
     }
   ],
   "actions": [
