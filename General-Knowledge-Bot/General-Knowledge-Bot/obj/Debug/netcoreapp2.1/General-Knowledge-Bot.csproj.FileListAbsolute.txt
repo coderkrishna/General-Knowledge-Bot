@@ -28,3 +28,5 @@ C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bo
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.RazorTargetAssemblyInfo.cache
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.dll
 C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.pdb
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.Properties.Resource.resources
+C:\coderkrishna\General-Knowledge-Bot\General-Knowledge-Bot\General-Knowledge-Bot\obj\Debug\netcoreapp2.1\General-Knowledge-Bot.csproj.GenerateResource.cache
