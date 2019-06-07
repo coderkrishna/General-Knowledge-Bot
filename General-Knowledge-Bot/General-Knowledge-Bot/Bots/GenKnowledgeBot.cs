@@ -32,10 +32,10 @@ namespace GeneralKnowledgeBot.Bots
 
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Calling QnA Maker");
-
             var uri = _configuration["KbHost"] + _configuration["Service"] + "/knowledgebases/" + _configuration["KbID"] + "/generateAnswer";
             var question = turnContext.Activity.Text;
+
+            _logger.LogInformation("Calling QnA Maker");
 
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage())
@@ -71,21 +71,9 @@ namespace GeneralKnowledgeBot.Bots
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
                     var botDisplayName = _configuration["BotDisplayName"];
-                    var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
-                    await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
+                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
                 }
             }
-        }
-
-        private static Attachment CreateWelcomeCardAttachment(string botName)
-        {
-            var cardString = WelcomeMessageAdaptiveCard.GetCard(botName);
-            var adaptiveCardAttachment = new Attachment()
-            {
-                ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(cardString)
-            };
-            return adaptiveCardAttachment;
         }
     }
 }
