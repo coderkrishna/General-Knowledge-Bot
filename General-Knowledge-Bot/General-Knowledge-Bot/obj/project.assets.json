@@ -1516,10 +1516,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
       },
-      "Microsoft.Bot.Builder/4.4.3": {
+      "Microsoft.Bot.Builder/4.4.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bot.Connector": "4.4.3",
+          "Microsoft.Bot.Connector": "4.4.4",
           "Microsoft.Extensions.Logging": "2.1.1",
           "SourceLink.Create.CommandLine": "2.8.3"
         },
@@ -1528,6 +1528,20 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Bot.Builder.dll": {}
+        }
+      },
+      "Microsoft.Bot.Builder.AI.QnA/4.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bot.Builder": "4.4.4",
+          "Microsoft.Bot.Configuration": "4.4.4",
+          "SourceLink.Create.CommandLine": "2.8.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Bot.Builder.AI.QnA.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Bot.Builder.AI.QnA.dll": {}
         }
       },
       "Microsoft.Bot.Builder.Integration.AspNet.Core/4.4.3": {
@@ -1549,7 +1563,7 @@
           "lib/netstandard2.0/Microsoft.Bot.Builder.Integration.AspNet.Core.dll": {}
         }
       },
-      "Microsoft.Bot.Configuration/4.4.3": {
+      "Microsoft.Bot.Configuration/4.4.4": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "10.0.3",
@@ -1563,10 +1577,10 @@
           "lib/netstandard2.0/Microsoft.Bot.Configuration.dll": {}
         }
       },
-      "Microsoft.Bot.Connector/4.4.3": {
+      "Microsoft.Bot.Connector/4.4.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bot.Schema": "4.4.3",
+          "Microsoft.Bot.Schema": "4.4.4",
           "Microsoft.IdentityModel.Clients.ActiveDirectory": "4.5.0",
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.2.1",
           "Microsoft.Rest.ClientRuntime": "2.3.20",
@@ -1580,7 +1594,7 @@
           "lib/netstandard2.0/Microsoft.Bot.Connector.dll": {}
         }
       },
-      "Microsoft.Bot.Schema/4.4.3": {
+      "Microsoft.Bot.Schema/4.4.4": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "10.0.3",
@@ -5783,17 +5797,30 @@
         "microsoft.aspnetcore.webutilities.nuspec"
       ]
     },
-    "Microsoft.Bot.Builder/4.4.3": {
-      "sha512": "7VM+zqTsfAx6s+kpqRETbtrN3Su5icJAEO97EN43AbXcq88pb0T18pLAtTVf0Hc6mjcGeEV+7TX6pYaQQKcnLA==",
+    "Microsoft.Bot.Builder/4.4.4": {
+      "sha512": "9WrY2OKcgqBCBEmNsgsteRo8jSzPrMhTrRI0J+MDhwPC9Ai+UfcUhf4ianJL8q0CgIK3b5+fbUYGkrnLwadFdg==",
       "type": "package",
-      "path": "microsoft.bot.builder/4.4.3",
+      "path": "microsoft.bot.builder/4.4.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Builder.dll",
         "lib/netstandard2.0/Microsoft.Bot.Builder.pdb",
-        "microsoft.bot.builder.4.4.3.nupkg.sha512",
+        "microsoft.bot.builder.4.4.4.nupkg.sha512",
         "microsoft.bot.builder.nuspec"
+      ]
+    },
+    "Microsoft.Bot.Builder.AI.QnA/4.4.4": {
+      "sha512": "ATDN/o4rQA9J51v9X6XJh7HZQO9OydxmoLKnpOGkJ7QspNsYrTIXV8s0UoVsdh6XiMJGcjIu5biOOov8gr7v6Q==",
+      "type": "package",
+      "path": "microsoft.bot.builder.ai.qna/4.4.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Bot.Builder.AI.QnA.dll",
+        "lib/netstandard2.0/Microsoft.Bot.Builder.AI.QnA.pdb",
+        "microsoft.bot.builder.ai.qna.4.4.4.nupkg.sha512",
+        "microsoft.bot.builder.ai.qna.nuspec"
       ]
     },
     "Microsoft.Bot.Builder.Integration.AspNet.Core/4.4.3": {
@@ -5809,42 +5836,42 @@
         "microsoft.bot.builder.integration.aspnet.core.nuspec"
       ]
     },
-    "Microsoft.Bot.Configuration/4.4.3": {
-      "sha512": "lAjPHFQ5zVIseZogvG82o7Ji/D0BZvxqkNKSfHIEhijF+cG03osGpyUrjN07mBLnQxt295JxLgUX1AZXfQwPQA==",
+    "Microsoft.Bot.Configuration/4.4.4": {
+      "sha512": "hvyMzZOwU3DqdenKKgDLg2QODkAvBXZoa11mzlI6AphueUz4q4i09GBHFgYc5tmZNuSlGlgbdfXxsVXzMqVutw==",
       "type": "package",
-      "path": "microsoft.bot.configuration/4.4.3",
+      "path": "microsoft.bot.configuration/4.4.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Configuration.dll",
         "lib/netstandard2.0/Microsoft.Bot.Configuration.pdb",
-        "microsoft.bot.configuration.4.4.3.nupkg.sha512",
+        "microsoft.bot.configuration.4.4.4.nupkg.sha512",
         "microsoft.bot.configuration.nuspec"
       ]
     },
-    "Microsoft.Bot.Connector/4.4.3": {
-      "sha512": "M2swEzjoCKrOtaBOm2kjKaVwpjJC7W+AJO/Pw7QA697yCIsGvXBcQnD8re408q/2g0n61yj1znd82VaWB2jvcA==",
+    "Microsoft.Bot.Connector/4.4.4": {
+      "sha512": "AFaed/xWLLOmfVp+nIx/pmGCFTfitQ78b8jmaKK6f3ACjTknCkW6RXnpYaBG0fJk0lYVPOz0VKwSPSwd82zrmQ==",
       "type": "package",
-      "path": "microsoft.bot.connector/4.4.3",
+      "path": "microsoft.bot.connector/4.4.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Connector.dll",
         "lib/netstandard2.0/Microsoft.Bot.Connector.pdb",
-        "microsoft.bot.connector.4.4.3.nupkg.sha512",
+        "microsoft.bot.connector.4.4.4.nupkg.sha512",
         "microsoft.bot.connector.nuspec"
       ]
     },
-    "Microsoft.Bot.Schema/4.4.3": {
-      "sha512": "KJ+ptHnZ4p50pK9MMgfkZFRt/BxV5Vixk9YDr/rw5D58Z86ZkNtgnCyEQkmzor/MwPDnNbUGnyRVsYKq8KELFQ==",
+    "Microsoft.Bot.Schema/4.4.4": {
+      "sha512": "U51h5vLIBNeM0eF6ox1SzpKdDSENxWTiA5s9leJ2GZF61OYdOgV0i7R9O/oAeg8t77YOQno49afYZEknOIDoHw==",
       "type": "package",
-      "path": "microsoft.bot.schema/4.4.3",
+      "path": "microsoft.bot.schema/4.4.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Schema.dll",
         "lib/netstandard2.0/Microsoft.Bot.Schema.pdb",
-        "microsoft.bot.schema.4.4.3.nupkg.sha512",
+        "microsoft.bot.schema.4.4.4.nupkg.sha512",
         "microsoft.bot.schema.nuspec"
       ]
     },
@@ -12216,6 +12243,7 @@
     ".NETCoreApp,Version=v2.1": [
       "AdaptiveCards >= 1.0.3",
       "Microsoft.AspNetCore.App >= 2.1.1",
+      "Microsoft.Bot.Builder.Ai.QnA >= 4.4.4",
       "Microsoft.Bot.Builder.Integration.AspNet.Core >= 4.4.3",
       "Microsoft.NETCore.App >= 2.1.0"
     ]
@@ -12270,6 +12298,10 @@
             "target": "Package",
             "version": "[2.1.1, )",
             "autoReferenced": true
+          },
+          "Microsoft.Bot.Builder.Ai.QnA": {
+            "target": "Package",
+            "version": "[4.4.4, )"
           },
           "Microsoft.Bot.Builder.Integration.AspNet.Core": {
             "target": "Package",
