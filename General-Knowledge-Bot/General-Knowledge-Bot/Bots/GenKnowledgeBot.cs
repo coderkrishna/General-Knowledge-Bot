@@ -69,7 +69,8 @@ namespace GeneralKnowledgeBot.Bots
             }
             else
             {
-                await turnContext.SendActivityAsync(MessageFactory.Text("I am sorry I cannot understand :("), cancellationToken);
+                // TODO: Making sure that there is the ability to send out the welcome message again
+                await GenKBot.SendUnrecognizedInputMessage(turnContext, cancellationToken);
             }
         }
 

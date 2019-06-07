@@ -4,6 +4,7 @@
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
     using Newtonsoft.Json;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -19,6 +20,17 @@
         {
             var responseCardAttachment = CreateResponseCardAttachment(question, answer);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(responseCardAttachment), cancellationToken);
+        }
+
+        public static async Task SendUrecognizedInputMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var unrecognizedCardAttachment = CreateUnrecognizedInputCardAttachment();
+            await turnContext.SendActivityAsync(MessageFactory.Attachment(unrecognizedCardAttachment), cancellationToken);
+        }
+
+        private static Attachment CreateUnrecognizedInputCardAttachment()
+        {
+            throw new NotImplementedException();
         }
 
         private static Attachment CreateResponseCardAttachment(string question, string answer)
