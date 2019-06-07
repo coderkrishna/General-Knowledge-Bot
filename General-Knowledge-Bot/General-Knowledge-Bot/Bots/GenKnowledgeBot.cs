@@ -12,6 +12,7 @@ namespace GeneralKnowledgeBot.Bots
     using System.Threading;
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
+    using GeneralKnowledgeBot.Models;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
     using Microsoft.Extensions.Configuration;
@@ -47,9 +48,11 @@ namespace GeneralKnowledgeBot.Bots
                 var response = await client.SendAsync(request);
                 var responseText = await response.Content.ReadAsStringAsync();
 
-                if (response != null)
+                var responseModel = JsonConvert.DeserializeObject<Response>(responseText);
+
+                if (responseModel != null)
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text(responseText), cancellationToken);
+                    await turnContext.SendActivityAsync(MessageFactory.Text(responseModel.answers[0].answer), cancellationToken);
                 }
                 else
                 {
