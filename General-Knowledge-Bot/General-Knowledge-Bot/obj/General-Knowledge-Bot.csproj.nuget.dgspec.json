@@ -51,10 +51,6 @@
               "version": "[2.1.1, )",
               "autoReferenced": true
             },
-            "Microsoft.Bot.Builder.Ai.QnA": {
-              "target": "Package",
-              "version": "[4.4.4, )"
-            },
             "Microsoft.Bot.Builder.Integration.AspNet.Core": {
               "target": "Package",
               "version": "[4.4.3, )"

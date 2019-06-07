@@ -3,21 +3,21 @@
 //
 // Generated with Bot Builder V4 SDK Template for Visual Studio EchoBot v4.3.0
 
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-using GeneralKnowledgeBot.Helpers.AdaptiveCards;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Schema;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using System;
-using System.Text;
-
 namespace GeneralKnowledgeBot.Bots
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using GeneralKnowledgeBot.Helpers.AdaptiveCards;
+    using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Schema;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json;
+
     public class GenKnowledgeBot : ActivityHandler
     {
         private readonly IConfiguration _configuration;
@@ -34,12 +34,14 @@ namespace GeneralKnowledgeBot.Bots
             _logger.LogInformation("Calling QnA Maker");
 
             var uri = _configuration["KbHost"] + _configuration["Service"] + "/knowledgebases/" + _configuration["KbID"] + "/generateAnswer";
+            var question = turnContext.Activity.Text;
+
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage())
             {
                 request.Method = HttpMethod.Post;
                 request.RequestUri = new Uri(uri);
-                request.Content = new StringContent("{'question': '" + turnContext.Activity.Text + "'}", Encoding.UTF8, "application/json");
+                request.Content = new StringContent("{'question': '" + question + "'}", Encoding.UTF8, "application/json");
                 request.Headers.Add("Authorization", "EndpointKey " + _configuration["EndpointKey"]);
 
                 var response = await client.SendAsync(request);
