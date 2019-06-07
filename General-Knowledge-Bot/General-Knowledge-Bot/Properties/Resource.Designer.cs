@@ -61,6 +61,15 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Here&apos;s what I found: {0}.
+        /// </summary>
+        public static string AnswerLineText {
+            get {
+                return ResourceManager.GetString("AnswerLineText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to * You can ask me questions and for that I&apos;ll provide answers.
         /// </summary>
         public static string BulletListItem1 {
@@ -84,6 +93,24 @@ namespace GeneralKnowledgeBot.Properties {
         public static string BulletListItem3 {
             get {
                 return ResourceManager.GetString("BulletListItem3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ❓: {0}.
+        /// </summary>
+        public static string QuestionLineText {
+            get {
+                return ResourceManager.GetString("QuestionLineText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bingo! 🍀.
+        /// </summary>
+        public static string ResponseCardTitleText {
+            get {
+                return ResourceManager.GetString("ResponseCardTitleText", resourceCulture);
             }
         }
         
