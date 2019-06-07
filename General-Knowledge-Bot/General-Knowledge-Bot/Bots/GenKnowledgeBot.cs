@@ -32,36 +32,44 @@ namespace GeneralKnowledgeBot.Bots
 
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            var uri = _configuration["KbHost"] + _configuration["Service"] + "/knowledgebases/" + _configuration["KbID"] + "/generateAnswer";
-            var question = turnContext.Activity.Text;
-
-            _logger.LogInformation("Calling QnA Maker");
-
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
+            var isQuery = turnContext.Activity.Text.EndsWith('?') || turnContext.Activity.Text.EndsWith('.');
+            if (isQuery)
             {
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
-                request.Content = new StringContent("{'question': '" + question + "'}", Encoding.UTF8, "application/json");
-                request.Headers.Add("Authorization", "EndpointKey " + _configuration["EndpointKey"]);
+                var uri = _configuration["KbHost"] + _configuration["Service"] + "/knowledgebases/" + _configuration["KbID"] + "/generateAnswer";
+                var question = turnContext.Activity.Text;
 
-                var response = await client.SendAsync(request);
-                var responseText = await response.Content.ReadAsStringAsync();
+                _logger.LogInformation("Calling QnA Maker");
 
-                var responseModel = JsonConvert.DeserializeObject<Response>(responseText);
-
-                if (responseModel != null)
+                using (var client = new HttpClient())
+                using (var request = new HttpRequestMessage())
                 {
-                    // TODO: Convert this into a separate method
-                    // Parameters: turnContext, cancellationToken, responseModel
-                    // Internal logic: Making sure to have the adaptive cards as well
-                    await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
-                    // await turnContext.SendActivityAsync(MessageFactory.Text(responseModel.answers[0].answer), cancellationToken);
+                    request.Method = HttpMethod.Post;
+                    request.RequestUri = new Uri(uri);
+                    request.Content = new StringContent("{'question': '" + question + "'}", Encoding.UTF8, "application/json");
+                    request.Headers.Add("Authorization", "EndpointKey " + _configuration["EndpointKey"]);
+
+                    var response = await client.SendAsync(request);
+                    var responseText = await response.Content.ReadAsStringAsync();
+
+                    var responseModel = JsonConvert.DeserializeObject<Response>(responseText);
+
+                    if (responseModel != null)
+                    {
+                        // TODO: Convert this into a separate method
+                        // Parameters: turnContext, cancellationToken, responseModel
+                        // Internal logic: Making sure to have the adaptive cards as well
+                        await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
+                        // await turnContext.SendActivityAsync(MessageFactory.Text(responseModel.answers[0].answer), cancellationToken);
+                    }
+                    else
+                    {
+                        await turnContext.SendActivityAsync(MessageFactory.Text("No QnA Maker answers were found."), cancellationToken);
+                    }
                 }
-                else
-                {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("No QnA Maker answers were found."), cancellationToken);
-                }
+            }
+            else
+            {
+                await turnContext.SendActivityAsync(MessageFactory.Text("I am sorry I cannot understand :("), cancellationToken);
             }
         }
 

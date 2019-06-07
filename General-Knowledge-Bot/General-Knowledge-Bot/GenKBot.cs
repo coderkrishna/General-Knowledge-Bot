@@ -1,15 +1,11 @@
 ﻿namespace GeneralKnowledgeBot
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Bot.Schema;
-    using System.Threading.Tasks;
-    using System.Threading;
-    using Microsoft.Bot.Builder;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
+    using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Schema;
     using Newtonsoft.Json;
-    using GeneralKnowledgeBot.Models;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     public static class GenKBot
     {
