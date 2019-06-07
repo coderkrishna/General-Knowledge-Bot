@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerLineText" xml:space="preserve">
+    <value>Here's what I found: {0}</value>
+    <comment>The line for the answer</comment>
+  </data>
   <data name="BulletListItem1" xml:space="preserve">
     <value>* You can ask me questions and for that I'll provide answers</value>
     <comment>Bulleted list item 1</comment>
@@ -128,6 +132,14 @@
   <data name="BulletListItem3" xml:space="preserve">
     <value>* If I can't help you (which I should still 🤣) I will then bring in a 👴</value>
     <comment>Bulleted list item 3</comment>
+  </data>
+  <data name="QuestionLineText" xml:space="preserve">
+    <value>❓: {0}</value>
+    <comment>The line for the question</comment>
+  </data>
+  <data name="ResponseCardTitleText" xml:space="preserve">
+    <value>Bingo! 🍀</value>
+    <comment>The title text for the response adaptive card</comment>
   </data>
   <data name="WelcomeCardContentPart1" xml:space="preserve">
     <value>If you are reading this, it is because you are wondering about what I do. I am {0}, a simple bot that will query against a knowledge base and return you an answer.</value>

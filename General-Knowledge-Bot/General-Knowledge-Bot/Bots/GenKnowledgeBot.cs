@@ -55,7 +55,8 @@ namespace GeneralKnowledgeBot.Bots
                     // TODO: Convert this into a separate method
                     // Parameters: turnContext, cancellationToken, responseModel
                     // Internal logic: Making sure to have the adaptive cards as well
-                    await turnContext.SendActivityAsync(MessageFactory.Text(responseModel.answers[0].answer), cancellationToken);
+                    await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
+                    // await turnContext.SendActivityAsync(MessageFactory.Text(responseModel.answers[0].answer), cancellationToken);
                 }
                 else
                 {
