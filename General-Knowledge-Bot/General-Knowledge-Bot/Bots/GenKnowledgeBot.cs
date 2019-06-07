@@ -12,8 +12,9 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.Bot.Builder.AI.QnA;
 using Newtonsoft.Json;
+using System;
+using System.Text;
 
 namespace GeneralKnowledgeBot.Bots
 {
@@ -21,41 +22,37 @@ namespace GeneralKnowledgeBot.Bots
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<GenKnowledgeBot> _logger;
-        private readonly IHttpClientFactory _httpClientFactory;
 
-        public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger, IHttpClientFactory httpClientFactory)
+        public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger)
         {
             _configuration = configuration;
             _logger = logger;
-            _httpClientFactory = httpClientFactory;
         }
 
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Input has been detected");
-
-            var httpClient = _httpClientFactory.CreateClient();
-
-            var qnaMaker = new QnAMaker(new QnAMakerEndpoint
-            {
-                KnowledgeBaseId = _configuration["KbID"],
-                EndpointKey = _configuration["EndpointKey"],
-                Host = _configuration["KbHost"]
-            },
-            null,
-            httpClient);
-
             _logger.LogInformation("Calling QnA Maker");
 
-            // The actual call to the QnA Maker service.
-            var response = await qnaMaker.GetAnswersAsync(turnContext);
-            if (response != null && response.Length > 0)
+            var uri = _configuration["KbHost"] + _configuration["Service"] + "/knowledgebases/" + _configuration["KbID"] + "/generateAnswer";
+            using (var client = new HttpClient())
+            using (var request = new HttpRequestMessage())
             {
-                await turnContext.SendActivityAsync(MessageFactory.Text(response[0].Answer), cancellationToken);
-            }
-            else
-            {
-                await turnContext.SendActivityAsync(MessageFactory.Text("No QnA Maker answers were found."), cancellationToken);
+                request.Method = HttpMethod.Post;
+                request.RequestUri = new Uri(uri);
+                request.Content = new StringContent("{'question': '" + turnContext.Activity.Text + "'}", Encoding.UTF8, "application/json");
+                request.Headers.Add("Authorization", "EndpointKey " + _configuration["EndpointKey"]);
+
+                var response = await client.SendAsync(request);
+                var responseText = await response.Content.ReadAsStringAsync();
+
+                if (response != null)
+                {
+                    await turnContext.SendActivityAsync(MessageFactory.Text(responseText), cancellationToken);
+                }
+                else
+                {
+                    await turnContext.SendActivityAsync(MessageFactory.Text("No QnA Maker answers were found."), cancellationToken);
+                }
             }
         }
 
