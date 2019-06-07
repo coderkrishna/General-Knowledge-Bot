@@ -7,19 +7,19 @@
 
     public class ResponseAdaptiveCard
     {
-        public static string CardTemplate;
+        public static string ResponseCardTemplate;
 
-        public ResponseAdaptiveCard()
+        static ResponseAdaptiveCard()
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "ResponseAdaptiveCard.json");
-            CardTemplate = File.ReadAllText(cardJsonFilePath);
+            ResponseCardTemplate = File.ReadAllText(cardJsonFilePath);
         }
 
-        public static string GetCard(string question, Response model)
+        public static string GetCard(string question, string answer)
         {
             var questionLineText = string.Format(Resource.QuestionLineText, question);
             var responseCardTitleText = Resource.ResponseCardTitleText;
-            var answerLineText = string.Format(Resource.AnswerLineText, model.answers[0].answer);
+            var answerLineText = string.Format(Resource.AnswerLineText, answer);
 
             var variablesToValues = new Dictionary<string, string>()
             {
@@ -28,7 +28,7 @@
                 { "answerLineText", answerLineText }
             };
 
-            var cardBody = CardTemplate;
+            var cardBody = ResponseCardTemplate;
             foreach (var kvp in variablesToValues)
             {
                 cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);

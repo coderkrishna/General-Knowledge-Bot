@@ -19,15 +19,15 @@
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
-        public static async Task SendAnswerMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, Response responseModel, string question)
+        public static async Task SendAnswerMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string answer, string question)
         {
-            var responseCardAttachment = CreateResponseCardAttachment(question, responseModel);
+            var responseCardAttachment = CreateResponseCardAttachment(question, answer);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(responseCardAttachment), cancellationToken);
         }
 
-        private static Attachment CreateResponseCardAttachment(string question, Response responseModel)
+        private static Attachment CreateResponseCardAttachment(string question, string answer)
         {
-            var responseCardString = ResponseAdaptiveCard.GetCard(question, responseModel);
+            var responseCardString = ResponseAdaptiveCard.GetCard(question, answer);
             var responseAdaptiveCard = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
