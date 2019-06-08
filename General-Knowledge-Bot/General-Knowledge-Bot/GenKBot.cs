@@ -16,6 +16,12 @@
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
+        public static async Task SendUserWelcomeMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
+        {
+            var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
+            await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
+        }
+
         public static async Task SendAnswerMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string answer, string question)
         {
             var responseCardAttachment = CreateResponseCardAttachment(question, answer);

@@ -70,7 +70,7 @@ namespace GeneralKnowledgeBot.Bots
             else if (turnContext.Activity.Text == "Welcome Message")
             {
                 var botDisplayName = _configuration["BotDisplayName"];
-                await GenKBot.SendUserWelcomeMessage(turnContext as ITurnContext<IConversationUpdateActivity>, cancellationToken, botDisplayName);
+                await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
             }
             else
             {
