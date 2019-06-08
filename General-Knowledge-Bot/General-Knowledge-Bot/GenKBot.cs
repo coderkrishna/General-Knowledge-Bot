@@ -30,31 +30,38 @@
 
         private static Attachment CreateUnrecognizedInputCardAttachment()
         {
-            throw new NotImplementedException();
+            var unrecognizedInputCardString = UnrecognizedInputAdaptiveCard.GetCard();
+            var unrecognizedInputCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(unrecognizedInputCardString)
+            };
+
+            return unrecognizedInputCardAttachment;
         }
 
         private static Attachment CreateResponseCardAttachment(string question, string answer)
         {
             var responseCardString = ResponseAdaptiveCard.GetCard(question, answer);
-            var responseAdaptiveCard = new Attachment()
+            var responseCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
                 Content = JsonConvert.DeserializeObject(responseCardString)
             };
 
-            return responseAdaptiveCard;
+            return responseCardAttachment;
         }
 
         private static Attachment CreateWelcomeCardAttachment(string botName)
         {
-            var cardString = WelcomeMessageAdaptiveCard.GetCard(botName);
-            var adaptiveCardAttachment = new Attachment()
+            var welcomeCardString = WelcomeMessageAdaptiveCard.GetCard(botName);
+            var welcomeCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(cardString)
+                Content = JsonConvert.DeserializeObject(welcomeCardString)
             };
 
-            return adaptiveCardAttachment;
+            return welcomeCardAttachment;
         }
     }
 }
