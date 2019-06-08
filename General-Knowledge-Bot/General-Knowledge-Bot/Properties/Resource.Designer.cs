@@ -115,6 +115,33 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Turns out there is something that my tiny 🤖 🧠 just cannot figure out!.
+        /// </summary>
+        public static string UnrecognizedInputCardContentPart1 {
+            get {
+                return ResourceManager.GetString("UnrecognizedInputCardContentPart1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to However, it may just be that you as the end user may not *have the right idea* about what I do. Click on the *Welcome Message* button to find out what I do.
+        /// </summary>
+        public static string UnrecognizedInputCardContentPart2 {
+            get {
+                return ResourceManager.GetString("UnrecognizedInputCardContentPart2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uh Oh!.
+        /// </summary>
+        public static string UnrecognizedInputCardTitleText {
+            get {
+                return ResourceManager.GetString("UnrecognizedInputCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If you are reading this, it is because you are wondering about what I do. I am {0}, a simple bot that will query against a knowledge base and return you an answer..
         /// </summary>
         public static string WelcomeCardContentPart1 {
@@ -138,6 +165,15 @@ namespace GeneralKnowledgeBot.Properties {
         public static string WelcomeCardTitleText {
             get {
                 return ResourceManager.GetString("WelcomeCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome Message.
+        /// </summary>
+        public static string WelcomeMessageButtonText {
+            get {
+                return ResourceManager.GetString("WelcomeMessageButtonText", resourceCulture);
             }
         }
     }

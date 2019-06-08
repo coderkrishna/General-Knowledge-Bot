@@ -67,9 +67,13 @@ namespace GeneralKnowledgeBot.Bots
                     }
                 }
             }
+            else if (turnContext.Activity.Text == "Welcome Message")
+            {
+                var botDisplayName = _configuration["BotDisplayName"];
+                await GenKBot.SendUserWelcomeMessage(turnContext as ITurnContext<IConversationUpdateActivity>, cancellationToken, botDisplayName);
+            }
             else
             {
-                // TODO: Making sure that there is the ability to send out the welcome message again
                 await GenKBot.SendUnrecognizedInputMessage(turnContext, cancellationToken);
             }
         }

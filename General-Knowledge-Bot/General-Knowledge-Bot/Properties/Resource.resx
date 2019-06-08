@@ -141,6 +141,18 @@
     <value>Bingo! 🍀</value>
     <comment>The title text for the response adaptive card</comment>
   </data>
+  <data name="UnrecognizedInputCardContentPart1" xml:space="preserve">
+    <value>Turns out there is something that my tiny 🤖 🧠 just cannot figure out!</value>
+    <comment>First line of the unrecognized input content</comment>
+  </data>
+  <data name="UnrecognizedInputCardContentPart2" xml:space="preserve">
+    <value>However, it may just be that you as the end user may not *have the right idea* about what I do. Click on the *Welcome Message* button to find out what I do</value>
+    <comment>Second line of the unrecognized input content</comment>
+  </data>
+  <data name="UnrecognizedInputCardTitleText" xml:space="preserve">
+    <value>Uh Oh!</value>
+    <comment>The title content of the unrecognized input card</comment>
+  </data>
   <data name="WelcomeCardContentPart1" xml:space="preserve">
     <value>If you are reading this, it is because you are wondering about what I do. I am {0}, a simple bot that will query against a knowledge base and return you an answer.</value>
     <comment>The first part of the welcome card content with {0} as the bot display name</comment>
@@ -152,5 +164,9 @@
   <data name="WelcomeCardTitleText" xml:space="preserve">
     <value>Hello!</value>
     <comment>The welcome card title text</comment>
+  </data>
+  <data name="WelcomeMessageButtonText" xml:space="preserve">
+    <value>Welcome Message</value>
+    <comment>Button for the Welcome Message to be triggered again</comment>
   </data>
 </root>

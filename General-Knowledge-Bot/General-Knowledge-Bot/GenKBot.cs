@@ -22,7 +22,7 @@
             await turnContext.SendActivityAsync(MessageFactory.Attachment(responseCardAttachment), cancellationToken);
         }
 
-        public static async Task SendUrecognizedInputMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        public static async Task SendUnrecognizedInputMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
             var unrecognizedCardAttachment = CreateUnrecognizedInputCardAttachment();
             await turnContext.SendActivityAsync(MessageFactory.Attachment(unrecognizedCardAttachment), cancellationToken);

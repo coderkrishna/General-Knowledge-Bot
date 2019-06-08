@@ -1,3 +1,71 @@
 {
-
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "items": [
+                {
+                  "type": "Image",
+                  "style": "Person",
+                  "url": "%imageUrl%",
+                  "size": "Medium"
+                }
+              ],
+              "width": "auto"
+            },
+            {
+              "type": "Column",
+              "verticalContentAlignment": "Center",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "size": "Medium",
+                  "weight": "Bolder",
+                  "text": "%unrecognizedInputCardTitleText%"
+                }
+              ],
+              "width": "stretch"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "%unrecognizedInputCardContentPart1%",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "%unrecognizedInputCardContentPart2%",
+          "wrap": true,
+          "spacing": "Medium"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "%welcomeMessageButtonText%",
+      "data": {
+        "msteams": {
+          "type": "messageBack",
+          "displayText": "%welcomeMessageButtonText%",
+          "text": "%welcomeMessageButtonText%"
+        }
+      }
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
 }
