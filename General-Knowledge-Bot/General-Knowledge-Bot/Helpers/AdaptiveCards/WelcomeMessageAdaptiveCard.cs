@@ -1,4 +1,8 @@
-﻿namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
+﻿// <copyright file="WelcomeMessageAdaptiveCard.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
     using GeneralKnowledgeBot.Properties;
     using System.Collections.Generic;

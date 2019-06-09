@@ -1,3 +1,7 @@
+// <copyright file="BotController.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace GeneralKnowledgeBot.Controllers
 {
     using System.Threading.Tasks;

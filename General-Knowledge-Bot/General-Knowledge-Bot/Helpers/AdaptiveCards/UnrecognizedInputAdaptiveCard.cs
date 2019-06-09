@@ -1,12 +1,16 @@
-﻿namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
+﻿// <copyright file="UnrecognizedInputAdaptiveCard.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
+// </copyright>
+
+namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
-    using GeneralKnowledgeBot.Properties;
-    using System.IO;
     using System.Collections.Generic;
+    using System.IO;
+    using GeneralKnowledgeBot.Properties;
 
     public class UnrecognizedInputAdaptiveCard
     {
-        public static string CardTemplate;
+        public static readonly string CardTemplate;
 
         static UnrecognizedInputAdaptiveCard()
         {
