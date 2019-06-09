@@ -1,9 +1,9 @@
-﻿using GeneralKnowledgeBot.Properties;
-using System.IO;
-using System.Collections.Generic;
-
-namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
+﻿namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
+    using GeneralKnowledgeBot.Properties;
+    using System.IO;
+    using System.Collections.Generic;
+
     public class UnrecognizedInputAdaptiveCard
     {
         public static string CardTemplate;
