@@ -7,9 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Bots\GenKnowledgeBot.cs" />
+    <Compile Remove="Controllers\BotController.cs" />
+    <Compile Remove="GenKBot.cs" />
+    <Compile Remove="Helpers\AdaptiveCards\ResponseAdaptiveCard.cs" />
+    <Compile Remove="Helpers\AdaptiveCards\UnrecognizedInputAdaptiveCard.cs" />
+    <Compile Remove="Helpers\AdaptiveCards\WelcomeMessageAdaptiveCard.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Bots\GenKnowledgeBot.cs" />
+    <AdditionalFiles Include="Controllers\BotController.cs" />
+    <AdditionalFiles Include="GenKBot.cs" />
+    <AdditionalFiles Include="Helpers\AdaptiveCards\ResponseAdaptiveCard.cs" />
+    <AdditionalFiles Include="Helpers\AdaptiveCards\UnrecognizedInputAdaptiveCard.cs" />
+    <AdditionalFiles Include="Helpers\AdaptiveCards\WelcomeMessageAdaptiveCard.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AdaptiveCards" Version="1.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.4.3" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

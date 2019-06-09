@@ -1,7 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-//
-// Generated with Bot Builder V4 SDK Template for Visual Studio EchoBot v4.3.0
+// <copyright file="GenKnowledgeBot.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
+// </copyright>
 
 namespace GeneralKnowledgeBot.Bots
 {
@@ -11,7 +10,6 @@ namespace GeneralKnowledgeBot.Bots
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using GeneralKnowledgeBot.Models;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
@@ -21,13 +19,13 @@ namespace GeneralKnowledgeBot.Bots
 
     public class GenKnowledgeBot : ActivityHandler
     {
-        private readonly IConfiguration _configuration;
-        private readonly ILogger<GenKnowledgeBot> _logger;
+        private readonly IConfiguration configuration;
+        private readonly ILogger<GenKnowledgeBot> logger;
 
         public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger)
         {
-            _configuration = configuration;
-            _logger = logger;
+            this.configuration = configuration;
+            this.logger = logger;
         }
 
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
@@ -35,10 +33,10 @@ namespace GeneralKnowledgeBot.Bots
             var isQuery = turnContext.Activity.Text.EndsWith('?') || turnContext.Activity.Text.EndsWith('.');
             if (isQuery)
             {
-                var uri = _configuration["KbHost"] + _configuration["Service"] + "/knowledgebases/" + _configuration["KbID"] + "/generateAnswer";
+                var uri = this.configuration["KbHost"] + this.configuration["Service"] + "/knowledgebases/" + this.configuration["KbID"] + "/generateAnswer";
                 var question = turnContext.Activity.Text;
 
-                _logger.LogInformation("Calling QnA Maker");
+                this.logger.LogInformation("Calling QnA Maker");
 
                 using (var client = new HttpClient())
                 using (var request = new HttpRequestMessage())
@@ -46,7 +44,7 @@ namespace GeneralKnowledgeBot.Bots
                     request.Method = HttpMethod.Post;
                     request.RequestUri = new Uri(uri);
                     request.Content = new StringContent("{'question': '" + question + "'}", Encoding.UTF8, "application/json");
-                    request.Headers.Add("Authorization", "EndpointKey " + _configuration["EndpointKey"]);
+                    request.Headers.Add("Authorization", "EndpointKey " + this.configuration["EndpointKey"]);
 
                     var response = await client.SendAsync(request);
                     var responseText = await response.Content.ReadAsStringAsync();
@@ -59,7 +57,6 @@ namespace GeneralKnowledgeBot.Bots
                         // Parameters: turnContext, cancellationToken, responseModel
                         // Internal logic: Making sure to have the adaptive cards as well
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
-                        // await turnContext.SendActivityAsync(MessageFactory.Text(responseModel.answers[0].answer), cancellationToken);
                     }
                     else
                     {
@@ -69,7 +66,7 @@ namespace GeneralKnowledgeBot.Bots
             }
             else if (turnContext.Activity.Text == "Welcome Message")
             {
-                var botDisplayName = _configuration["BotDisplayName"];
+                var botDisplayName = this.configuration["BotDisplayName"];
                 await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
             }
             else
@@ -84,7 +81,7 @@ namespace GeneralKnowledgeBot.Bots
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
-                    var botDisplayName = _configuration["BotDisplayName"];
+                    var botDisplayName = this.configuration["BotDisplayName"];
                     await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
                 }
             }

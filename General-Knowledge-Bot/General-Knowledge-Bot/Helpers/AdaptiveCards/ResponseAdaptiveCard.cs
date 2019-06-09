@@ -1,18 +1,22 @@
-﻿namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
+﻿// <copyright file="ResponseAdaptiveCard.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
+// </copyright>
+
+namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
-    using GeneralKnowledgeBot.Models;
-    using GeneralKnowledgeBot.Properties;
     using System.Collections.Generic;
     using System.IO;
+    using GeneralKnowledgeBot.Models;
+    using GeneralKnowledgeBot.Properties;
 
     public class ResponseAdaptiveCard
     {
-        public static string ResponseCardTemplate;
+        private static string cardTemplate;
 
         static ResponseAdaptiveCard()
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "ResponseAdaptiveCard.json");
-            ResponseCardTemplate = File.ReadAllText(cardJsonFilePath);
+            cardTemplate = File.ReadAllText(cardJsonFilePath);
         }
 
         public static string GetCard(string question, string answer)
@@ -28,7 +32,7 @@
                 { "answerLineText", answerLineText }
             };
 
-            var cardBody = ResponseCardTemplate;
+            var cardBody = cardTemplate;
             foreach (var kvp in variablesToValues)
             {
                 cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);

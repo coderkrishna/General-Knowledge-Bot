@@ -1,12 +1,15 @@
-﻿namespace GeneralKnowledgeBot
+﻿// <copyright file="GenKBot.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
+// </copyright>
+
+namespace GeneralKnowledgeBot
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
     using Newtonsoft.Json;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public static class GenKBot
     {
