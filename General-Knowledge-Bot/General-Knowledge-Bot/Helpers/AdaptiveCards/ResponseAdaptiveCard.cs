@@ -1,20 +1,32 @@
-﻿namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
+﻿// <copyright file="ResponseAdaptiveCard.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
+// </copyright>
+
+namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
-    using GeneralKnowledgeBot.Models;
-    using GeneralKnowledgeBot.Properties;
     using System.Collections.Generic;
     using System.IO;
+    using GeneralKnowledgeBot.Properties;
 
+    /// <summary>
+    /// The class to build the adaptive card for the response
+    /// </summary>
     public class ResponseAdaptiveCard
     {
-        public static string ResponseCardTemplate;
+        private static readonly string CardTemplate;
 
         static ResponseAdaptiveCard()
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "ResponseAdaptiveCard.json");
-            ResponseCardTemplate = File.ReadAllText(cardJsonFilePath);
+            CardTemplate = File.ReadAllText(cardJsonFilePath);
         }
 
+        /// <summary>
+        /// Creates the necessary JSON string for the adaptive card to be shown in the response
+        /// </summary>
+        /// <param name="question">The question that is asked from the user to the bot</param>
+        /// <param name="answer">The answer that is returned after the query against QnAMaker is made</param>
+        /// <returns>A JSON string</returns>
         public static string GetCard(string question, string answer)
         {
             var questionLineText = string.Format(Resource.QuestionLineText, question);
@@ -28,7 +40,7 @@
                 { "answerLineText", answerLineText }
             };
 
-            var cardBody = ResponseCardTemplate;
+            var cardBody = CardTemplate;
             foreach (var kvp in variablesToValues)
             {
                 cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);

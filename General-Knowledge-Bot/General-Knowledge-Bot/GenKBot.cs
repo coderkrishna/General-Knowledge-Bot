@@ -1,15 +1,28 @@
-﻿namespace GeneralKnowledgeBot
+﻿// <copyright file="GenKBot.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
+// </copyright>
+
+namespace GeneralKnowledgeBot
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
     using Newtonsoft.Json;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
 
+    /// <summary>
+    /// This class allows for the separation of logic
+    /// </summary>
     public static class GenKBot
     {
+        /// <summary>
+        /// Having the method to send the welcome messge for the user
+        /// </summary>
+        /// <param name="turnContext">The turn context</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <param name="botDisplayName">The bot display name (what name will show up in Teams)</param>
+        /// <returns>A unit of execution that is tracked</returns>
         public static async Task SendUserWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
             var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
