@@ -121,18 +121,6 @@
     <value>Here's what I found: {0}</value>
     <comment>The line for the answer</comment>
   </data>
-  <data name="BulletListItem1" xml:space="preserve">
-    <value>* You can ask me questions and for that I'll provide answers</value>
-    <comment>Bulleted list item 1</comment>
-  </data>
-  <data name="BulletListItem2" xml:space="preserve">
-    <value>* You can also take a tour if (if you wanted to)</value>
-    <comment>Bulleted list item 2</comment>
-  </data>
-  <data name="BulletListItem3" xml:space="preserve">
-    <value>* If I can't help you (which I should still 🤣) I will then bring in a 👴</value>
-    <comment>Bulleted list item 3</comment>
-  </data>
   <data name="QuestionLineText" xml:space="preserve">
     <value>❓: {0}</value>
     <comment>The line for the question</comment>
@@ -152,6 +140,18 @@
   <data name="UnrecognizedInputCardTitleText" xml:space="preserve">
     <value>Uh Oh!</value>
     <comment>The title content of the unrecognized input card</comment>
+  </data>
+  <data name="WelcomeCardBulletListItem1" xml:space="preserve">
+    <value>Take a tour</value>
+    <comment>Bulleted list item 1</comment>
+  </data>
+  <data name="WelcomeCardBulletListItem2" xml:space="preserve">
+    <value>Provide feedback</value>
+    <comment>Bulleted list item 2</comment>
+  </data>
+  <data name="WelcomeCardBulletListItem3" xml:space="preserve">
+    <value>Ask a human</value>
+    <comment>Bulleted list item 3</comment>
   </data>
   <data name="WelcomeCardContentPart1" xml:space="preserve">
     <value>If you are reading this, it is because you are wondering about what I do. I am {0}, a simple bot that will query against a knowledge base and return you an answer.</value>
