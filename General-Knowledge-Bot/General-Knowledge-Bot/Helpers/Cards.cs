@@ -16,7 +16,7 @@ namespace GeneralKnowledgeBot.Helpers
         /// <summary>
         /// Method that will generate the first card in the carousel tour
         /// </summary>
-        /// <returns>The functionality card</returns>
+        /// <returns>Hero card gets returned</returns>
         public static HeroCard FunctionalityCard()
         {
             var heroCard = new HeroCard()
@@ -42,6 +42,10 @@ namespace GeneralKnowledgeBot.Helpers
             return heroCard;
         }
 
+        /// <summary>
+        /// Ensuring to generate the adaptive card for asking a human
+        /// </summary>
+        /// <returns>Hero card gets returned</returns>
         public static HeroCard AskAHumanCard()
         {
             var askAHumanCard = new HeroCard()
@@ -67,13 +71,17 @@ namespace GeneralKnowledgeBot.Helpers
             return askAHumanCard;
         }
 
+        /// <summary>
+        /// Ensuring to generate a card for giving feedback
+        /// </summary>
+        /// <returns>Hero card gets returned</returns>
         public static HeroCard GiveFeedbackCard()
         {
             var askAHumanCard = new HeroCard()
             {
-                Title = "Ask A Human",
-                Subtitle = "Escalation",
-                Text = "If there is a chance that I cannot retrieve the answer to your question, I will let you know! I will also provision the option for you to escalate this, and ask a human - at which point I consult a SME (Subject Matter Expert) and hopefully with a little human ingenuity - we get the question answered",
+                Title = "Give Feedback",
+                Subtitle = "Feedback",
+                Text = "If there is anything that you want to see improve - we welcome your comments and questions",
                 Images = new List<CardImage>()
                 {
                     new CardImage("https://banner2.kisspng.com/20180423/eqq/kisspng-programmer-computer-programming-clip-art-bachelor-clipart-5add7deb3384b2.449284371524465131211.jpg")
@@ -83,7 +91,7 @@ namespace GeneralKnowledgeBot.Helpers
                     new CardAction()
                     {
                         Type = ActionTypes.OpenUrl,
-                        Title = "Ask A Human",
+                        Title = "Give Feedback",
                         Value = "https://www.google.com"
                     }
                 }
@@ -92,6 +100,11 @@ namespace GeneralKnowledgeBot.Helpers
             return askAHumanCard;
         }
 
+        /// <summary>
+        /// Generates the welcome card which is a hero card
+        /// </summary>
+        /// <param name="botName">The bot display name</param>
+        /// <returns>Hero card gets returned</returns>
         public static HeroCard WelcomeCard(string botName)
         {
             var welcomeCard = new HeroCard()
