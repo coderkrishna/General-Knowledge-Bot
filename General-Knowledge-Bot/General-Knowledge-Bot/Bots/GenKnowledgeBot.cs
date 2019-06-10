@@ -22,12 +22,23 @@ namespace GeneralKnowledgeBot.Bots
         private readonly IConfiguration configuration;
         private readonly ILogger<GenKnowledgeBot> logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenKnowledgeBot"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration - accessing appsettings.json</param>
+        /// <param name="logger">The logging mechanism</param>
         public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger)
         {
             this.configuration = configuration;
             this.logger = logger;
         }
 
+        /// <summary>
+        /// The method that gets invoked each time there is a message that is coming in
+        /// </summary>
+        /// <param name="turnContext">The current turn</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>A unit of execution</returns>
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
             var isQuery = turnContext.Activity.Text.EndsWith('?') || turnContext.Activity.Text.EndsWith('.');
@@ -66,8 +77,7 @@ namespace GeneralKnowledgeBot.Bots
             }
             else if (turnContext.Activity.Text == "Take a tour")
             {
-                var botDisplayName = this.configuration["BotDisplayName"];
-                await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
             }
             else
             {
@@ -75,6 +85,13 @@ namespace GeneralKnowledgeBot.Bots
             }
         }
 
+        /// <summary>
+        /// The method that gets called when the bot is first opened after installation
+        /// </summary>
+        /// <param name="membersAdded">The account that has been eiter added or interacting with the bot</param>
+        /// <param name="turnContext">The current turn/execution flow</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>A unit of execution</returns>
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
             foreach (var member in membersAdded)

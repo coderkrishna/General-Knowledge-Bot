@@ -141,6 +141,10 @@
     <value>Uh Oh!</value>
     <comment>The title content of the unrecognized input card</comment>
   </data>
+  <data name="UnrecognizedInputTakeATour" xml:space="preserve">
+    <value>Take a tour</value>
+    <comment>The text on the unrecognized input button with regards to the button</comment>
+  </data>
   <data name="WelcomeCardBulletListItem1" xml:space="preserve">
     <value>Take a tour</value>
     <comment>Bulleted list item 1</comment>
@@ -164,9 +168,5 @@
   <data name="WelcomeCardTitleText" xml:space="preserve">
     <value>Hello!</value>
     <comment>The welcome card title text</comment>
-  </data>
-  <data name="WelcomeMessageButtonText" xml:space="preserve">
-    <value>Welcome Message</value>
-    <comment>Button for the Welcome Message to be triggered again</comment>
   </data>
 </root>
