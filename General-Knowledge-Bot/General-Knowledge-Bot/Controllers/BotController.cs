@@ -1,5 +1,5 @@
-// <copyright file="BotController.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+// <copyright file="BotController.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
 // </copyright>
 
 namespace GeneralKnowledgeBot.Controllers
