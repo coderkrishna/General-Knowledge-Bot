@@ -117,6 +117,15 @@ namespace GeneralKnowledgeBot.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Take a tour.
         /// </summary>
+        public static string UnrecognizedInputTakeATour {
+            get {
+                return ResourceManager.GetString("UnrecognizedInputTakeATour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take a tour.
+        /// </summary>
         public static string WelcomeCardBulletListItem1 {
             get {
                 return ResourceManager.GetString("WelcomeCardBulletListItem1", resourceCulture);
@@ -165,15 +174,6 @@ namespace GeneralKnowledgeBot.Properties {
         public static string WelcomeCardTitleText {
             get {
                 return ResourceManager.GetString("WelcomeCardTitleText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Welcome Message.
-        /// </summary>
-        public static string WelcomeMessageButtonText {
-            get {
-                return ResourceManager.GetString("WelcomeMessageButtonText", resourceCulture);
             }
         }
     }
