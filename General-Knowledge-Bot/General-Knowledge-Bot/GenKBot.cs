@@ -27,14 +27,14 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked</returns>
         public static async Task SendProactiveWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
-            var welcomeCardAttachment = CreateWelcomeCardAttachment(turnContext, botDisplayName);
+            var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
-        public static async Task SendUserWelcomeMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
+        public static async Task SendTourCarouselCard(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            var welcomeCardAttachment = CreateWelcomeCardAttachment(turnContext, botDisplayName);
-            await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
+            var tourCarouselCardAttachment = CreateTourCarouselCardAttachment();
+            await turnContext.SendActivityAsync(MessageFactory.Attachment(tourCarouselCardAttachment), cancellationToken);
         }
 
         public static async Task SendAnswerMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string answer, string question)
@@ -73,7 +73,7 @@ namespace GeneralKnowledgeBot
             return responseCardAttachment;
         }
 
-        private static Attachment CreateWelcomeCardAttachment(ITurnContext<IConversationUpdateActivity> turnContext, string botName)
+        private static Attachment CreateWelcomeCardAttachment(string botName)
         {
             var welcomeHeroCard = new HeroCard()
             {
