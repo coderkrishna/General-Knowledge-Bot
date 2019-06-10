@@ -25,7 +25,7 @@ namespace GeneralKnowledgeBot
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="botDisplayName">The bot display name (what name will show up in Teams)</param>
         /// <returns>A unit of execution that is tracked</returns>
-        public static async Task SendUserWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
+        public static async Task SendProactiveWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
             var welcomeCardAttachment = CreateWelcomeCardAttachment(turnContext, botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
