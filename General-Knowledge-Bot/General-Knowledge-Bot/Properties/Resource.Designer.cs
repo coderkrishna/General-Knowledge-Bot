@@ -70,33 +70,6 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * You can ask me questions and for that I&apos;ll provide answers.
-        /// </summary>
-        public static string BulletListItem1 {
-            get {
-                return ResourceManager.GetString("BulletListItem1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to * You can also take a tour if (if you wanted to).
-        /// </summary>
-        public static string BulletListItem2 {
-            get {
-                return ResourceManager.GetString("BulletListItem2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to * If I can&apos;t help you (which I should still 🤣) I will then bring in a 👴.
-        /// </summary>
-        public static string BulletListItem3 {
-            get {
-                return ResourceManager.GetString("BulletListItem3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ❓: {0}.
         /// </summary>
         public static string QuestionLineText {
@@ -138,6 +111,33 @@ namespace GeneralKnowledgeBot.Properties {
         public static string UnrecognizedInputCardTitleText {
             get {
                 return ResourceManager.GetString("UnrecognizedInputCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take a tour.
+        /// </summary>
+        public static string WelcomeCardBulletListItem1 {
+            get {
+                return ResourceManager.GetString("WelcomeCardBulletListItem1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provide feedback.
+        /// </summary>
+        public static string WelcomeCardBulletListItem2 {
+            get {
+                return ResourceManager.GetString("WelcomeCardBulletListItem2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask a human.
+        /// </summary>
+        public static string WelcomeCardBulletListItem3 {
+            get {
+                return ResourceManager.GetString("WelcomeCardBulletListItem3", resourceCulture);
             }
         }
         

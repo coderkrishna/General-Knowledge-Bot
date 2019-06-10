@@ -4,9 +4,11 @@
 
 namespace GeneralKnowledgeBot
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
+    using GeneralKnowledgeBot.Properties;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
     using Newtonsoft.Json;
@@ -25,13 +27,13 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked</returns>
         public static async Task SendUserWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
-            var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
+            var welcomeCardAttachment = CreateWelcomeCardAttachment(turnContext, botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
         public static async Task SendUserWelcomeMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
-            var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
+            var welcomeCardAttachment = CreateWelcomeCardAttachment(turnContext, botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
@@ -71,16 +73,76 @@ namespace GeneralKnowledgeBot
             return responseCardAttachment;
         }
 
-        private static Attachment CreateWelcomeCardAttachment(string botName)
+        private static Attachment CreateWelcomeCardAttachment(ITurnContext<IConversationUpdateActivity> turnContext, string botName)
         {
-            var welcomeCardString = WelcomeMessageAdaptiveCard.GetCard(botName);
-            var welcomeCardAttachment = new Attachment()
+            var welcomeHeroCard = new HeroCard()
             {
-                ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(welcomeCardString)
+                Title = Resource.WelcomeCardTitleText,
+                Text = $"I am {botName} and I am a QnAMaker bot that can query a simple knowledge base to return answers to questions that you ask." +
+                       "Apart from that, I can do the following actions: <ul><li>Take a tour</li><li>Provide feedback</li><li>Ask a human</li></ul>",
+                Buttons = new List<CardAction>()
+                {
+                    new CardAction()
+                    {
+                        Title = Resource.WelcomeCardBulletListItem1,
+                        DisplayText = Resource.WelcomeCardBulletListItem1,
+                        Type = ActionTypes.MessageBack,
+                        Text = Resource.WelcomeCardBulletListItem1
+                    },
+                    new CardAction()
+                    {
+                        Title = Resource.WelcomeCardBulletListItem2,
+                        DisplayText = Resource.WelcomeCardBulletListItem2,
+                        Type = ActionTypes.MessageBack,
+                        Text = Resource.WelcomeCardBulletListItem2
+                    },
+                    new CardAction()
+                    {
+                        Title = Resource.WelcomeCardBulletListItem3, 
+                        DisplayText = Resource.WelcomeCardBulletListItem3,
+                        Type = ActionTypes.MessageBack,
+                        Text = Resource.WelcomeCardBulletListItem3
+                    }
+                }
             };
 
-            return welcomeCardAttachment;
+            return welcomeHeroCard.ToAttachment();
+        }
+
+        private static Attachment CreateWelcomeCardAttachment(ITurnContext<IMessageActivity> turnContext, string botName)
+        {
+            var welcomeHeroCard = new HeroCard()
+            {
+                Title = Resource.WelcomeCardTitleText,
+                Text = $"I am {botName} and I am a QnAMaker bot that can query a simple knowledge base to return answers to questions that you ask." +
+                       "Apart from that, I can do the following actions: <ul><li>Take a tour</li><li>Provide feedback</li><li>Ask a human</li></ul>",
+                Buttons = new List<CardAction>()
+                {
+                    new CardAction()
+                    {
+                        Title = Resource.WelcomeCardBulletListItem1,
+                        DisplayText = Resource.WelcomeCardBulletListItem1,
+                        Type = ActionTypes.MessageBack,
+                        Text = Resource.WelcomeCardBulletListItem1
+                    },
+                    new CardAction()
+                    {
+                        Title = Resource.WelcomeCardBulletListItem2,
+                        DisplayText = Resource.WelcomeCardBulletListItem2,
+                        Type = ActionTypes.MessageBack,
+                        Text = Resource.WelcomeCardBulletListItem2
+                    },
+                    new CardAction()
+                    {
+                        Title = Resource.WelcomeCardBulletListItem3,
+                        DisplayText = Resource.WelcomeCardBulletListItem3,
+                        Type = ActionTypes.MessageBack,
+                        Text = Resource.WelcomeCardBulletListItem3
+                    }
+                }
+            };
+
+            return welcomeHeroCard.ToAttachment();
         }
     }
 }
