@@ -24,13 +24,15 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var unrecognizedInputCardContentPart1 = Resource.UnrecognizedInputCardContentPart1;
             var unrecognizedInputCardContentPart2 = Resource.UnrecognizedInputCardContentPart2;
             var welcomeMessageButtonText = Resource.WelcomeMessageButtonText;
+            var imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYdkLqRmRTPbjIOcDZd5boysXZRnJh_MuWdpJ6JgjPBU52IFAX";
 
             var variablesToValues = new Dictionary<string, string>()
             {
                 { "unrecognizedInputCardTitleText", unrecognizedInputCardTitleText },
                 { "unrecognizedInputCardContentPart1", unrecognizedInputCardContentPart1 },
                 { "unrecognizedInputCardContentPart2", unrecognizedInputCardContentPart2 },
-                { "welcomeMessageButtonText", welcomeMessageButtonText }
+                { "welcomeMessageButtonText", welcomeMessageButtonText },
+                { "imageUrl", imageUrl }
             };
 
             var cardBody = CardTemplate;

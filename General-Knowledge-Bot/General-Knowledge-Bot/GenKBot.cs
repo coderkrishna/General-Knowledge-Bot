@@ -9,7 +9,6 @@ namespace GeneralKnowledgeBot
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
-    using GeneralKnowledgeBot.Properties;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
     using Newtonsoft.Json;
@@ -32,9 +31,18 @@ namespace GeneralKnowledgeBot
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
-        public static async Task SendTourCarouselCard(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        public static async Task SendTourCarouselCard(ITurnContext turnContext, CancellationToken cancellationToken)
         {
-            await CreateTourCarouselCardAttachment(turnContext, cancellationToken);
+            var reply = turnContext.Activity.CreateReply();
+            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            reply.Attachments = new List<Attachment>()
+            {
+                Cards.FunctionalityCard().ToAttachment(),
+                Cards.AskAHumanCard().ToAttachment(),
+                Cards.GiveFeedbackCard().ToAttachment()
+            };
+
+            await turnContext.SendActivityAsync(reply, cancellationToken);
         }
 
         public static async Task SendAnswerMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string answer, string question)
@@ -71,20 +79,6 @@ namespace GeneralKnowledgeBot
             };
 
             return responseCardAttachment;
-        }
-
-        private static async Task CreateTourCarouselCardAttachment(ITurnContext turnContext, CancellationToken cancellationToken)
-        {
-            var reply = turnContext.Activity.CreateReply();
-            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            reply.Attachments = new List<Attachment>()
-            {
-                Cards.FunctionalityCard().ToAttachment(),
-                Cards.AskAHumanCard().ToAttachment(),
-                Cards.GiveFeedbackCard().ToAttachment()
-            };
-
-            await turnContext.SendActivityAsync(reply, cancellationToken);
         }
     }
 }
