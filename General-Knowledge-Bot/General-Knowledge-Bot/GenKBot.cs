@@ -7,6 +7,7 @@ namespace GeneralKnowledgeBot
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using GeneralKnowledgeBot.Helpers;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using GeneralKnowledgeBot.Properties;
     using Microsoft.Bot.Builder;
@@ -27,14 +28,13 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked</returns>
         public static async Task SendProactiveWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
-            var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
+            var welcomeCardAttachment = Cards.WelcomeCard(botDisplayName).ToAttachment();
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
         public static async Task SendTourCarouselCard(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            var tourCarouselCardAttachment = CreateTourCarouselCardAttachment();
-            await turnContext.SendActivityAsync(MessageFactory.Attachment(tourCarouselCardAttachment), cancellationToken);
+            await CreateTourCarouselCardAttachment(turnContext, cancellationToken);
         }
 
         public static async Task SendAnswerMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string answer, string question)
@@ -73,62 +73,18 @@ namespace GeneralKnowledgeBot
             return responseCardAttachment;
         }
 
-        private static Attachment CreateWelcomeCardAttachment(string botName)
+        private static async Task CreateTourCarouselCardAttachment(ITurnContext turnContext, CancellationToken cancellationToken)
         {
-            var welcomeHeroCard = new HeroCard()
+            var reply = turnContext.Activity.CreateReply();
+            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            reply.Attachments = new List<Attachment>()
             {
-                Title = Resource.WelcomeCardTitleText,
-                Text = $"I am {botName} and I am a QnAMaker bot that can query a simple knowledge base to return answers to questions that you ask. " +
-                       "If you want to know what I do, proceed to click on the button that reads <i>Take a tour</i>",
-                Buttons = new List<CardAction>()
-                {
-                    new CardAction()
-                    {
-                        Title = Resource.WelcomeCardBulletListItem1,
-                        DisplayText = Resource.WelcomeCardBulletListItem1,
-                        Type = ActionTypes.MessageBack,
-                        Text = Resource.WelcomeCardBulletListItem1
-                    }
-                }
+                Cards.FunctionalityCard().ToAttachment(),
+                Cards.AskAHumanCard().ToAttachment(),
+                Cards.GiveFeedbackCard().ToAttachment()
             };
 
-            return welcomeHeroCard.ToAttachment();
-        }
-
-        private static Attachment CreateWelcomeCardAttachment(ITurnContext<IMessageActivity> turnContext, string botName)
-        {
-            var welcomeHeroCard = new HeroCard()
-            {
-                Title = Resource.WelcomeCardTitleText,
-                Text = $"I am {botName} and I am a QnAMaker bot that can query a simple knowledge base to return answers to questions that you ask." +
-                       "Apart from that, I can do the following actions: <ul><li>Take a tour</li><li>Provide feedback</li><li>Ask a human</li></ul>",
-                Buttons = new List<CardAction>()
-                {
-                    new CardAction()
-                    {
-                        Title = Resource.WelcomeCardBulletListItem1,
-                        DisplayText = Resource.WelcomeCardBulletListItem1,
-                        Type = ActionTypes.MessageBack,
-                        Text = Resource.WelcomeCardBulletListItem1
-                    },
-                    new CardAction()
-                    {
-                        Title = Resource.WelcomeCardBulletListItem2,
-                        DisplayText = Resource.WelcomeCardBulletListItem2,
-                        Type = ActionTypes.MessageBack,
-                        Text = Resource.WelcomeCardBulletListItem2
-                    },
-                    new CardAction()
-                    {
-                        Title = Resource.WelcomeCardBulletListItem3,
-                        DisplayText = Resource.WelcomeCardBulletListItem3,
-                        Type = ActionTypes.MessageBack,
-                        Text = Resource.WelcomeCardBulletListItem3
-                    }
-                }
-            };
-
-            return welcomeHeroCard.ToAttachment();
+            await turnContext.SendActivityAsync(reply, cancellationToken);
         }
     }
 }

@@ -1,8 +1,6 @@
-//-------------------------------------------------------------------------
 // <copyright file="ConfigurationCredentialProvider.cs" company="Microsoft">
 // Copyright (c) Microsoft. All rights reserved.
 // </copyright>
-//-------------------------------------------------------------------------
 
 namespace GeneralKnowledgeBot
 {
