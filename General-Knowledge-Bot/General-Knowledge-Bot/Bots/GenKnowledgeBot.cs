@@ -64,7 +64,7 @@ namespace GeneralKnowledgeBot.Bots
                     }
                 }
             }
-            else if (turnContext.Activity.Text == "Welcome Message")
+            else if (turnContext.Activity.Text == "Take a tour")
             {
                 var botDisplayName = this.configuration["BotDisplayName"];
                 await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
