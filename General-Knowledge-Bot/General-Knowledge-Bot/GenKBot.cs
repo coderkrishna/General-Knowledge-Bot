@@ -27,7 +27,7 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked</returns>
         public static async Task SendProactiveWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
-            var welcomeCardAttachment = Cards.WelcomeCard(botDisplayName).ToAttachment();
+            var welcomeCardAttachment = CreateWelcomeCardAttachment(botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
@@ -79,6 +79,18 @@ namespace GeneralKnowledgeBot
             };
 
             return responseCardAttachment;
+        }
+
+        private static Attachment CreateWelcomeCardAttachment(string botName)
+        {
+            var welcomeCardString = WelcomeAdaptiveCard.GetCard(botName);
+            var welcomeCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(welcomeCardString)
+            };
+
+            return welcomeCardAttachment;
         }
     }
 }
