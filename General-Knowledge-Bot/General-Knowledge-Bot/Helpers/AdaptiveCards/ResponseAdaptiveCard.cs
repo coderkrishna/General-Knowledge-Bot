@@ -15,6 +15,9 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
     {
         private static readonly string CardTemplate;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResponseAdaptiveCard"/> class
+        /// </summary>
         static ResponseAdaptiveCard()
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "ResponseAdaptiveCard.json");

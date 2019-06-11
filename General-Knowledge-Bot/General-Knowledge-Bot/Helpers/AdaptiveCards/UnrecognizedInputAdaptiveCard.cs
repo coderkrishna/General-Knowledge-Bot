@@ -12,6 +12,9 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
     {
         public static readonly string CardTemplate;
 
+        /// <summary>
+        /// Initializes an instance of the <see cref="UnrecognizedInputAdaptiveCard"/> class
+        /// </summary>
         static UnrecognizedInputAdaptiveCard()
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "UnrecognizedInputAdaptiveCard.json");
