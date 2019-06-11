@@ -263,3 +263,4 @@ General-Knowledge-Bot/General-Knowledge-Bot/bin/Debug/netcoreapp2.1/GeneralKnowl
 General-Knowledge-Bot/General-Knowledge-Bot/bin/Debug/netcoreapp2.1/GeneralKnowledgeBot.dll
 General-Knowledge-Bot/General-Knowledge-Bot/bin/Debug/netcoreapp2.1/GeneralKnowledgeBot.deps.json
 General-Knowledge-Bot/General-Knowledge-Bot/obj/Debug/netcoreapp2.1/General-Knowledge-Bot.csproj.CoreCompileInputs.cache
+*.cache
