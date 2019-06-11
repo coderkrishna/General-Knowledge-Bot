@@ -4,9 +4,8 @@
 
 namespace GeneralKnowledgeBot.Helpers
 {
-    using System.Collections.Generic;
-    using GeneralKnowledgeBot.Properties;
     using Microsoft.Bot.Schema;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The Cards class for the tour carousel
@@ -98,33 +97,6 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return askAHumanCard;
-        }
-
-        /// <summary>
-        /// Generates the welcome card which is a hero card
-        /// </summary>
-        /// <param name="botName">The bot display name</param>
-        /// <returns>Hero card gets returned</returns>
-        public static HeroCard WelcomeCard(string botName)
-        {
-            var welcomeCard = new HeroCard()
-            {
-                Title = Resource.WelcomeCardTitleText,
-                Text = $"I am {botName} and I am a QnAMaker bot that can query a simple knowledge base to return answers to questions that you ask. " +
-                       "If you want to know what I do, proceed to click on the button that reads <i>Take a tour</i>",
-                Buttons = new List<CardAction>()
-                {
-                    new CardAction()
-                    {
-                        Title = Resource.WelcomeCardBulletListItem1,
-                        DisplayText = Resource.WelcomeCardBulletListItem1,
-                        Type = ActionTypes.MessageBack,
-                        Text = Resource.WelcomeCardBulletListItem1
-                    }
-                }
-            };
-
-            return welcomeCard;
         }
     }
 }
