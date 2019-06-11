@@ -10,7 +10,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 
     public class UnrecognizedInputAdaptiveCard
     {
-        public static readonly string CardTemplate;
+        private static readonly string CardTemplate;
 
         /// <summary>
         /// Initializes an instance of the <see cref="UnrecognizedInputAdaptiveCard"/> class

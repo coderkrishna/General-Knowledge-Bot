@@ -129,6 +129,14 @@
     <value>Bingo! 🍀</value>
     <comment>The title text for the response adaptive card</comment>
   </data>
+  <data name="TakeATourButtonText" xml:space="preserve">
+    <value>Take a tour</value>
+    <comment>Button text for taking a tour which launches the carousel card</comment>
+  </data>
+  <data name="TourIntroText" xml:space="preserve">
+    <value>If you want to know more about the bulleted items that have been mentioned, make sure to click on the button that reads _Take a tour_</value>
+    <comment>Text that will introduce the tour to the user</comment>
+  </data>
   <data name="UnrecognizedInputCardContentPart1" xml:space="preserve">
     <value>Turns out there is something that my tiny 🤖 🧠 just cannot figure out!</value>
     <comment>First line of the unrecognized input content</comment>
@@ -146,7 +154,7 @@
     <comment>The text on the unrecognized input button with regards to the button</comment>
   </data>
   <data name="WelcomeCardBulletListItem1" xml:space="preserve">
-    <value>Take a tour</value>
+    <value>Answer your questions</value>
     <comment>Bulleted list item 1</comment>
   </data>
   <data name="WelcomeCardBulletListItem2" xml:space="preserve">

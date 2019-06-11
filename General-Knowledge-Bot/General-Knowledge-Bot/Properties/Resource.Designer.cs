@@ -88,6 +88,24 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Take a tour.
+        /// </summary>
+        public static string TakeATourButtonText {
+            get {
+                return ResourceManager.GetString("TakeATourButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you want to know more about the bulleted items that have been mentioned, make sure to click on the button that reads _Take a tour_.
+        /// </summary>
+        public static string TourIntroText {
+            get {
+                return ResourceManager.GetString("TourIntroText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Turns out there is something that my tiny 🤖 🧠 just cannot figure out!.
         /// </summary>
         public static string UnrecognizedInputCardContentPart1 {
@@ -124,7 +142,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Take a tour.
+        ///   Looks up a localized string similar to Answer your questions.
         /// </summary>
         public static string WelcomeCardBulletListItem1 {
             get {

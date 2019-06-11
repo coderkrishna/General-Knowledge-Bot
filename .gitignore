@@ -264,3 +264,7 @@ General-Knowledge-Bot/General-Knowledge-Bot/bin/Debug/netcoreapp2.1/GeneralKnowl
 General-Knowledge-Bot/General-Knowledge-Bot/bin/Debug/netcoreapp2.1/GeneralKnowledgeBot.deps.json
 General-Knowledge-Bot/General-Knowledge-Bot/obj/Debug/netcoreapp2.1/General-Knowledge-Bot.csproj.CoreCompileInputs.cache
 *.cache
+General-Knowledge-Bot/General-Knowledge-Bot/obj/Debug/netcoreapp2.1/General-Knowledge-Bot.csproj.CoreCompileInputs.cache
+General-Knowledge-Bot/.vs/General-Knowledge-Bot/v16/.suo
+*.cache
+*.cache
