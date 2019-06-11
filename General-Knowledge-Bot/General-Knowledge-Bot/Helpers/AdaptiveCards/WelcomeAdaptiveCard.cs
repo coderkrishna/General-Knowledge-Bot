@@ -45,6 +45,11 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             };
 
             var cardBody = CardTemplate;
+            foreach (var kvp in variablesToValues)
+            {
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+            }
+
             return cardBody;
         }
     }
