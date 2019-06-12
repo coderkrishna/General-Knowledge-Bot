@@ -24,6 +24,11 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             CardTemplate = File.ReadAllText(cardJsonFilePath);
         }
 
+        /// <summary>
+        /// Method that will produce the JSON string of the adaptive card.
+        /// </summary>
+        /// <param name="botDisplayName">The display name for the bot.</param>
+        /// <returns>The JSON string for the welcome adaptive card.</returns>
         public static string GetCard(string botDisplayName)
         {
             var welcomeCardTitleText = Resource.WelcomeCardTitleText;
