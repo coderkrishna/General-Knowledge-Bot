@@ -87,7 +87,7 @@ namespace GeneralKnowledgeBot
             var unrecognizedInputCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(unrecognizedInputCardString)
+                Content = JsonConvert.DeserializeObject(unrecognizedInputCardString),
             };
 
             return unrecognizedInputCardAttachment;
@@ -122,7 +122,7 @@ namespace GeneralKnowledgeBot
             var welcomeCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(welcomeCardString)
+                Content = JsonConvert.DeserializeObject(welcomeCardString),
             };
 
             return welcomeCardAttachment;

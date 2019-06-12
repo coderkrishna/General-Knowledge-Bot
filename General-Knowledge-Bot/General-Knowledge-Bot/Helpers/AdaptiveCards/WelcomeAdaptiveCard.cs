@@ -44,7 +44,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "bulletListItem2", bulletListItem2 },
                 { "bulletListItem3", bulletListItem3 },
                 { "tourIntroText", tourIntroText },
-                { "takeATourButtonText", takeATourButtonText }
+                { "takeATourButtonText", takeATourButtonText },
             };
 
             var cardBody = CardTemplate;
