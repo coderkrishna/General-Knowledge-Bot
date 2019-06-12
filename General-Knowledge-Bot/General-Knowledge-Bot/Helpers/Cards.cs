@@ -105,7 +105,7 @@ namespace GeneralKnowledgeBot.Helpers
         /// Generates the welcome card which is an adaptive card.
         /// </summary>
         /// <param name="botDisplayName">The bot display name.</param>
-        /// <returns>The attachment which will be attached to the message.</returns>
+        /// <returns>The adaptive card attachment.</returns>
         public static Attachment CreateWelcomeCardAttachment(string botDisplayName)
         {
             var welcomeCardString = WelcomeAdaptiveCard.GetCard(botDisplayName);
@@ -116,6 +116,40 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return welcomeCardAttachment;
+        }
+
+        /// <summary>
+        /// Generates the adaptive card for the unrecognized input scenario.
+        /// </summary>
+        /// <returns>The adaptive card attachment.</returns>
+        public static Attachment CreateUnrecognizedInputCardAttachment()
+        {
+            var unrecognizedInputCardString = UnrecognizedInputAdaptiveCard.GetCard();
+            var unrecognizedInputCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(unrecognizedInputCardString),
+            };
+
+            return unrecognizedInputCardAttachment;
+        }
+
+        /// <summary>
+        /// Generates the adaptive card for the response that is retrieved when the bot is asked a question by the user.
+        /// </summary>
+        /// <param name="question">The question that the user asks the bot.</param>
+        /// <param name="answer">The response that the bot retrieves after querying the knowledge base.</param>
+        /// <returns>The adaptive card attachment.</returns>
+        public static Attachment CreateResponseCardAttachment(string question, string answer)
+        {
+            var responseCardString = ResponseAdaptiveCard.GetCard(question, answer);
+            var responseCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(responseCardString),
+            };
+
+            return responseCardAttachment;
         }
     }
 }

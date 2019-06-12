@@ -61,7 +61,7 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked.</returns>
         public static async Task SendAnswerMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken, string answer, string question)
         {
-            var responseCardAttachment = CreateResponseCardAttachment(question, answer);
+            var responseCardAttachment = Cards.CreateResponseCardAttachment(question, answer);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(responseCardAttachment), cancellationToken);
         }
 
@@ -73,42 +73,8 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked.</returns>
         public static async Task SendUnrecognizedInputMessage(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            var unrecognizedCardAttachment = CreateUnrecognizedInputCardAttachment();
+            var unrecognizedCardAttachment = Cards.CreateUnrecognizedInputCardAttachment();
             await turnContext.SendActivityAsync(MessageFactory.Attachment(unrecognizedCardAttachment), cancellationToken);
-        }
-
-        /// <summary>
-        /// Method that will return the attachment for the UnrecognizedInputAdaptiveCard.
-        /// </summary>
-        /// <returns>The adaptive card attachment.</returns>
-        private static Attachment CreateUnrecognizedInputCardAttachment()
-        {
-            var unrecognizedInputCardString = UnrecognizedInputAdaptiveCard.GetCard();
-            var unrecognizedInputCardAttachment = new Attachment()
-            {
-                ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(unrecognizedInputCardString),
-            };
-
-            return unrecognizedInputCardAttachment;
-        }
-
-        /// <summary>
-        /// Method that returns the adaptive card for the response.
-        /// </summary>
-        /// <param name="question">The question the user asks the bot.</param>
-        /// <param name="answer">The answer that is retrieved from the KB.</param>
-        /// <returns>Attachment that is appended to the response message.</returns>
-        private static Attachment CreateResponseCardAttachment(string question, string answer)
-        {
-            var responseCardString = ResponseAdaptiveCard.GetCard(question, answer);
-            var responseCardAttachment = new Attachment()
-            {
-                ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(responseCardString),
-            };
-
-            return responseCardAttachment;
         }
     }
 }
