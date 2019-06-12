@@ -42,9 +42,9 @@ namespace GeneralKnowledgeBot.Helpers
         }
 
         /// <summary>
-        /// Ensuring to generate the adaptive card for asking a human
+        /// Ensuring to generate the adaptive card for asking a human.
         /// </summary>
-        /// <returns>Hero card gets returned</returns>
+        /// <returns>Hero card gets returned.</returns>
         public static HeroCard AskAHumanCard()
         {
             var askAHumanCard = new HeroCard()
@@ -71,9 +71,9 @@ namespace GeneralKnowledgeBot.Helpers
         }
 
         /// <summary>
-        /// Ensuring to generate a card for giving feedback
+        /// Ensuring to generate a card for giving feedback.
         /// </summary>
-        /// <returns>Hero card gets returned</returns>
+        /// <returns>Hero card gets returned.</returns>
         public static HeroCard GiveFeedbackCard()
         {
             var askAHumanCard = new HeroCard()
