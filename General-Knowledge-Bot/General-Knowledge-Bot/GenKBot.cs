@@ -105,7 +105,7 @@ namespace GeneralKnowledgeBot
             var responseCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(responseCardString)
+                Content = JsonConvert.DeserializeObject(responseCardString),
             };
 
             return responseCardAttachment;

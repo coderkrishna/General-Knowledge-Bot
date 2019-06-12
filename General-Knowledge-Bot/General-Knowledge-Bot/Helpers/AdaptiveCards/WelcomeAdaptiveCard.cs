@@ -4,16 +4,19 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
-    using GeneralKnowledgeBot.Properties;
     using System.Collections.Generic;
     using System.IO;
+    using GeneralKnowledgeBot.Properties;
 
+    /// <summary>
+    /// The class for the WelcomeAdaptiveCard.
+    /// </summary>
     public class WelcomeAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
-        /// Initializes an instance of the <see cref="WelcomeAdaptiveCard"/> class
+        /// Initializes static members of the <see cref="WelcomeAdaptiveCard"/> class.
         /// </summary>
         static WelcomeAdaptiveCard()
         {

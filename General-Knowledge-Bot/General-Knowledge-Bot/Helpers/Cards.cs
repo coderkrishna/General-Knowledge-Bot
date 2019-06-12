@@ -4,8 +4,8 @@
 
 namespace GeneralKnowledgeBot.Helpers
 {
-    using Microsoft.Bot.Schema;
     using System.Collections.Generic;
+    using Microsoft.Bot.Schema;
 
     /// <summary>
     /// The Cards class for the tour carousel
