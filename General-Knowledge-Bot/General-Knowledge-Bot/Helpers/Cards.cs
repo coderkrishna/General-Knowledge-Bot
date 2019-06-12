@@ -5,7 +5,9 @@
 namespace GeneralKnowledgeBot.Helpers
 {
     using System.Collections.Generic;
+    using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using Microsoft.Bot.Schema;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The Cards class for the tour carousel.
@@ -97,6 +99,23 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return askAHumanCard;
+        }
+
+        /// <summary>
+        /// Generates the welcome card which is an adaptive card.
+        /// </summary>
+        /// <param name="botDisplayName">The bot display name.</param>
+        /// <returns>The attachment which will be attached to the message.</returns>
+        public static Attachment CreateWelcomeCardAttachment(string botDisplayName)
+        {
+            var welcomeCardString = WelcomeAdaptiveCard.GetCard(botDisplayName);
+            var welcomeCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(welcomeCardString),
+            };
+
+            return welcomeCardAttachment;
         }
     }
 }
