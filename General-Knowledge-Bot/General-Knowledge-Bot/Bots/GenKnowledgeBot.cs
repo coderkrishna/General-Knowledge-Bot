@@ -46,6 +46,7 @@ namespace GeneralKnowledgeBot.Bots
             {
                 var uri = this.configuration["KbHost"] + this.configuration["Service"] + "/knowledgebases/" + this.configuration["KbID"] + "/generateAnswer";
                 var question = turnContext.Activity.Text;
+                var rankerType = this.configuration["RankerType"];
 
                 this.logger.LogInformation("Calling QnA Maker");
 
@@ -54,7 +55,7 @@ namespace GeneralKnowledgeBot.Bots
                 {
                     request.Method = HttpMethod.Post;
                     request.RequestUri = new Uri(uri);
-                    request.Content = new StringContent("{'question': '" + question + "'}", Encoding.UTF8, "application/json");
+                    request.Content = new StringContent("{'question': '" + question + "', 'RankerType': '" + rankerType + "'}", Encoding.UTF8, "application/json");
                     request.Headers.Add("Authorization", "EndpointKey " + this.configuration["EndpointKey"]);
 
                     var response = await client.SendAsync(request);
