@@ -14,7 +14,7 @@ namespace GeneralKnowledgeBot
     using Newtonsoft.Json;
 
     /// <summary>
-    /// This class allows for the separation of logic
+    /// This class allows for the separation of logic.
     /// </summary>
     public static class GenKBot
     {
@@ -45,7 +45,7 @@ namespace GeneralKnowledgeBot
             {
                 Cards.FunctionalityCard().ToAttachment(),
                 Cards.AskAHumanCard().ToAttachment(),
-                Cards.GiveFeedbackCard().ToAttachment()
+                Cards.GiveFeedbackCard().ToAttachment(),
             };
 
             await turnContext.SendActivityAsync(reply, cancellationToken);
