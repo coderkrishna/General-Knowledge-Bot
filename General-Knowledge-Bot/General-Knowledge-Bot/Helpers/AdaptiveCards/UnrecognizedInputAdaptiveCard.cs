@@ -35,7 +35,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "unrecognizedInputCardContentPart1", unrecognizedInputCardContentPart1 },
                 { "unrecognizedInputCardContentPart2", unrecognizedInputCardContentPart2 },
                 { "welcomeMessageButtonText", welcomeMessageButtonText },
-                { "imageUrl", imageUrl }
+                { "imageUrl", imageUrl },
             };
 
             var cardBody = CardTemplate;

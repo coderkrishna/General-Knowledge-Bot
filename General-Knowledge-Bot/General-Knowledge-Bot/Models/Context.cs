@@ -4,10 +4,13 @@
 
 namespace GeneralKnowledgeBot.Models
 {
+    /// <summary>
+    /// Represents the Context navigation property.
+    /// </summary>
     public class Context
     {
         /// <summary>
-        /// Gets or sets a value isContextOnly
+        /// Gets or sets a value isContextOnly.
         /// </summary>
         public bool isContextOnly { get; set; }
     }

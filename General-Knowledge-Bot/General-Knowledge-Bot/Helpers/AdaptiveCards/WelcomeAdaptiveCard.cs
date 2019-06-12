@@ -4,16 +4,19 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
-    using GeneralKnowledgeBot.Properties;
     using System.Collections.Generic;
     using System.IO;
+    using GeneralKnowledgeBot.Properties;
 
+    /// <summary>
+    /// The class for the WelcomeAdaptiveCard.
+    /// </summary>
     public class WelcomeAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
-        /// Initializes an instance of the <see cref="WelcomeAdaptiveCard"/> class
+        /// Initializes static members of the <see cref="WelcomeAdaptiveCard"/> class.
         /// </summary>
         static WelcomeAdaptiveCard()
         {
@@ -21,6 +24,11 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             CardTemplate = File.ReadAllText(cardJsonFilePath);
         }
 
+        /// <summary>
+        /// Method that will produce the JSON string of the adaptive card.
+        /// </summary>
+        /// <param name="botDisplayName">The display name for the bot.</param>
+        /// <returns>The JSON string for the welcome adaptive card.</returns>
         public static string GetCard(string botDisplayName)
         {
             var welcomeCardTitleText = Resource.WelcomeCardTitleText;
@@ -41,7 +49,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "bulletListItem2", bulletListItem2 },
                 { "bulletListItem3", bulletListItem3 },
                 { "tourIntroText", tourIntroText },
-                { "takeATourButtonText", takeATourButtonText }
+                { "takeATourButtonText", takeATourButtonText },
             };
 
             var cardBody = CardTemplate;

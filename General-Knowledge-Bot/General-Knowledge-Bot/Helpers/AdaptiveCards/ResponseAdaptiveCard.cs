@@ -40,7 +40,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             {
                 { "responseCardTitleText", responseCardTitleText },
                 { "questionLineText", questionLineText },
-                { "answerLineText", answerLineText }
+                { "answerLineText", answerLineText },
             };
 
             var cardBody = CardTemplate;
