@@ -31,6 +31,57 @@
     }
   ],
   "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "%viewFullArticleButtonText%",
+      "url": "http://adaptivecards.io"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "%viewRelatedArticlesButtonText%",
+      "url":  "https://www.google.com"
+    },
+    {
+      "type": "Action.ShowCard",
+      "title": "%giveFeedbackButtonText%",
+      "card": {
+        "type": "AdaptiveCard",
+        "style": "emphasis",
+        "body": [
+          {
+            "type": "TextBlock",
+            "text": "%feedbackQuestionText%",
+            "wrap": true
+          },
+          {
+            "type": "Input.ChoiceSet",
+            "placeholder": "Please rate the relevancy of results",
+            "choices": [
+              {
+                "title": "Highly relevant",
+                "value": "Highly relevant"
+              },
+              {
+                "title": "Moderately relevant",
+                "value": "Moderately relevant"
+              },
+              {
+                "title": "Not at all relevant",
+                "value": "Not at all relevant"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.OpenUrl",
+            "title": "OK",
+            "url": "http://adaptivecards.io"
+          }
+        ],
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+      }
+    }
   ],
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
   "version": "1.0"

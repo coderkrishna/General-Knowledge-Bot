@@ -17,6 +17,9 @@ namespace GeneralKnowledgeBot.Bots
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// The class for all the bot interactions.
+    /// </summary>
     public class GenKnowledgeBot : ActivityHandler
     {
         private readonly IConfiguration configuration;
@@ -34,11 +37,11 @@ namespace GeneralKnowledgeBot.Bots
         }
 
         /// <summary>
-        /// The method that gets invoked each time there is a message that is coming in
+        /// The method that gets invoked each time there is a message that is coming in.
         /// </summary>
-        /// <param name="turnContext">The current turn</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns>A unit of execution</returns>
+        /// <param name="turnContext">The current turn.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
             var isQuery = turnContext.Activity.Text.EndsWith('?') || turnContext.Activity.Text.EndsWith('.');
@@ -87,12 +90,12 @@ namespace GeneralKnowledgeBot.Bots
         }
 
         /// <summary>
-        /// The method that gets called when the bot is first opened after installation
+        /// The method that gets called when the bot is first opened after installation.
         /// </summary>
-        /// <param name="membersAdded">The account that has been eiter added or interacting with the bot</param>
-        /// <param name="turnContext">The current turn/execution flow</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns>A unit of execution</returns>
+        /// <param name="membersAdded">The account that has been eiter added or interacting with the bot.</param>
+        /// <param name="turnContext">The current turn/execution flow.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
             foreach (var member in membersAdded)

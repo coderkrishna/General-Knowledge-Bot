@@ -70,6 +70,51 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How relevant are the search results that were returned by the bot?.
+        /// </summary>
+        public static string FeedbackQuestionText {
+            get {
+                return ResourceManager.GetString("FeedbackQuestionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Give feedback.
+        /// </summary>
+        public static string GiveFeedbackButtonText {
+            get {
+                return ResourceManager.GetString("GiveFeedbackButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highly relevant.
+        /// </summary>
+        public static string HighlyRelevantChoiceText {
+            get {
+                return ResourceManager.GetString("HighlyRelevantChoiceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the relevancy.
+        /// </summary>
+        public static string InputChoiceSetPlaceholderText {
+            get {
+                return ResourceManager.GetString("InputChoiceSetPlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not at all relevant.
+        /// </summary>
+        public static string NotAtAllRelevantChoiceText {
+            get {
+                return ResourceManager.GetString("NotAtAllRelevantChoiceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ❓: {0}.
         /// </summary>
         public static string QuestionLineText {
@@ -84,6 +129,24 @@ namespace GeneralKnowledgeBot.Properties {
         public static string ResponseCardTitleText {
             get {
                 return ResourceManager.GetString("ResponseCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Somewhat relevant.
+        /// </summary>
+        public static string SomewhatRelevantChoiceText {
+            get {
+                return ResourceManager.GetString("SomewhatRelevantChoiceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string SubmitFeedbackButtonText {
+            get {
+                return ResourceManager.GetString("SubmitFeedbackButtonText", resourceCulture);
             }
         }
         
@@ -138,6 +201,24 @@ namespace GeneralKnowledgeBot.Properties {
         public static string UnrecognizedInputTakeATour {
             get {
                 return ResourceManager.GetString("UnrecognizedInputTakeATour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Full Article.
+        /// </summary>
+        public static string ViewFullArticleButtonText {
+            get {
+                return ResourceManager.GetString("ViewFullArticleButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Related Articles.
+        /// </summary>
+        public static string ViewRelatedArticlesButtonText {
+            get {
+                return ResourceManager.GetString("ViewRelatedArticlesButtonText", resourceCulture);
             }
         }
         
