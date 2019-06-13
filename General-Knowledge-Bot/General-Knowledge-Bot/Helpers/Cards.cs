@@ -18,12 +18,11 @@ namespace GeneralKnowledgeBot.Helpers
         /// Method that will generate the first card in the carousel tour.
         /// </summary>
         /// <returns>Hero card gets returned.</returns>
-        public static HeroCard FunctionalityCard()
+        public static HeroCard AskAQuestionCard()
         {
             var heroCard = new HeroCard()
             {
                 Title = "Give Questions, Get Answers",
-                Subtitle = "Functionality",
                 Text = "This is the most basic functionality that I have - you as the user give me a question, and I as the bot will provide you the answer. If you want to know more about my internals, find me on GitHub 😀",
                 Images = new List<CardImage>()
                 {
@@ -47,7 +46,7 @@ namespace GeneralKnowledgeBot.Helpers
         /// Ensuring to generate the adaptive card for asking a human.
         /// </summary>
         /// <returns>Hero card gets returned.</returns>
-        public static HeroCard AskAHumanCard()
+        public static HeroCard AskAnExpertCard()
         {
             var askAHumanCard = new HeroCard()
             {
@@ -76,7 +75,7 @@ namespace GeneralKnowledgeBot.Helpers
         /// Ensuring to generate a card for giving feedback.
         /// </summary>
         /// <returns>Hero card gets returned.</returns>
-        public static HeroCard GiveFeedbackCard()
+        public static HeroCard ShareFeedbackCard()
         {
             var askAHumanCard = new HeroCard()
             {

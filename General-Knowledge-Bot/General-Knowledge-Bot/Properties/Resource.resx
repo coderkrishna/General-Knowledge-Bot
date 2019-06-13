@@ -121,6 +121,30 @@
     <value>Here's what I found: {0}</value>
     <comment>The line for the answer</comment>
   </data>
+  <data name="AskAnExpertCarouselButtonText" xml:space="preserve">
+    <value>Ask an expert</value>
+    <comment>Button content for the second carousel card in the welcome tour</comment>
+  </data>
+  <data name="AskAnExpertCarouselContent" xml:space="preserve">
+    <value>If my answer isn't satisfactory, just let me know. I will connect you with our very capable experts!</value>
+    <comment>Content for the second carousel card in the welcome tour</comment>
+  </data>
+  <data name="AskAnExpertCarouselTitle" xml:space="preserve">
+    <value>Ask an expert</value>
+    <comment>Title for the second carousel card in the welcome tour</comment>
+  </data>
+  <data name="AskAQuestionCarouselButtonText" xml:space="preserve">
+    <value>Ask a question</value>
+    <comment>Button text for the first carousel card</comment>
+  </data>
+  <data name="AskAQuestionCarouselCardTitle" xml:space="preserve">
+    <value>Ask a question</value>
+    <comment>Title for the first carousel card in the welcome tour</comment>
+  </data>
+  <data name="AskAQuestionCarouselContent" xml:space="preserve">
+    <value>You can ask me a question by typing in the chat box below and I'll tell you what I know about it...</value>
+    <comment>Content for the first carousel card in the welcome tour</comment>
+  </data>
   <data name="FeedbackQuestionText" xml:space="preserve">
     <value>How relevant are the search results that were returned by the bot?</value>
     <comment>The question asking about the relevancy of the search results returned</comment>
@@ -148,6 +172,18 @@
   <data name="ResponseCardTitleText" xml:space="preserve">
     <value>Bingo! 🍀</value>
     <comment>The title text for the response adaptive card</comment>
+  </data>
+  <data name="ShareFeedbackCarouselButtonText" xml:space="preserve">
+    <value>Share feedback</value>
+    <comment>Button content for the third carousel card in the welcome tour</comment>
+  </data>
+  <data name="ShareFeedbackCarouselContent" xml:space="preserve">
+    <value>Help me become better! Please share feedback on how I am doing so that my expert team can coach me better to help you! 😀</value>
+    <comment>Content for the third carousel card in the welcome tour</comment>
+  </data>
+  <data name="ShareFeedbackCarouselTitle" xml:space="preserve">
+    <value>Share feedback</value>
+    <comment>Title for the third carousel card in the welcome tour</comment>
   </data>
   <data name="SomewhatRelevantChoiceText" xml:space="preserve">
     <value>Somewhat relevant</value>

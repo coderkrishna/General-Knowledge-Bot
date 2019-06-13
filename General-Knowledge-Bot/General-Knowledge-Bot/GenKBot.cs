@@ -43,9 +43,9 @@ namespace GeneralKnowledgeBot
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             reply.Attachments = new List<Attachment>()
             {
-                Cards.FunctionalityCard().ToAttachment(),
-                Cards.AskAHumanCard().ToAttachment(),
-                Cards.GiveFeedbackCard().ToAttachment(),
+                Cards.AskAQuestionCard().ToAttachment(),
+                Cards.AskAnExpertCard().ToAttachment(),
+                Cards.ShareFeedbackCard().ToAttachment(),
             };
 
             await turnContext.SendActivityAsync(reply, cancellationToken);
