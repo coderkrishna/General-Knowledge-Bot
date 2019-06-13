@@ -34,6 +34,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var welcomeCardTitleText = Resource.WelcomeCardTitleText;
             var welcomeCardContentPart1 = string.Format(Resource.WelcomeCardContentPart1, botDisplayName);
             var welcomeCardContentPart2 = Resource.WelcomeCardContentPart2;
+            var welcomeCardContentPart3 = Resource.WelcomeCardContentPart3;
             var bulletListItem1 = Resource.WelcomeCardBulletListItem1;
             var bulletListItem2 = Resource.WelcomeCardBulletListItem2;
             var bulletListItem3 = Resource.WelcomeCardBulletListItem3;
@@ -45,6 +46,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "welcomeCardTitleText", welcomeCardTitleText },
                 { "welcomeCardContentPart1", welcomeCardContentPart1 },
                 { "welcomeCardContentPart2", welcomeCardContentPart2 },
+                { "welcomeCardContentPart3", welcomeCardContentPart3 },
                 { "bulletListItem1", bulletListItem1 },
                 { "bulletListItem2", bulletListItem2 },
                 { "bulletListItem3", bulletListItem3 },

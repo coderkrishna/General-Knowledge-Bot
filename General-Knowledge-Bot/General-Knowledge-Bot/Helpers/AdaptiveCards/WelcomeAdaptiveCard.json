@@ -59,6 +59,17 @@
           "type": "TextBlock",
           "wrap": true,
           "spacing": "Default",
+          "text": "%welcomeCardContentPart3%"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "wrap": true,
+          "spacing": "Default",
           "text": "%tourIntroText%"
         }
       ]

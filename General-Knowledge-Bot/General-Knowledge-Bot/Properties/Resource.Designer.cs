@@ -223,7 +223,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Answer your questions.
+        ///   Looks up a localized string similar to * Benefits.
         /// </summary>
         public static string WelcomeCardBulletListItem1 {
             get {
@@ -232,7 +232,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide feedback.
+        ///   Looks up a localized string similar to * Leave.
         /// </summary>
         public static string WelcomeCardBulletListItem2 {
             get {
@@ -241,7 +241,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ask a human.
+        ///   Looks up a localized string similar to * Travel.
         /// </summary>
         public static string WelcomeCardBulletListItem3 {
             get {
@@ -259,11 +259,20 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are times where your questions could be a bit much for my 🤖 🧠 - so make sure you word your queries such that I am able to return a satisfactory answer for you..
+        ///   Looks up a localized string similar to You can ask me about many topics such as:.
         /// </summary>
         public static string WelcomeCardContentPart2 {
             get {
                 return ResourceManager.GetString("WelcomeCardContentPart2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If I am unable to help you with a question, I will connect you with an expert..
+        /// </summary>
+        public static string WelcomeCardContentPart3 {
+            get {
+                return ResourceManager.GetString("WelcomeCardContentPart3", resourceCulture);
             }
         }
         

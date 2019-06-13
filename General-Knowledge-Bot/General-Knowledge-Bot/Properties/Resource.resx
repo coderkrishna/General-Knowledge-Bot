@@ -190,15 +190,15 @@
     <comment>Text for viewing related articles</comment>
   </data>
   <data name="WelcomeCardBulletListItem1" xml:space="preserve">
-    <value>Answer your questions</value>
+    <value>* Benefits</value>
     <comment>Bulleted list item 1</comment>
   </data>
   <data name="WelcomeCardBulletListItem2" xml:space="preserve">
-    <value>Provide feedback</value>
+    <value>* Leave</value>
     <comment>Bulleted list item 2</comment>
   </data>
   <data name="WelcomeCardBulletListItem3" xml:space="preserve">
-    <value>Ask a human</value>
+    <value>* Travel</value>
     <comment>Bulleted list item 3</comment>
   </data>
   <data name="WelcomeCardContentPart1" xml:space="preserve">
@@ -206,8 +206,12 @@
     <comment>The first part of the welcome card content with {0} as the bot display name</comment>
   </data>
   <data name="WelcomeCardContentPart2" xml:space="preserve">
-    <value>There are times where your questions could be a bit much for my 🤖 🧠 - so make sure you word your queries such that I am able to return a satisfactory answer for you.</value>
+    <value>You can ask me about many topics such as:</value>
     <comment>The second part of the welcome card content</comment>
+  </data>
+  <data name="WelcomeCardContentPart3" xml:space="preserve">
+    <value>If I am unable to help you with a question, I will connect you with an expert.</value>
+    <comment>The third part of the welcome card content</comment>
   </data>
   <data name="WelcomeCardTitleText" xml:space="preserve">
     <value>Hello!</value>
