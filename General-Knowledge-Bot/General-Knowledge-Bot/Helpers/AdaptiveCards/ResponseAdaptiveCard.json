@@ -46,40 +46,40 @@
       "title": "%giveFeedbackButtonText%",
       "card": {
         "type": "AdaptiveCard",
-        "version": "1.0",
+        "style": "emphasis",
         "body": [
           {
             "type": "TextBlock",
-            "wrap": true,
-            "text": "%feedbackQuestionText%"
+            "text": "%feedbackQuestionText%",
+            "wrap": true
           },
           {
             "type": "Input.ChoiceSet",
-            "title": "Feedback",
-            "placeholder": "%inputChoiceSetPlaceholderText%",
+            "placeholder": "Please rate the relevancy of results",
             "choices": [
               {
-                "title": "%highlyRelevantChoiceText%",
-                "value": "%highlyRelevantChoiceText%"
+                "title": "Highly relevant",
+                "value": "Highly relevant"
               },
               {
-                "title": "%somewhatRelevantChoiceText%",
-                "value": "%somewhatRelevantChoiceText%"
+                "title": "Moderately relevant",
+                "value": "Moderately relevant"
               },
               {
-                "title": "%notAtAllRelevantChoiceText%",
-                "value": "%notAtAllRelevantChoiceText%"
+                "title": "Not at all relevant",
+                "value": "Not at all relevant"
               }
-            ],
-            "style": "condensed"
+            ]
           }
         ],
         "actions": [
           {
-            "type": "Action.Submit",
-            "title": "%submitFeedbackButtonText%"
+            "type": "Action.OpenUrl",
+            "title": "OK",
+            "url": "http://adaptivecards.io"
           }
-        ]
+        ],
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
       }
     }
   ],

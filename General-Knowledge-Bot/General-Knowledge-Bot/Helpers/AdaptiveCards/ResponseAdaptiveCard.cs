@@ -54,11 +54,6 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "viewRelatedArticlesButtonText", viewRelatedArticlesButtonText },
                 { "giveFeedbackButtonText", giveFeedbackButtonText },
                 { "feedbackQuestionText", feedbackQuestionText },
-                { "inputChoiceSetPlaceholderText", inputChoiceSetPlaceholderText },
-                { "highlyRelevantChoiceText", highlyRelevantChoiceText },
-                { "somewhatRelevantChoiceText", somewhatRelevantChoiceText },
-                { "notAtAllRelevantChoiceText", notAtAllRelevantChoiceText },
-                { "submitFeedbackButtonText", submitFeedbackButtonText },
             };
 
             var cardBody = CardTemplate;
