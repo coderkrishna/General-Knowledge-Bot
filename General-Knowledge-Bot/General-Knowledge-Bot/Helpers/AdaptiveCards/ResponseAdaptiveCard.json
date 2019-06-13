@@ -59,16 +59,16 @@
             "placeholder": "%inputChoiceSetPlaceholderText%",
             "choices": [
               {
-                "title": "Highly relevant",
-                "value": "Highly relevant"
+                "title": "%highlyRelevantChoice%",
+                "value": "%highlyRelevantChoice%"
               },
               {
-                "title": "Somewhat relevant",
-                "value": "Somewhat relevant"
+                "title": "%somewhatRelevantChoice%",
+                "value": "%somewhatRelevantChoice%"
               },
               {
-                "title": "Not at all relevant",
-                "value": "Not at all relevant"
+                "title": "%notAtAllRelevantChoice%",
+                "value": "%notAtAllRelevantChoice%"
               }
             ],
             "style": "condensed"
