@@ -59,16 +59,16 @@
             "placeholder": "%inputChoiceSetPlaceholderText%",
             "choices": [
               {
-                "title": "%highlyRelevantChoice%",
-                "value": "%highlyRelevantChoice%"
+                "title": "%highlyRelevantChoiceText%",
+                "value": "%highlyRelevantChoiceText%"
               },
               {
-                "title": "%somewhatRelevantChoice%",
-                "value": "%somewhatRelevantChoice%"
+                "title": "%somewhatRelevantChoiceText%",
+                "value": "%somewhatRelevantChoiceText%"
               },
               {
-                "title": "%notAtAllRelevantChoice%",
-                "value": "%notAtAllRelevantChoice%"
+                "title": "%notAtAllRelevantChoiceText%",
+                "value": "%notAtAllRelevantChoiceText%"
               }
             ],
             "style": "condensed"
