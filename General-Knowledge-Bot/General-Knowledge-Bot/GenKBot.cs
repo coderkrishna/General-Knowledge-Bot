@@ -8,10 +8,8 @@ namespace GeneralKnowledgeBot
     using System.Threading;
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers;
-    using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// This class allows for the separation of logic.
@@ -25,7 +23,7 @@ namespace GeneralKnowledgeBot
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <param name="botDisplayName">The bot display name (what name will show up in Teams).</param>
         /// <returns>A unit of execution that is tracked.</returns>
-        public static async Task SendProactiveWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
+        public static async Task SendUserWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
             var welcomeCardAttachment = Cards.CreateWelcomeCardAttachment(botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
@@ -43,9 +41,9 @@ namespace GeneralKnowledgeBot
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             reply.Attachments = new List<Attachment>()
             {
-                Cards.FunctionalityCard().ToAttachment(),
-                Cards.AskAHumanCard().ToAttachment(),
-                Cards.GiveFeedbackCard().ToAttachment(),
+                Cards.AskAQuestionCard().ToAttachment(),
+                Cards.AskAnExpertCard().ToAttachment(),
+                Cards.ShareFeedbackCard().ToAttachment(),
             };
 
             await turnContext.SendActivityAsync(reply, cancellationToken);

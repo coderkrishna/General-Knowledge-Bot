@@ -28,8 +28,8 @@ namespace GeneralKnowledgeBot.Bots
         /// <summary>
         /// Initializes a new instance of the <see cref="GenKnowledgeBot"/> class.
         /// </summary>
-        /// <param name="configuration">The configuration - accessing appsettings.json</param>
-        /// <param name="logger">The logging mechanism</param>
+        /// <param name="configuration">The configuration - accessing appsettings.json.</param>
+        /// <param name="logger">The logging mechanism.</param>
         public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger)
         {
             this.configuration = configuration;
@@ -68,9 +68,7 @@ namespace GeneralKnowledgeBot.Bots
 
                     if (responseModel != null)
                     {
-                        // TODO: Convert this into a separate method
-                        // Parameters: turnContext, cancellationToken, responseModel
-                        // Internal logic: Making sure to have the adaptive cards as well
+                        // TODO: Convert the entire functionality under the isQuery condition to a separate method
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
                     }
                     else
@@ -103,7 +101,7 @@ namespace GeneralKnowledgeBot.Bots
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
                     var botDisplayName = this.configuration["BotDisplayName"];
-                    await GenKBot.SendProactiveWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
                 }
             }
         }

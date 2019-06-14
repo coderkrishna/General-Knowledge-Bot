@@ -70,6 +70,60 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ask an expert.
+        /// </summary>
+        public static string AskAnExpertCarouselButtonText {
+            get {
+                return ResourceManager.GetString("AskAnExpertCarouselButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If my answer isn&apos;t satisfactory, just let me know. I will connect you with our very capable experts!.
+        /// </summary>
+        public static string AskAnExpertCarouselContent {
+            get {
+                return ResourceManager.GetString("AskAnExpertCarouselContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask an expert.
+        /// </summary>
+        public static string AskAnExpertCarouselTitle {
+            get {
+                return ResourceManager.GetString("AskAnExpertCarouselTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask a question.
+        /// </summary>
+        public static string AskAQuestionCarouselButtonText {
+            get {
+                return ResourceManager.GetString("AskAQuestionCarouselButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask a question.
+        /// </summary>
+        public static string AskAQuestionCarouselCardTitle {
+            get {
+                return ResourceManager.GetString("AskAQuestionCarouselCardTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can ask me a question by typing in the chat box below and I&apos;ll tell you what I know about it....
+        /// </summary>
+        public static string AskAQuestionCarouselContent {
+            get {
+                return ResourceManager.GetString("AskAQuestionCarouselContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How relevant are the search results that were returned by the bot?.
         /// </summary>
         public static string FeedbackQuestionText {
@@ -129,6 +183,33 @@ namespace GeneralKnowledgeBot.Properties {
         public static string ResponseCardTitleText {
             get {
                 return ResourceManager.GetString("ResponseCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share feedback.
+        /// </summary>
+        public static string ShareFeedbackCarouselButtonText {
+            get {
+                return ResourceManager.GetString("ShareFeedbackCarouselButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help me become better! Please share feedback on how I am doing so that my expert team can coach me better to help you! 😀.
+        /// </summary>
+        public static string ShareFeedbackCarouselContent {
+            get {
+                return ResourceManager.GetString("ShareFeedbackCarouselContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share feedback.
+        /// </summary>
+        public static string ShareFeedbackCarouselTitle {
+            get {
+                return ResourceManager.GetString("ShareFeedbackCarouselTitle", resourceCulture);
             }
         }
         
@@ -223,7 +304,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Answer your questions.
+        ///   Looks up a localized string similar to * Benefits.
         /// </summary>
         public static string WelcomeCardBulletListItem1 {
             get {
@@ -232,7 +313,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide feedback.
+        ///   Looks up a localized string similar to * Leave.
         /// </summary>
         public static string WelcomeCardBulletListItem2 {
             get {
@@ -241,7 +322,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ask a human.
+        ///   Looks up a localized string similar to * Travel.
         /// </summary>
         public static string WelcomeCardBulletListItem3 {
             get {
@@ -259,11 +340,20 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are times where your questions could be a bit much for my 🤖 🧠 - so make sure you word your queries such that I am able to return a satisfactory answer for you..
+        ///   Looks up a localized string similar to You can ask me about many topics such as:.
         /// </summary>
         public static string WelcomeCardContentPart2 {
             get {
                 return ResourceManager.GetString("WelcomeCardContentPart2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If I am unable to help you with a question, I will connect you with an expert..
+        /// </summary>
+        public static string WelcomeCardContentPart3 {
+            get {
+                return ResourceManager.GetString("WelcomeCardContentPart3", resourceCulture);
             }
         }
         
