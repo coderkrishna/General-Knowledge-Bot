@@ -8,10 +8,8 @@ namespace GeneralKnowledgeBot
     using System.Threading;
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers;
-    using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// This class allows for the separation of logic.
