@@ -103,7 +103,7 @@ namespace GeneralKnowledgeBot.Bots
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
                     var botDisplayName = this.configuration["BotDisplayName"];
-                    await GenKBot.SendProactiveWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
                 }
             }
         }
