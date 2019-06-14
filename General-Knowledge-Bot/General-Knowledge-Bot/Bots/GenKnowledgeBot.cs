@@ -68,9 +68,7 @@ namespace GeneralKnowledgeBot.Bots
 
                     if (responseModel != null)
                     {
-                        // TODO: Convert this into a separate method
-                        // Parameters: turnContext, cancellationToken, responseModel
-                        // Internal logic: Making sure to have the adaptive cards as well
+                        // TODO: Convert the entire functionality under the isQuery condition to a separate method
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
                     }
                     else
