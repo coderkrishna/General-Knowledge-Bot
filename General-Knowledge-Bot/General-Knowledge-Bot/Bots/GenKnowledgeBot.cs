@@ -28,8 +28,8 @@ namespace GeneralKnowledgeBot.Bots
         /// <summary>
         /// Initializes a new instance of the <see cref="GenKnowledgeBot"/> class.
         /// </summary>
-        /// <param name="configuration">The configuration - accessing appsettings.json</param>
-        /// <param name="logger">The logging mechanism</param>
+        /// <param name="configuration">The configuration - accessing appsettings.json.</param>
+        /// <param name="logger">The logging mechanism.</param>
         public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger)
         {
             this.configuration = configuration;
