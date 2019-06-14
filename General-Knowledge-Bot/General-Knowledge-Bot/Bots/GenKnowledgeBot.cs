@@ -28,7 +28,7 @@ namespace GeneralKnowledgeBot.Bots
         /// <summary>
         /// Initializes a new instance of the <see cref="GenKnowledgeBot"/> class.
         /// </summary>
-        /// <param name="configuration">The configuration - accessing appsettings.json.</param>
+        /// <param name="configuration">The configuration - accessing appsettings.json file.</param>
         /// <param name="logger">The logging mechanism.</param>
         public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger)
         {
@@ -68,7 +68,9 @@ namespace GeneralKnowledgeBot.Bots
 
                     if (responseModel != null)
                     {
-                        // TODO: Convert the entire functionality under the isQuery condition to a separate method
+                        // TODO: Convert this into a separate method
+                        // Parameters: turnContext, cancellationToken, responseModel
+                        // Internal logic: Making sure to have the adaptive cards as well
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
                     }
                     else
@@ -103,7 +105,31 @@ namespace GeneralKnowledgeBot.Bots
                     var botDisplayName = this.configuration["BotDisplayName"];
                     await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
                 }
+                else
+                {
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Yahtzee!"), cancellationToken);
+                }
             }
+        }
+
+        /// <summary>
+        /// Method which fires at the time there is a conversation update.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        protected override async Task OnConversationUpdateActivityAsync(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var eventType = turnContext.Activity.ChannelData["eventType"].ToString();
+            this.logger.LogInformation($"Event has been found: {eventType}");
+
+            if (eventType == "teamMemberAdded")
+            {
+                var membersAdded = turnContext.Activity.MembersAdded;
+                await this.OnMembersAddedAsync(membersAdded, turnContext, cancellationToken);
+            }
+
+            // await turnContext.SendActivityAsync(MessageFactory.Text("Yahtzee"), cancellationToken);
         }
     }
 }
