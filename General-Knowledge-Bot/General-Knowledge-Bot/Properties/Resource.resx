@@ -173,16 +173,16 @@
     <value>Bingo! 🍀</value>
     <comment>The title text for the response adaptive card</comment>
   </data>
-  <data name="ShareFeedbackCarouselButtonText" xml:space="preserve">
-    <value>Share feedback</value>
+  <data name="ShareAppFeedbackCarouselButtonText" xml:space="preserve">
+    <value>Share app feedback</value>
     <comment>Button content for the third carousel card in the welcome tour</comment>
   </data>
-  <data name="ShareFeedbackCarouselContent" xml:space="preserve">
+  <data name="ShareAppFeedbackCarouselContent" xml:space="preserve">
     <value>Help me become better! Please share feedback on how I am doing so that my expert team can coach me better to help you! 😀</value>
     <comment>Content for the third carousel card in the welcome tour</comment>
   </data>
-  <data name="ShareFeedbackCarouselTitle" xml:space="preserve">
-    <value>Share feedback</value>
+  <data name="ShareAppFeedbackCarouselTitle" xml:space="preserve">
+    <value>Share app feedback</value>
     <comment>Title for the third carousel card in the welcome tour</comment>
   </data>
   <data name="SomewhatRelevantChoiceText" xml:space="preserve">

@@ -187,29 +187,29 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Share feedback.
+        ///   Looks up a localized string similar to Share app feedback.
         /// </summary>
-        public static string ShareFeedbackCarouselButtonText {
+        public static string ShareAppFeedbackCarouselButtonText {
             get {
-                return ResourceManager.GetString("ShareFeedbackCarouselButtonText", resourceCulture);
+                return ResourceManager.GetString("ShareAppFeedbackCarouselButtonText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Help me become better! Please share feedback on how I am doing so that my expert team can coach me better to help you! 😀.
         /// </summary>
-        public static string ShareFeedbackCarouselContent {
+        public static string ShareAppFeedbackCarouselContent {
             get {
-                return ResourceManager.GetString("ShareFeedbackCarouselContent", resourceCulture);
+                return ResourceManager.GetString("ShareAppFeedbackCarouselContent", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Share feedback.
+        ///   Looks up a localized string similar to Share app feedback.
         /// </summary>
-        public static string ShareFeedbackCarouselTitle {
+        public static string ShareAppFeedbackCarouselTitle {
             get {
-                return ResourceManager.GetString("ShareFeedbackCarouselTitle", resourceCulture);
+                return ResourceManager.GetString("ShareAppFeedbackCarouselTitle", resourceCulture);
             }
         }
         
