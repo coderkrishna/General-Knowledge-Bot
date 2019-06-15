@@ -4,11 +4,13 @@
 
 namespace GeneralKnowledgeBot
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers;
     using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
 
     /// <summary>
@@ -23,10 +25,21 @@ namespace GeneralKnowledgeBot
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <param name="botDisplayName">The bot display name (what name will show up in Teams).</param>
         /// <returns>A unit of execution that is tracked.</returns>
-        public static async Task SendUserWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
+        public static async Task SendProactiveWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
             var welcomeCardAttachment = Cards.CreateWelcomeCardAttachment(botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
+        }
+
+        /// <summary>
+        /// Method to send the proactive welcome message to the user.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task SendUserWelcomeMessage(ITurnContext turnContext, CancellationToken cancellationToken)
+        {
+            await turnContext.SendActivityAsync(MessageFactory.Text("Yahtzee!"), cancellationToken);
         }
 
         /// <summary>

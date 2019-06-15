@@ -68,9 +68,7 @@ namespace GeneralKnowledgeBot.Bots
 
                     if (responseModel != null)
                     {
-                        // TODO: Convert this into a separate method
-                        // Parameters: turnContext, cancellationToken, responseModel
-                        // Internal logic: Making sure to have the adaptive cards as well
+                        // TODO: Ensuring to have all of this logic properly encapsulated.
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
                     }
                     else
@@ -102,12 +100,12 @@ namespace GeneralKnowledgeBot.Bots
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
-                    var botDisplayName = this.configuration["BotDisplayName"];
-                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken);
                 }
                 else
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Yahtzee!"), cancellationToken);
+                    var botDisplayName = this.configuration["BotDisplayName"];
+                    await GenKBot.SendProactiveWelcomeMessage(turnContext, cancellationToken, botDisplayName);
                 }
             }
         }
@@ -128,8 +126,6 @@ namespace GeneralKnowledgeBot.Bots
                 var membersAdded = turnContext.Activity.MembersAdded;
                 await this.OnMembersAddedAsync(membersAdded, turnContext, cancellationToken);
             }
-
-            // await turnContext.SendActivityAsync(MessageFactory.Text("Yahtzee"), cancellationToken);
         }
     }
 }
