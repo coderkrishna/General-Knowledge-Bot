@@ -81,6 +81,14 @@ namespace GeneralKnowledgeBot.Bots
             {
                 await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
             }
+            else if (turnContext.Activity.Text == "Ask an expert")
+            {
+                // TODO: Task #1 - Making sure to have the necessary functionality for asking an expert.
+            }
+            else if (turnContext.Activity.Text == "Share app feedback")
+            {
+                // TODO: Task #2 - Ensuring to have the adaptive card returned to share the feedback.
+            }
             else
             {
                 await GenKBot.SendUnrecognizedInputMessage(turnContext, cancellationToken);
