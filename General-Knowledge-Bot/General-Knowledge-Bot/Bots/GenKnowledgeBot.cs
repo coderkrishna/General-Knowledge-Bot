@@ -68,7 +68,7 @@ namespace GeneralKnowledgeBot.Bots
 
                     if (responseModel != null)
                     {
-                        // TODO: Convert the entire functionality under the isQuery condition to a separate method
+                        // TODO # 1: Convert the entire functionality under the isQuery condition to a separate method
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
                     }
                     else
