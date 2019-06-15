@@ -83,11 +83,11 @@ namespace GeneralKnowledgeBot.Bots
             }
             else if (turnContext.Activity.Text == "Ask an expert")
             {
-                // TODO: Task #1 - Making sure to have the necessary functionality for asking an expert.
+                await turnContext.SendActivityAsync(MessageFactory.Text("In order for me to consult with an expert, I may need to get in touch with a team...something I can't do right now"), cancellationToken);
             }
             else if (turnContext.Activity.Text == "Share app feedback")
             {
-                // TODO: Task #2 - Ensuring to have the adaptive card returned to share the feedback.
+                await turnContext.SendActivityAsync(MessageFactory.Text("In order for you to give the necessary feedback, I may need to give you an adaptive card...something I can do soon"), cancellationToken);
             }
             else
             {
