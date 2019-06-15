@@ -52,9 +52,8 @@ namespace GeneralKnowledgeBot.Helpers
         {
             var askAHumanCard = new HeroCard()
             {
-                Title = "Ask A Human",
-                Subtitle = "Escalation",
-                Text = "If there is a chance that I cannot retrieve the answer to your question, I will let you know! I will also provision the option for you to escalate this, and ask a human - at which point I consult a SME (Subject Matter Expert) and hopefully with a little human ingenuity - we get the question answered",
+                Title = Resource.AskAnExpertCarouselTitle,
+                Text = Resource.AskAnExpertCarouselContent,
                 Images = new List<CardImage>()
                 {
                     new CardImage("https://banner2.kisspng.com/20180423/eqq/kisspng-programmer-computer-programming-clip-art-bachelor-clipart-5add7deb3384b2.449284371524465131211.jpg"),
@@ -63,9 +62,10 @@ namespace GeneralKnowledgeBot.Helpers
                 {
                     new CardAction()
                     {
-                        Type = ActionTypes.OpenUrl,
-                        Title = "Ask A Human",
-                        Value = "https://www.google.com",
+                        Type = ActionTypes.MessageBack,
+                        Title = Resource.AskAnExpertCarouselButtonText,
+                        DisplayText = Resource.AskAnExpertCarouselButtonText,
+                        Text = Resource.AskAnExpertCarouselButtonText,
                     },
                 },
             };
@@ -81,9 +81,8 @@ namespace GeneralKnowledgeBot.Helpers
         {
             var shareAppFeedbackCard = new HeroCard()
             {
-                Title = "Give Feedback",
-                Subtitle = "Feedback",
-                Text = "If there is anything that you want to see improve - we welcome your comments and questions",
+                Title = Resource.ShareAppFeedbackCarouselTitle,
+                Text = Resource.ShareAppFeedbackCarouselContent,
                 Images = new List<CardImage>()
                 {
                     new CardImage("https://banner2.kisspng.com/20180423/eqq/kisspng-programmer-computer-programming-clip-art-bachelor-clipart-5add7deb3384b2.449284371524465131211.jpg"),
@@ -92,9 +91,10 @@ namespace GeneralKnowledgeBot.Helpers
                 {
                     new CardAction()
                     {
-                        Type = ActionTypes.OpenUrl,
-                        Title = "Give Feedback",
-                        Value = "https://www.google.com",
+                        Type = ActionTypes.MessageBack,
+                        DisplayText = Resource.ShareAppFeedbackCarouselButtonText,
+                        Title = Resource.ShareAppFeedbackCarouselButtonText,
+                        Text = Resource.ShareAppFeedbackCarouselButtonText,
                     },
                 },
             };
