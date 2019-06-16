@@ -68,7 +68,7 @@ namespace GeneralKnowledgeBot.Bots
 
                     if (responseModel != null)
                     {
-                        // TODO: Convert the entire functionality under the isQuery condition to a separate method
+                        // TODO # 1: Convert the entire functionality under the isQuery condition to a separate method
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
                     }
                     else
@@ -80,6 +80,14 @@ namespace GeneralKnowledgeBot.Bots
             else if (turnContext.Activity.Text == "Take a tour")
             {
                 await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
+            }
+            else if (turnContext.Activity.Text == "Ask an expert")
+            {
+                await turnContext.SendActivityAsync(MessageFactory.Text("In order for me to consult with an expert, I may need to get in touch with a team...something I can't do right now"), cancellationToken);
+            }
+            else if (turnContext.Activity.Text == "Share app feedback")
+            {
+                await turnContext.SendActivityAsync(MessageFactory.Text("In order for you to give the necessary feedback, I may need to give you an adaptive card...something I can do soon"), cancellationToken);
             }
             else
             {
