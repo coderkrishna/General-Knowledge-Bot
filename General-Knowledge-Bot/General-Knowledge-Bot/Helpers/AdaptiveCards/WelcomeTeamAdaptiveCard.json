@@ -18,48 +18,8 @@
       "items": [
         {
           "type": "TextBlock",
-          "text": "%welcomeCardContentPart1%",
+          "text": "%welcomeTeamCardContent%",
           "wrap": true
-        },
-        {
-          "type": "TextBlock",
-          "spacing": "Medium",
-          "text": "%welcomeCardContentPart2%",
-          "wrap": true
-        }
-      ]
-    },
-    {
-      "type": "Container",
-      "items": [
-        {
-          "type": "TextBlock",
-          "text": "%bulletListItem1%",
-          "wrap": true,
-          "spacing": "Default"
-        },
-        {
-          "type": "TextBlock",
-          "text": "%bulletListItem2%",
-          "wrap": true,
-          "spacing": "Default"
-        },
-        {
-          "type": "TextBlock",
-          "text": "%bulletListItem3%",
-          "wrap": true,
-          "spacing": "Default"
-        }
-      ]
-    },
-    {
-      "type": "Container",
-      "items": [
-        {
-          "type": "TextBlock",
-          "wrap": true,
-          "spacing": "Default",
-          "text": "%welcomeCardContentPart3%"
         }
       ]
     },
