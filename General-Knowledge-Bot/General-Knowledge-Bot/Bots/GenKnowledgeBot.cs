@@ -12,6 +12,7 @@ namespace GeneralKnowledgeBot.Bots
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Models;
     using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
@@ -104,16 +105,28 @@ namespace GeneralKnowledgeBot.Bots
         /// <returns>A unit of execution.</returns>
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            foreach (var member in membersAdded)
+            var teamId = turnContext.Activity.ChannelData["team"]["id"].ToString();
+            var tenantId = turnContext.Activity.ChannelData["tenant"]["id"].ToString();
+            var botDisplayName = this.configuration["BotDisplayName"];
+
+            this.logger.LogInformation("Team members are being added");
+
+            using (var connectorClient = new ConnectorClient(
+                new Uri(turnContext.Activity?.ServiceUrl),
+                this.configuration["MicrosoftAppId"],
+                this.configuration["MicrosoftAppPassword"]))
             {
-                if (member.Id != turnContext.Activity.Recipient.Id)
+                foreach (var member in membersAdded)
                 {
-                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken);
-                }
-                else
-                {
-                    var botDisplayName = this.configuration["BotDisplayName"];
-                    await GenKBot.SendTeamWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    if (member.Id != turnContext.Activity.Recipient.Id)
+                    {
+                        this.logger.LogInformation($"Welcoming the user: {member.Id}");
+                        await GenKBot.SendUserWelcomeMessage(connectorClient, member.Id, teamId, tenantId, turnContext.Activity.Recipient.Id, cancellationToken);
+                    }
+                    else
+                    {
+                        await GenKBot.SendTeamWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    }
                 }
             }
         }
