@@ -6,12 +6,16 @@ namespace GeneralKnowledgeBot
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Helpers;
+    using GeneralKnowledgeBot.Models;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Implements the core logic of the General Knowledge Bot.
@@ -31,6 +35,42 @@ namespace GeneralKnowledgeBot
         {
             var welcomeTeamCardAttachment = Cards.CreateWelcomeTeamCardAttachment(botDisplayName, teamName);
             await NotifyTeam(connectorClient, welcomeTeamCardAttachment, teamId, cancellationToken);
+        }
+
+        /// <summary>
+        /// Method that will be able to get an answer from the QnAMaker resource.
+        /// </summary>
+        /// <param name="uri">The request uri.</param>
+        /// <param name="question">The question that is asked to the bot.</param>
+        /// <param name="endpointKey">The QnAMaker endpoint key.</param>
+        /// <param name="rankerType">The ranker type.</param>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task GetAnswerFromQnAResource(string uri, string question, string endpointKey, string rankerType, ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            using (var client = new HttpClient())
+            using (var request = new HttpRequestMessage())
+            {
+                request.Method = HttpMethod.Post;
+                request.RequestUri = new Uri(uri);
+                request.Content = new StringContent("{'question': '" + question + "', 'RankerType': '" + rankerType + "'}", Encoding.UTF8, "application/json");
+                request.Headers.Add("Authorization", "EndpointKey " + endpointKey);
+
+                var response = await client.SendAsync(request);
+                var responseText = await response.Content.ReadAsStringAsync();
+
+                var responseModel = JsonConvert.DeserializeObject<Response>(responseText);
+
+                if (responseModel != null)
+                {
+                    await SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
+                }
+                else
+                {
+                    await turnContext.SendActivityAsync(MessageFactory.Text("No QnA Maker answers were found."), cancellationToken);
+                }
+            }
         }
 
         /// <summary>

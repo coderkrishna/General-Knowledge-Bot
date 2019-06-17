@@ -51,32 +51,11 @@ namespace GeneralKnowledgeBot.Bots
                 var uri = this.configuration["KbHost"] + this.configuration["Service"] + "/knowledgebases/" + this.configuration["KbID"] + "/generateAnswer";
                 var question = turnContext.Activity.Text;
                 var rankerType = this.configuration["RankerType"];
+                var endpointKey = this.configuration["EndpointKey"];
 
                 this.logger.LogInformation("Calling QnA Maker");
 
-                using (var client = new HttpClient())
-                using (var request = new HttpRequestMessage())
-                {
-                    request.Method = HttpMethod.Post;
-                    request.RequestUri = new Uri(uri);
-                    request.Content = new StringContent("{'question': '" + question + "', 'RankerType': '" + rankerType + "'}", Encoding.UTF8, "application/json");
-                    request.Headers.Add("Authorization", "EndpointKey " + this.configuration["EndpointKey"]);
-
-                    var response = await client.SendAsync(request);
-                    var responseText = await response.Content.ReadAsStringAsync();
-
-                    var responseModel = JsonConvert.DeserializeObject<Response>(responseText);
-
-                    if (responseModel != null)
-                    {
-                        // TODO: Convert the entire functionality under the isQuery condition to a separate method
-                        await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
-                    }
-                    else
-                    {
-                        await turnContext.SendActivityAsync(MessageFactory.Text("No QnA Maker answers were found."), cancellationToken);
-                    }
-                }
+                await GenKBot.GetAnswerFromQnAResource(uri, question, endpointKey, rankerType, turnContext, cancellationToken);
             }
             else if (turnContext.Activity.Text == "Take a tour")
             {
