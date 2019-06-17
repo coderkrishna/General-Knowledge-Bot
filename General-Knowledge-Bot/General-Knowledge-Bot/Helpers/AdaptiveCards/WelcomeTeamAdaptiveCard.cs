@@ -4,8 +4,9 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
-    using System;
+    using System.Collections.Generic;
     using System.IO;
+    using GeneralKnowledgeBot.Properties;
 
     /// <summary>
     /// The class for the adaptive card to be shown in a team.
@@ -31,7 +32,26 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// <returns>The JSON string for the adaptive card.</returns>
         public static string GetCard(string botDisplayName, string teamName)
         {
-            throw new NotImplementedException();
+            var welcomeTeamCardTitleText = string.Format(Resource.WelcomeTeamCardTitleText, teamName);
+            var welcomeTeamCardContent = string.Format(Resource.WelcomeTeamCardContent, botDisplayName, teamName);
+            var teamTourIntroText = Resource.TeamTourIntroText;
+            var takeATeamTourButtonText = Resource.TakeATeamTourButtonText;
+
+            var variablesToValues = new Dictionary<string, string>()
+            {
+                { "welcomeTeamCardTitleText", welcomeTeamCardTitleText },
+                { "welcomeTeamCardContent", welcomeTeamCardContent },
+                { "teamTourIntroText", teamTourIntroText },
+                { "takeATeamTourButtonText", takeATeamTourButtonText },
+            };
+
+            var cardBody = CardTemplate;
+            foreach (var kvp in variablesToValues)
+            {
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+            }
+
+            return cardBody;
         }
     }
 }
