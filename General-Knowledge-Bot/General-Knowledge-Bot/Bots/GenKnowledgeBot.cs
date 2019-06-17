@@ -12,6 +12,7 @@ namespace GeneralKnowledgeBot.Bots
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Models;
     using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
@@ -68,7 +69,7 @@ namespace GeneralKnowledgeBot.Bots
 
                     if (responseModel != null)
                     {
-                        // TODO # 1: Convert the entire functionality under the isQuery condition to a separate method
+                        // TODO # 2: Convert the entire functionality under the isQuery condition to a separate method
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
                     }
                     else
@@ -80,6 +81,10 @@ namespace GeneralKnowledgeBot.Bots
             else if (turnContext.Activity.Text == "Take a tour")
             {
                 await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
+            }
+            else if (turnContext.Activity.Text == "Take a team tour")
+            {
+                // TODO #3: Have the ability to show the welcome tour for a team.
             }
             else if (turnContext.Activity.Text == "Ask an expert")
             {
@@ -104,16 +109,29 @@ namespace GeneralKnowledgeBot.Bots
         /// <returns>A unit of execution.</returns>
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            foreach (var member in membersAdded)
+            var teamId = turnContext.Activity.ChannelData["team"]["id"].ToString();
+            var tenantId = turnContext.Activity.ChannelData["tenant"]["id"].ToString();
+            var botDisplayName = this.configuration["BotDisplayName"];
+
+            this.logger.LogInformation("Team members are being added");
+
+            using (var connectorClient = new ConnectorClient(
+                new Uri(turnContext.Activity?.ServiceUrl),
+                this.configuration["MicrosoftAppId"],
+                this.configuration["MicrosoftAppPassword"]))
             {
-                if (member.Id != turnContext.Activity.Recipient.Id)
+                foreach (var member in membersAdded)
                 {
-                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken);
-                }
-                else
-                {
-                    var botDisplayName = this.configuration["BotDisplayName"];
-                    await GenKBot.SendTeamWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    if (member.Id != turnContext.Activity.Recipient.Id)
+                    {
+                        this.logger.LogInformation($"Welcoming the user: {member.Id}");
+                        await GenKBot.SendUserWelcomeMessage(connectorClient, member.Id, teamId, tenantId, turnContext.Activity.Recipient.Id, botDisplayName, cancellationToken);
+                    }
+                    else
+                    {
+                        this.logger.LogInformation($"Welcoming the team: {teamId}");
+                        await GenKBot.SendTeamWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    }
                 }
             }
         }

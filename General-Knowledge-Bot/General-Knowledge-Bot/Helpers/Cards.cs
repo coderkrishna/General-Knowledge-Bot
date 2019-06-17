@@ -103,13 +103,13 @@ namespace GeneralKnowledgeBot.Helpers
         }
 
         /// <summary>
-        /// Generates the welcome card which is an adaptive card.
+        /// Generates the welcome adaptive card.
         /// </summary>
         /// <param name="botDisplayName">The bot display name.</param>
         /// <returns>The adaptive card attachment.</returns>
-        public static Attachment CreateWelcomeCardAttachment(string botDisplayName)
+        public static Attachment CreateWelcomeUserCardAttachment(string botDisplayName)
         {
-            var welcomeCardString = WelcomeAdaptiveCard.GetCard(botDisplayName);
+            var welcomeCardString = WelcomeUserAdaptiveCard.GetCard(botDisplayName);
             var welcomeCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",

@@ -9,18 +9,18 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
     using GeneralKnowledgeBot.Properties;
 
     /// <summary>
-    /// The class for the WelcomeAdaptiveCard.
+    /// The class for the WelcomeUserAdaptiveCard.
     /// </summary>
-    public class WelcomeAdaptiveCard
+    public class WelcomeUserAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
-        /// Initializes static members of the <see cref="WelcomeAdaptiveCard"/> class.
+        /// Initializes static members of the <see cref="WelcomeUserAdaptiveCard"/> class.
         /// </summary>
-        static WelcomeAdaptiveCard()
+        static WelcomeUserAdaptiveCard()
         {
-            var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "WelcomeAdaptiveCard.json");
+            var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "WelcomeUserAdaptiveCard.json");
             CardTemplate = File.ReadAllText(cardJsonFilePath);
         }
 
