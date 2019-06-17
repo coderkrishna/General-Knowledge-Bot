@@ -69,7 +69,7 @@ namespace GeneralKnowledgeBot.Bots
 
                     if (responseModel != null)
                     {
-                        // TODO # 1: Convert the entire functionality under the isQuery condition to a separate method
+                        // TODO # 2: Convert the entire functionality under the isQuery condition to a separate method
                         await GenKBot.SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
                     }
                     else
@@ -81,6 +81,10 @@ namespace GeneralKnowledgeBot.Bots
             else if (turnContext.Activity.Text == "Take a tour")
             {
                 await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
+            }
+            else if (turnContext.Activity.Text == "Take a team tour")
+            {
+                // TODO #3: Have the ability to show the welcome tour for a team.
             }
             else if (turnContext.Activity.Text == "Ask an expert")
             {
@@ -121,10 +125,11 @@ namespace GeneralKnowledgeBot.Bots
                     if (member.Id != turnContext.Activity.Recipient.Id)
                     {
                         this.logger.LogInformation($"Welcoming the user: {member.Id}");
-                        await GenKBot.SendUserWelcomeMessage(connectorClient, member.Id, teamId, tenantId, turnContext.Activity.Recipient.Id, cancellationToken);
+                        await GenKBot.SendUserWelcomeMessage(connectorClient, member.Id, teamId, tenantId, turnContext.Activity.Recipient.Id, botDisplayName, cancellationToken);
                     }
                     else
                     {
+                        this.logger.LogInformation($"Welcoming the team: {teamId}");
                         await GenKBot.SendTeamWelcomeMessage(turnContext, cancellationToken, botDisplayName);
                     }
                 }

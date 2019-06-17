@@ -27,7 +27,7 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked.</returns>
         public static async Task SendTeamWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
-            var welcomeCardAttachment = Cards.CreateWelcomeCardAttachment(botDisplayName);
+            var welcomeCardAttachment = Cards.CreateWelcomeUserCardAttachment(botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
@@ -39,9 +39,10 @@ namespace GeneralKnowledgeBot
         /// <param name="teamId">The team id.</param>
         /// <param name="tenantId">The tenant id.</param>
         /// <param name="botId">The bot id.</param>
+        /// <param name="botDisplayName">The bot display name.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>A unit of execution.</returns>
-        public static async Task SendUserWelcomeMessage(ConnectorClient connectorClient, string memberAddedId, string teamId, string tenantId, string botId, CancellationToken cancellationToken)
+        public static async Task SendUserWelcomeMessage(ConnectorClient connectorClient, string memberAddedId, string teamId, string tenantId, string botId, string botDisplayName, CancellationToken cancellationToken)
         {
             var allMembers = await connectorClient.Conversations.GetConversationMembersAsync(teamId, cancellationToken);
 
@@ -58,8 +59,8 @@ namespace GeneralKnowledgeBot
 
             if (userThatJustJoined != null)
             {
-                // TODO: Build out the welcome user card
-                await NotifyUser(connectorClient, userThatJustJoined, botId, tenantId, cancellationToken);
+                var welcomeUserAdaptiveCardAttachment = Cards.CreateWelcomeUserCardAttachment(botDisplayName);
+                await NotifyUser(connectorClient, userThatJustJoined, welcomeUserAdaptiveCardAttachment, botId, tenantId, cancellationToken);
             }
         }
 
@@ -118,7 +119,7 @@ namespace GeneralKnowledgeBot
         /// <param name="tenantId">The tenant id.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>A unit of execution.</returns>
-        private static async Task<bool> NotifyUser(ConnectorClient connectorClient, ChannelAccount userThatJustJoined, string botId, string tenantId, CancellationToken cancellationToken)
+        private static async Task<bool> NotifyUser(ConnectorClient connectorClient, ChannelAccount userThatJustJoined, Attachment attachmentToSend, string botId, string tenantId, CancellationToken cancellationToken)
         {
             try
             {
@@ -140,7 +141,10 @@ namespace GeneralKnowledgeBot
                 var activity = new Activity()
                 {
                     Type = ActivityTypes.Message,
-                    Text = "Hello from the General Knowledge Bot",
+                    Attachments = new List<Attachment>()
+                    {
+                        attachmentToSend,
+                    },
                 };
 
                 await connectorClient.Conversations.SendToConversationAsync(conversationId, activity);
