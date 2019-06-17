@@ -112,6 +112,7 @@ namespace GeneralKnowledgeBot.Bots
             var teamId = turnContext.Activity.ChannelData["team"]["id"].ToString();
             var tenantId = turnContext.Activity.ChannelData["tenant"]["id"].ToString();
             var botDisplayName = this.configuration["BotDisplayName"];
+            var teamName = turnContext.Activity.ChannelData["team"]["name"].ToString();
 
             this.logger.LogInformation("Team members are being added");
 
@@ -130,7 +131,7 @@ namespace GeneralKnowledgeBot.Bots
                     else
                     {
                         this.logger.LogInformation($"Welcoming the team: {teamId}");
-                        await GenKBot.SendTeamWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                        await GenKBot.SendTeamWelcomeMessage(connectorClient, teamName, teamId, botDisplayName, cancellationToken);
                     }
                 }
             }

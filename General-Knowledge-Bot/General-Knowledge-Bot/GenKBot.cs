@@ -21,14 +21,16 @@ namespace GeneralKnowledgeBot
         /// <summary>
         /// Having the method to send the welcome messge for the user.
         /// </summary>
-        /// <param name="turnContext">The turn context.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="connectorClient">The turn context.</param>
+        /// <param name="teamName">The name of the team.</param>
+        /// <param name="teamId">The team id.</param>
         /// <param name="botDisplayName">The bot display name (what name will show up in Teams).</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>A unit of execution that is tracked.</returns>
-        public static async Task SendTeamWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
+        public static async Task SendTeamWelcomeMessage(ConnectorClient connectorClient, string teamName, string teamId, string botDisplayName, CancellationToken cancellationToken)
         {
-            var welcomeCardAttachment = Cards.CreateWelcomeTeamCardAttachment(botDisplayName);
-            await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
+            var welcomeTeamCardAttachment = Cards.CreateWelcomeTeamCardAttachment(botDisplayName);
+            await NotifyTeam(connectorClient, welcomeTeamCardAttachment, teamId, cancellationToken);
         }
 
         /// <summary>
@@ -147,7 +149,7 @@ namespace GeneralKnowledgeBot
                     },
                 };
 
-                await connectorClient.Conversations.SendToConversationAsync(conversationId, activity);
+                await connectorClient.Conversations.SendToConversationAsync(conversationId, activity, cancellationToken);
 
                 return true;
             }
@@ -155,6 +157,32 @@ namespace GeneralKnowledgeBot
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Method that will formally notify the team.
+        /// </summary>
+        /// <param name="connectorClient">The connector client.</param>
+        /// <param name="attachmentToSend">The attachment to be sent.</param>
+        /// <param name="teamId">The team id.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        private static async Task NotifyTeam(ConnectorClient connectorClient, Attachment attachmentToSend, string teamId, CancellationToken cancellationToken)
+        {
+            var teamWelcomeActivity = new Activity()
+            {
+                Type = ActivityTypes.Message,
+                Conversation = new ConversationAccount()
+                {
+                    Id = teamId,
+                },
+                Attachments = new List<Attachment>()
+                {
+                    attachmentToSend,
+                },
+            };
+
+            await connectorClient.Conversations.SendToConversationAsync(teamId, teamWelcomeActivity, cancellationToken);
         }
     }
 }
