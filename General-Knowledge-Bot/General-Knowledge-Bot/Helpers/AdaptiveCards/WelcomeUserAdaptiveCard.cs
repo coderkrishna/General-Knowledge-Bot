@@ -1,4 +1,4 @@
-﻿// <copyright file="WelcomeAdaptiveCard.cs" company="Microsoft">
+﻿// <copyright file="WelcomeUserAdaptiveCard.cs" company="Microsoft">
 // Copyright (c) Microsoft. All rights reserved.
 // </copyright>
 
