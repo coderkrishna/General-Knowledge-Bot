@@ -217,14 +217,6 @@
     <value>Take a tour</value>
     <comment>The text on the unrecognized input button with regards to the button</comment>
   </data>
-  <data name="ViewFullArticleButtonText" xml:space="preserve">
-    <value>View Full Article</value>
-    <comment>Text for viewing the full article</comment>
-  </data>
-  <data name="ViewRelatedArticlesButtonText" xml:space="preserve">
-    <value>View Related Articles</value>
-    <comment>Text for viewing related articles</comment>
-  </data>
   <data name="WelcomeCardBulletListItem1" xml:space="preserve">
     <value>* Benefits</value>
     <comment>Bulleted list item 1</comment>
@@ -252,5 +244,29 @@
   <data name="WelcomeCardTitleText" xml:space="preserve">
     <value>Hello!</value>
     <comment>The welcome card title text</comment>
+  </data>
+  <data name="TakeATeamTourButtonText" xml:space="preserve">
+    <value>Take a team tour</value>
+    <comment>The text for when the tour button is clicked in the context of a team.</comment>
+  </data>
+  <data name="TeamTourIntroText" xml:space="preserve">
+    <value>If you want to know more about what goes on, click on the button that reads *Take a tour*</value>
+    <comment>The tour introduction for the welcome team card.</comment>
+  </data>
+  <data name="ViewFullArticleButtonText" xml:space="preserve">
+    <value>View Full Article</value>
+    <comment>Text for viewing the full article</comment>
+  </data>
+  <data name="ViewRelatedArticlesButtonText" xml:space="preserve">
+    <value>View Related Articles</value>
+    <comment>Text for viewing related articles</comment>
+  </data>
+  <data name="WelcomeTeamCardContent" xml:space="preserve">
+    <value>Hi! I am {0} If you are reading this, it is because I have been installed to this team - *{1}* where you can do two things. Either you can: self assign a case to handle, or chat with a questioner. You are the subject matter experts (or SMEs) - and my job is to help you help the user! 😀</value>
+    <comment>The card content for the welcome team adaptive card, and {0} is the bot name, and {1} is the team name.</comment>
+  </data>
+  <data name="WelcomeTeamCardTitleText" xml:space="preserve">
+    <value>Hello {0}!</value>
+    <comment>The team welcome card title text, with {0} being the placeholder for the team name.</comment>
   </data>
 </root>

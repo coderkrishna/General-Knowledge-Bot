@@ -4,6 +4,7 @@
 
 namespace GeneralKnowledgeBot.Helpers
 {
+    using System;
     using System.Collections.Generic;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using GeneralKnowledgeBot.Properties;
@@ -120,6 +121,24 @@ namespace GeneralKnowledgeBot.Helpers
         }
 
         /// <summary>
+        /// The method that would generate the attachment for the team.
+        /// </summary>
+        /// <param name="botDisplayName">The bot display name.</param>
+        /// <param name="teamName">The team name.</param>
+        /// <returns>The attachment to be appended to the welcome message for the team.</returns>
+        public static Attachment CreateWelcomeTeamCardAttachment(string botDisplayName, string teamName)
+        {
+            var welcomeTeamCardAttachmentString = WelcomeTeamAdaptiveCard.GetCard(botDisplayName, teamName);
+            var welcomeTeamCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(welcomeTeamCardAttachmentString),
+            };
+
+            return welcomeTeamCardAttachment;
+        }
+
+        /// <summary>
         /// Generates the adaptive card for the unrecognized input scenario.
         /// </summary>
         /// <returns>The adaptive card attachment.</returns>
@@ -151,6 +170,36 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return responseCardAttachment;
+        }
+
+        /// <summary>
+        /// Generates the Self Assign Case card.
+        /// </summary>
+        /// <returns>A hero card is returned.</returns>
+        public static HeroCard SelfAssignCaseCard()
+        {
+            var selfAssignHeroCard = new HeroCard()
+            {
+                Title = "Self Assign Case",
+                Text = "Anytime that a user wants additional help, you can assign the incoming case to yourself only!",
+            };
+
+            return selfAssignHeroCard;
+        }
+
+        /// <summary>
+        /// Generates a hero card for describing the chat with questioner.
+        /// </summary>
+        /// <returns>A hero card is returned.</returns>
+        public static HeroCard ChatWithQuestioner()
+        {
+            var chatWithQuestionerHeroCard = new HeroCard()
+            {
+                Title = "Chat With Questioner",
+                Text = "At the time a user wants the help of a SME, a notification will popup and you can have the ability to chat with the questioner directly.",
+            };
+
+            return chatWithQuestionerHeroCard;
         }
     }
 }

@@ -232,11 +232,29 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Take a team tour.
+        /// </summary>
+        public static string TakeATeamTourButtonText {
+            get {
+                return ResourceManager.GetString("TakeATeamTourButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Take a tour.
         /// </summary>
         public static string TakeATourButtonText {
             get {
                 return ResourceManager.GetString("TakeATourButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you want to know more about what goes on, click on the button that reads *Take a tour*.
+        /// </summary>
+        public static string TeamTourIntroText {
+            get {
+                return ResourceManager.GetString("TeamTourIntroText", resourceCulture);
             }
         }
         
@@ -363,6 +381,24 @@ namespace GeneralKnowledgeBot.Properties {
         public static string WelcomeCardTitleText {
             get {
                 return ResourceManager.GetString("WelcomeCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi! I am {0} If you are reading this, it is because I have been installed to this team - *{1}* where you can do two things. Either you can: self assign a case to handle, or chat with a questioner. You are the subject matter experts (or SMEs) - and my job is to help you help the user! 😀.
+        /// </summary>
+        public static string WelcomeTeamCardContent {
+            get {
+                return ResourceManager.GetString("WelcomeTeamCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello {0}!.
+        /// </summary>
+        public static string WelcomeTeamCardTitleText {
+            get {
+                return ResourceManager.GetString("WelcomeTeamCardTitleText", resourceCulture);
             }
         }
     }

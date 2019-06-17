@@ -1,0 +1,53 @@
+{
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "size": "Medium",
+          "weight": "Bolder",
+          "separator": true,
+          "text": "%welcomeTeamCardTitleText%"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "%welcomeTeamCardContent%",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "wrap": true,
+          "spacing": "Default",
+          "text": "%teamTourIntroText%"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "%takeATeamTourButtonText%",
+      "data": {
+        "msteams": {
+          "type": "messageBack",
+          "displayText": "%takeATeamTourButtonText%",
+          "text": "%takeATeamTourButtonText%"
+        }
+      }
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}
