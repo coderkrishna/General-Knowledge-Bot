@@ -98,7 +98,8 @@ namespace GeneralKnowledgeBot
             teamTourReply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             teamTourReply.Attachments = new List<Attachment>()
             {
-
+                Cards.SelfAssignCaseCard().ToAttachment(),
+                Cards.ChatWithQuestioner().ToAttachment(),
             };
 
             await turnContext.SendActivityAsync(teamTourReply, cancellationToken);

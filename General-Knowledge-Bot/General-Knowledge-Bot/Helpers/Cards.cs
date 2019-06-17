@@ -171,5 +171,16 @@ namespace GeneralKnowledgeBot.Helpers
 
             return responseCardAttachment;
         }
+
+        public static HeroCard SelfAssignCaseCard()
+        {
+            var selfAssignHeroCard = new HeroCard()
+            {
+                Title = "Self Assign Case",
+                Text = "Anytime that a user wants additional help, you can assign the incoming case to yourself only!",
+            };
+
+            return selfAssignHeroCard;
+        }
     }
 }
