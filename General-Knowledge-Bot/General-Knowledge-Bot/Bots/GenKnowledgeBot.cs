@@ -28,7 +28,7 @@ namespace GeneralKnowledgeBot.Bots
         /// <summary>
         /// Initializes a new instance of the <see cref="GenKnowledgeBot"/> class.
         /// </summary>
-        /// <param name="configuration">The configuration - accessing appsettings.json.</param>
+        /// <param name="configuration">The configuration - accessing appsettings.json file.</param>
         /// <param name="logger">The logging mechanism.</param>
         public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger)
         {
@@ -108,9 +108,31 @@ namespace GeneralKnowledgeBot.Bots
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
-                    var botDisplayName = this.configuration["BotDisplayName"];
-                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    await GenKBot.SendUserWelcomeMessage(turnContext, cancellationToken);
                 }
+                else
+                {
+                    var botDisplayName = this.configuration["BotDisplayName"];
+                    await GenKBot.SendTeamWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Method which fires at the time there is a conversation update.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        protected override async Task OnConversationUpdateActivityAsync(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var eventType = turnContext.Activity.ChannelData["eventType"].ToString();
+            this.logger.LogInformation($"Event has been found: {eventType}");
+
+            if (eventType == "teamMemberAdded")
+            {
+                var membersAdded = turnContext.Activity.MembersAdded;
+                await this.OnMembersAddedAsync(membersAdded, turnContext, cancellationToken);
             }
         }
     }
