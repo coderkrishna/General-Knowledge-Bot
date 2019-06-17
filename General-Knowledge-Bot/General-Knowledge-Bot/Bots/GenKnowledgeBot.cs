@@ -113,7 +113,7 @@ namespace GeneralKnowledgeBot.Bots
                 else
                 {
                     var botDisplayName = this.configuration["BotDisplayName"];
-                    await GenKBot.SendProactiveWelcomeMessage(turnContext, cancellationToken, botDisplayName);
+                    await GenKBot.SendTeamWelcomeMessage(turnContext, cancellationToken, botDisplayName);
                 }
             }
         }
