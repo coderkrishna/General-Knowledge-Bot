@@ -172,6 +172,10 @@ namespace GeneralKnowledgeBot.Helpers
             return responseCardAttachment;
         }
 
+        /// <summary>
+        /// Generates the Self Assign Case card.
+        /// </summary>
+        /// <returns>A hero card is returned.</returns>
         public static HeroCard SelfAssignCaseCard()
         {
             var selfAssignHeroCard = new HeroCard()
@@ -181,6 +185,21 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return selfAssignHeroCard;
+        }
+
+        /// <summary>
+        /// Generates a hero card for describing the chat with questioner.
+        /// </summary>
+        /// <returns>A hero card is returned.</returns>
+        public static HeroCard ChatWithQuestioner()
+        {
+            var chatWithQuestionerHeroCard = new HeroCard()
+            {
+                Title = "Chat With Questioner",
+                Text = "At the time a user wants the help of a SME, a notification will popup and you can have the ability to chat with the questioner directly.",
+            };
+
+            return chatWithQuestionerHeroCard;
         }
     }
 }
