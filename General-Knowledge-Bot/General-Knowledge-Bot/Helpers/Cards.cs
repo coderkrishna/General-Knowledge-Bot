@@ -4,6 +4,7 @@
 
 namespace GeneralKnowledgeBot.Helpers
 {
+    using System;
     using System.Collections.Generic;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using GeneralKnowledgeBot.Properties;
@@ -117,6 +118,16 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return welcomeCardAttachment;
+        }
+
+        /// <summary>
+        /// The method that would generate the attachment for the team.
+        /// </summary>
+        /// <param name="botDisplayName">The bot display name.</param>
+        /// <returns>The attachment to be appended to the welcome message for the team.</returns>
+        public static Attachment CreateWelcomeTeamCardAttachment(string botDisplayName)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
