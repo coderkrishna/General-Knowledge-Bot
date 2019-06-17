@@ -267,5 +267,6 @@
   </data>
   <data name="WelcomeTeamCardTitleText" xml:space="preserve">
     <value>Hello {0}!</value>
+    <comment>The team welcome card title text, with {0} being the placeholder for the team name.</comment>
   </data>
 </root>
