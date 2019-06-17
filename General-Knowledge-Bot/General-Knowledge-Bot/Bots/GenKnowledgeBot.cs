@@ -84,7 +84,7 @@ namespace GeneralKnowledgeBot.Bots
             }
             else if (turnContext.Activity.Text == "Take a team tour")
             {
-                // TODO #3: Have the ability to show the welcome tour for a team.
+                await GenKBot.SendTeamTourCarouselCard(turnContext, cancellationToken);
             }
             else if (turnContext.Activity.Text == "Ask an expert")
             {

@@ -87,6 +87,24 @@ namespace GeneralKnowledgeBot
         }
 
         /// <summary>
+        /// Method that will send the carousel tour in the context of a team.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task SendTeamTourCarouselCard(ITurnContext turnContext, CancellationToken cancellationToken)
+        {
+            var teamTourReply = turnContext.Activity.CreateReply();
+            teamTourReply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            teamTourReply.Attachments = new List<Attachment>()
+            {
+
+            };
+
+            await turnContext.SendActivityAsync(teamTourReply, cancellationToken);
+        }
+
+        /// <summary>
         /// Method that will generate the adaptive card that renders the answer.
         /// </summary>
         /// <param name="turnContext">The turn context.</param>
