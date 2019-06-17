@@ -27,7 +27,7 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked.</returns>
         public static async Task SendTeamWelcomeMessage(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken, string botDisplayName)
         {
-            var welcomeCardAttachment = Cards.CreateWelcomeUserCardAttachment(botDisplayName);
+            var welcomeCardAttachment = Cards.CreateWelcomeTeamCardAttachment(botDisplayName);
             await turnContext.SendActivityAsync(MessageFactory.Attachment(welcomeCardAttachment), cancellationToken);
         }
 
