@@ -27,8 +27,9 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// Method that returns the welcome team adaptive card.
         /// </summary>
         /// <param name="botDisplayName">The bot display name.</param>
+        /// <param name="teamName">The team name.</param>
         /// <returns>The JSON string for the adaptive card.</returns>
-        public static string GetCard(string botDisplayName)
+        public static string GetCard(string botDisplayName, string teamName)
         {
             throw new NotImplementedException();
         }

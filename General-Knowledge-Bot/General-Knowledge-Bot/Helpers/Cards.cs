@@ -124,10 +124,18 @@ namespace GeneralKnowledgeBot.Helpers
         /// The method that would generate the attachment for the team.
         /// </summary>
         /// <param name="botDisplayName">The bot display name.</param>
+        /// <param name="teamName">The team name.</param>
         /// <returns>The attachment to be appended to the welcome message for the team.</returns>
-        public static Attachment CreateWelcomeTeamCardAttachment(string botDisplayName)
+        public static Attachment CreateWelcomeTeamCardAttachment(string botDisplayName, string teamName)
         {
-            throw new NotImplementedException();
+            var welcomeTeamCardAttachmentString = WelcomeTeamAdaptiveCard.GetCard(botDisplayName, teamName);
+            var welcomeTeamCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(welcomeTeamCardAttachmentString),
+            };
+
+            return welcomeTeamCardAttachment;
         }
 
         /// <summary>

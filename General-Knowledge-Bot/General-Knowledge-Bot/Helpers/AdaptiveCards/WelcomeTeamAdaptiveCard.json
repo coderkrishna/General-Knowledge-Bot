@@ -1,3 +1,93 @@
 {
-
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "size": "Medium",
+          "weight": "Bolder",
+          "separator": true,
+          "text": "%welcomeTeamCardTitleText%"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "%welcomeCardContentPart1%",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "spacing": "Medium",
+          "text": "%welcomeCardContentPart2%",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "%bulletListItem1%",
+          "wrap": true,
+          "spacing": "Default"
+        },
+        {
+          "type": "TextBlock",
+          "text": "%bulletListItem2%",
+          "wrap": true,
+          "spacing": "Default"
+        },
+        {
+          "type": "TextBlock",
+          "text": "%bulletListItem3%",
+          "wrap": true,
+          "spacing": "Default"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "wrap": true,
+          "spacing": "Default",
+          "text": "%welcomeCardContentPart3%"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "wrap": true,
+          "spacing": "Default",
+          "text": "%teamTourIntroText%"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "%takeATeamTourButtonText%",
+      "data": {
+        "msteams": {
+          "type": "messageBack",
+          "displayText": "%takeATeamTourButtonText%",
+          "text": "%takeATeamTourButtonText%"
+        }
+      }
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
 }

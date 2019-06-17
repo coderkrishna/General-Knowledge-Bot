@@ -29,7 +29,7 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution that is tracked.</returns>
         public static async Task SendTeamWelcomeMessage(ConnectorClient connectorClient, string teamName, string teamId, string botDisplayName, CancellationToken cancellationToken)
         {
-            var welcomeTeamCardAttachment = Cards.CreateWelcomeTeamCardAttachment(botDisplayName);
+            var welcomeTeamCardAttachment = Cards.CreateWelcomeTeamCardAttachment(botDisplayName, teamName);
             await NotifyTeam(connectorClient, welcomeTeamCardAttachment, teamId, cancellationToken);
         }
 
