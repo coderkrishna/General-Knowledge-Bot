@@ -59,16 +59,6 @@ namespace GeneralKnowledgeBot.Helpers
                 {
                     new CardImage("https://banner2.kisspng.com/20180423/eqq/kisspng-programmer-computer-programming-clip-art-bachelor-clipart-5add7deb3384b2.449284371524465131211.jpg"),
                 },
-                Buttons = new List<CardAction>()
-                {
-                    new CardAction()
-                    {
-                        Type = ActionTypes.MessageBack,
-                        Title = Resource.AskAnExpertCarouselButtonText,
-                        DisplayText = Resource.AskAnExpertCarouselButtonText,
-                        Text = Resource.AskAnExpertCarouselButtonText,
-                    },
-                },
             };
 
             return askAHumanCard;
