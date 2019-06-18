@@ -54,29 +54,16 @@
             "wrap": true
           },
           {
-            "type": "Input.ChoiceSet",
+            "type": "Input.Text",
             "placeholder": "Please rate the relevancy of results",
-            "choices": [
-              {
-                "title": "Highly relevant",
-                "value": "Highly relevant"
-              },
-              {
-                "title": "Moderately relevant",
-                "value": "Moderately relevant"
-              },
-              {
-                "title": "Not at all relevant",
-                "value": "Not at all relevant"
-              }
-            ]
+            "id": "resultsRelevancy",
+            "isMultiline": true
           }
         ],
         "actions": [
           {
-            "type": "Action.OpenUrl",
-            "title": "OK",
-            "url": "http://adaptivecards.io"
+            "type": "Action.Submit",
+            "title": "%submitFeedbackButtonText%"
           }
         ],
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"

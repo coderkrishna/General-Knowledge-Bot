@@ -39,10 +39,6 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var viewRelatedArticlesButtonText = Resource.ViewRelatedArticlesButtonText;
             var giveFeedbackButtonText = Resource.GiveFeedbackButtonText;
             var feedbackQuestionText = Resource.FeedbackQuestionText;
-            var inputChoiceSetPlaceholderText = Resource.InputChoiceSetPlaceholderText;
-            var highlyRelevantChoiceText = Resource.HighlyRelevantChoiceText;
-            var somewhatRelevantChoiceText = Resource.SomewhatRelevantChoiceText;
-            var notAtAllRelevantChoiceText = Resource.NotAtAllRelevantChoiceText;
             var submitFeedbackButtonText = Resource.SubmitFeedbackButtonText;
 
             var variablesToValues = new Dictionary<string, string>()
@@ -54,6 +50,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "viewRelatedArticlesButtonText", viewRelatedArticlesButtonText },
                 { "giveFeedbackButtonText", giveFeedbackButtonText },
                 { "feedbackQuestionText", feedbackQuestionText },
+                { "submitFeedbackButtonText", submitFeedbackButtonText },
             };
 
             var cardBody = CardTemplate;
