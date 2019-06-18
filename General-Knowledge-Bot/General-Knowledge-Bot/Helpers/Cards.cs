@@ -173,7 +173,23 @@ namespace GeneralKnowledgeBot.Helpers
         }
 
         /// <summary>
-        /// Generates the Self Assign Case card.
+        /// Generates the adaptive card for the ability to share the app feedback.
+        /// </summary>
+        /// <returns>The adaptive card attachment.</returns>
+        public static Attachment CreateShareAppFeedbackAttachment()
+        {
+            var shareAppFeedbackCardString = ShareAppFeedbackAdaptiveCard.GetCard();
+            var shareAppFeedbackAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(shareAppFeedbackCardString),
+            };
+
+            return shareAppFeedbackAttachment;
+        }
+
+        /// <summary>
+        /// Generates the Self Assign Case card in the Team welcome tour.
         /// </summary>
         /// <returns>A hero card is returned.</returns>
         public static HeroCard SelfAssignCaseCard()
@@ -188,7 +204,7 @@ namespace GeneralKnowledgeBot.Helpers
         }
 
         /// <summary>
-        /// Generates a hero card for describing the chat with questioner.
+        /// Generates a hero card for describing the chat with questioner in the Team welcome tour.
         /// </summary>
         /// <returns>A hero card is returned.</returns>
         public static HeroCard ChatWithQuestioner()

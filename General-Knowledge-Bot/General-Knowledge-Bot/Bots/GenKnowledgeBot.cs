@@ -77,7 +77,7 @@ namespace GeneralKnowledgeBot.Bots
                 }
                 else if (turnContext.Activity.Text == "Share app feedback")
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("In order for you to give the necessary feedback, I may need to give you an adaptive card...something I can do soon"), cancellationToken);
+                    await GenKBot.SendShareAppFeedbackCard(turnContext, cancellationToken);
                 }
                 else
                 {

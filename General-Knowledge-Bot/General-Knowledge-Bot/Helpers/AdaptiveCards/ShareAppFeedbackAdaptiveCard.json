@@ -8,7 +8,7 @@
           "type": "TextBlock",
           "size": "Medium",
           "weight": "Bolder",
-          "text": "Share App Feedback with us"
+          "text": "%shareAppFeedbackAdaptiveCardTitle%"
         }
       ]
     },
@@ -17,18 +17,18 @@
       "items": [
         {
           "type": "TextBlock",
-          "text": "Thank you for taking the time to share the feedback with us. It is critical that my creators know what can be done to make me perform better.",
+          "text": "%shareAppFeedbackAdaptiveCardContent%",
           "wrap": true,
           "maxLines": 2
         },
         {
           "type": "Input.Text",
           "id": "appFeedback",
-          "title": "New Input.Toggle",
+          "separator": true,
           "validation": {
-            "necessity": "RequiredWithVisualCue"
+            "necessity": "Required"
           },
-          "placeholder": "Please share thoughts...do not hold back on the honesty",
+          "placeholder": "%shareAppFeedbackInputPlaceholder%",
           "isMultiline": true
         }
       ]
@@ -37,7 +37,7 @@
   "actions": [
     {
       "type": "Action.Submit",
-      "title": "Submit"
+      "title": "%submitFeedbackButtonText%"
     }
   ],
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
