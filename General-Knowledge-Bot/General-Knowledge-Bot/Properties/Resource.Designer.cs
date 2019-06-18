@@ -160,6 +160,24 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thank you for taking the time to share feedback with both the SMEs and my creators. It is prudent that my tiny 🤖🧠 performs better..
+        /// </summary>
+        public static string ShareAppFeedbackAdaptiveCardContent {
+            get {
+                return ResourceManager.GetString("ShareAppFeedbackAdaptiveCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share App Feedback.
+        /// </summary>
+        public static string ShareAppFeedbackAdaptiveCardTitle {
+            get {
+                return ResourceManager.GetString("ShareAppFeedbackAdaptiveCardTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Share app feedback.
         /// </summary>
         public static string ShareAppFeedbackCarouselButtonText {
@@ -183,6 +201,15 @@ namespace GeneralKnowledgeBot.Properties {
         public static string ShareAppFeedbackCarouselTitle {
             get {
                 return ResourceManager.GetString("ShareAppFeedbackCarouselTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please share your thoughts.....
+        /// </summary>
+        public static string ShareAppFeedbackInputPlaceholder {
+            get {
+                return ResourceManager.GetString("ShareAppFeedbackInputPlaceholder", resourceCulture);
             }
         }
         

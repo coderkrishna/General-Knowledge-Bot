@@ -55,8 +55,8 @@
           },
           {
             "type": "Input.Text",
-            "placeholder": "Please rate the relevancy of results",
-            "id": "resultsRelevancy",
+            "placeholder": "Please provide the feedback on the results",
+            "id": "resultsFeedback",
             "isMultiline": true
           }
         ],

@@ -253,4 +253,16 @@
     <value>Hello {0}!</value>
     <comment>The team welcome card title text, with {0} being the placeholder for the team name.</comment>
   </data>
+  <data name="ShareAppFeedbackAdaptiveCardContent" xml:space="preserve">
+    <value>Thank you for taking the time to share feedback with both the SMEs and my creators. It is prudent that my tiny 🤖🧠 performs better.</value>
+    <comment>The card content for sharing the app feedback</comment>
+  </data>
+  <data name="ShareAppFeedbackAdaptiveCardTitle" xml:space="preserve">
+    <value>Share App Feedback</value>
+    <comment>The title for the share app feedback adaptive card</comment>
+  </data>
+  <data name="ShareAppFeedbackInputPlaceholder" xml:space="preserve">
+    <value>Please share your thoughts....</value>
+    <comment>The placeholder text for the multiline text input for the share app feedback adaptive card</comment>
+  </data>
 </root>

@@ -6,17 +6,13 @@ namespace GeneralKnowledgeBot.Bots
 {
     using System;
     using System.Collections.Generic;
-    using System.Net.Http;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using GeneralKnowledgeBot.Models;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The class for all the bot interactions.
@@ -77,7 +73,7 @@ namespace GeneralKnowledgeBot.Bots
                 }
                 else if (turnContext.Activity.Text == "Share app feedback")
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("In order for you to give the necessary feedback, I may need to give you an adaptive card...something I can do soon"), cancellationToken);
+                    await GenKBot.SendShareAppFeedbackCard(turnContext, cancellationToken);
                 }
                 else
                 {

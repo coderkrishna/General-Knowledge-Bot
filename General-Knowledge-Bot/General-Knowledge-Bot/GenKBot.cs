@@ -145,6 +145,18 @@ namespace GeneralKnowledgeBot
         }
 
         /// <summary>
+        /// Method to send the adaptive card to share the app feedback.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task SendShareAppFeedbackCard(ITurnContext turnContext, CancellationToken cancellationToken)
+        {
+            var shareAppFeedbackCardAttachment = Cards.CreateShareAppFeedbackAttachment();
+            await turnContext.SendActivityAsync(MessageFactory.Attachment(shareAppFeedbackCardAttachment), cancellationToken);
+        }
+
+        /// <summary>
         /// Method that will generate the adaptive card that renders the answer.
         /// </summary>
         /// <param name="turnContext">The turn context.</param>
