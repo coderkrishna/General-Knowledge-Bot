@@ -1,4 +1,4 @@
-// <copyright file="GenKnowledgeBot.cs" company="Microsoft">
+﻿// <copyright file="GenKnowledgeBot.cs" company="Microsoft">
 // Copyright (c) Microsoft. All rights reserved.
 // </copyright>
 
@@ -45,37 +45,44 @@ namespace GeneralKnowledgeBot.Bots
         /// <returns>A unit of execution.</returns>
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            var isQuery = turnContext.Activity.Text.EndsWith('?') || turnContext.Activity.Text.EndsWith('.');
-            if (isQuery)
+            if (turnContext.Activity.Value != null && turnContext.Activity.Text == null)
             {
-                var uri = this.configuration["KbHost"] + this.configuration["Service"] + "/knowledgebases/" + this.configuration["KbID"] + "/generateAnswer";
-                var question = turnContext.Activity.Text;
-                var rankerType = this.configuration["RankerType"];
-                var endpointKey = this.configuration["EndpointKey"];
-
-                this.logger.LogInformation("Calling QnA Maker");
-
-                await GenKBot.GetAnswerFromQnAResource(uri, question, endpointKey, rankerType, turnContext, cancellationToken);
-            }
-            else if (turnContext.Activity.Text == "Take a tour")
-            {
-                await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
-            }
-            else if (turnContext.Activity.Text == "Take a team tour")
-            {
-                await GenKBot.SendTeamTourCarouselCard(turnContext, cancellationToken);
-            }
-            else if (turnContext.Activity.Text == "Ask an expert")
-            {
-                await turnContext.SendActivityAsync(MessageFactory.Text("In order for me to consult with an expert, I may need to get in touch with a team...something I can't do right now"), cancellationToken);
-            }
-            else if (turnContext.Activity.Text == "Share app feedback")
-            {
-                await turnContext.SendActivityAsync(MessageFactory.Text("In order for you to give the necessary feedback, I may need to give you an adaptive card...something I can do soon"), cancellationToken);
+                await turnContext.SendActivityAsync(MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now"));
             }
             else
             {
-                await GenKBot.SendUnrecognizedInputMessage(turnContext, cancellationToken);
+                var isQuery = turnContext.Activity.Text.EndsWith('?') || turnContext.Activity.Text.EndsWith('.');
+                if (isQuery)
+                {
+                    var uri = this.configuration["KbHost"] + this.configuration["Service"] + "/knowledgebases/" + this.configuration["KbID"] + "/generateAnswer";
+                    var question = turnContext.Activity.Text;
+                    var rankerType = this.configuration["RankerType"];
+                    var endpointKey = this.configuration["EndpointKey"];
+
+                    this.logger.LogInformation("Calling QnA Maker");
+
+                    await GenKBot.GetAnswerFromQnAResource(uri, question, endpointKey, rankerType, turnContext, cancellationToken);
+                }
+                else if (turnContext.Activity.Text == "Take a tour")
+                {
+                    await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
+                }
+                else if (turnContext.Activity.Text == "Take a team tour")
+                {
+                    await GenKBot.SendTeamTourCarouselCard(turnContext, cancellationToken);
+                }
+                else if (turnContext.Activity.Text == "Ask an expert")
+                {
+                    await turnContext.SendActivityAsync(MessageFactory.Text("In order for me to consult with an expert, I may need to get in touch with a team...something I can't do right now"), cancellationToken);
+                }
+                else if (turnContext.Activity.Text == "Share app feedback")
+                {
+                    await turnContext.SendActivityAsync(MessageFactory.Text("In order for you to give the necessary feedback, I may need to give you an adaptive card...something I can do soon"), cancellationToken);
+                }
+                else
+                {
+                    await GenKBot.SendUnrecognizedInputMessage(turnContext, cancellationToken);
+                }
             }
         }
 
