@@ -59,7 +59,6 @@ namespace GeneralKnowledgeBot
 
                 var response = await client.SendAsync(request);
                 var responseText = await response.Content.ReadAsStringAsync();
-
                 var responseModel = JsonConvert.DeserializeObject<Response>(responseText);
 
                 if (responseModel != null)
