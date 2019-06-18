@@ -153,18 +153,6 @@
     <value>Give feedback</value>
     <comment>Text for the button to provide the feedback</comment>
   </data>
-  <data name="HighlyRelevantChoiceText" xml:space="preserve">
-    <value>Highly relevant</value>
-    <comment>Text for the choice that represents a high relevancy for the search results</comment>
-  </data>
-  <data name="InputChoiceSetPlaceholderText" xml:space="preserve">
-    <value>Please select the relevancy</value>
-    <comment>Text for the dropdown of choices for the user to select</comment>
-  </data>
-  <data name="NotAtAllRelevantChoiceText" xml:space="preserve">
-    <value>Not at all relevant</value>
-    <comment>Text for the choice that represents no relevancy for the search results</comment>
-  </data>
   <data name="QuestionLineText" xml:space="preserve">
     <value>❓: {0}</value>
     <comment>The line for the question</comment>
@@ -184,10 +172,6 @@
   <data name="ShareAppFeedbackCarouselTitle" xml:space="preserve">
     <value>Share app feedback</value>
     <comment>Title for the third carousel card in the welcome tour</comment>
-  </data>
-  <data name="SomewhatRelevantChoiceText" xml:space="preserve">
-    <value>Somewhat relevant</value>
-    <comment>Text for the choice that represents a moderate relevancy for the search results</comment>
   </data>
   <data name="SubmitFeedbackButtonText" xml:space="preserve">
     <value>Submit</value>

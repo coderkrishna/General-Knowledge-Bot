@@ -75,7 +75,7 @@
         "actions": [
           {
             "type": "Action.OpenUrl",
-            "title": "OK",
+            "title": "%submitFeedbackButtonText%",
             "url": "http://adaptivecards.io"
           }
         ],

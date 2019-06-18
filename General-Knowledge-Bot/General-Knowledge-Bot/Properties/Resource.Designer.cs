@@ -142,33 +142,6 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Highly relevant.
-        /// </summary>
-        public static string HighlyRelevantChoiceText {
-            get {
-                return ResourceManager.GetString("HighlyRelevantChoiceText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please select the relevancy.
-        /// </summary>
-        public static string InputChoiceSetPlaceholderText {
-            get {
-                return ResourceManager.GetString("InputChoiceSetPlaceholderText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Not at all relevant.
-        /// </summary>
-        public static string NotAtAllRelevantChoiceText {
-            get {
-                return ResourceManager.GetString("NotAtAllRelevantChoiceText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ❓: {0}.
         /// </summary>
         public static string QuestionLineText {
@@ -210,15 +183,6 @@ namespace GeneralKnowledgeBot.Properties {
         public static string ShareAppFeedbackCarouselTitle {
             get {
                 return ResourceManager.GetString("ShareAppFeedbackCarouselTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Somewhat relevant.
-        /// </summary>
-        public static string SomewhatRelevantChoiceText {
-            get {
-                return ResourceManager.GetString("SomewhatRelevantChoiceText", resourceCulture);
             }
         }
         
