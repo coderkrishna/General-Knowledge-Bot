@@ -13,5 +13,10 @@ namespace GeneralKnowledgeBot.Models
         /// Gets or sets the application feedback.
         /// </summary>
         public string AppFeedback { get; set; }
+
+        /// <summary>
+        /// Gets or sets the results relevancy.
+        /// </summary>
+        public string ResultsRelevancy { get; set; }
     }
 }

@@ -19,7 +19,7 @@
           "type": "TextBlock",
           "text": "%shareAppFeedbackAdaptiveCardContent%",
           "wrap": true,
-          "maxLines": 2
+          "maxLines": 3
         },
         {
           "type": "Input.Text",
