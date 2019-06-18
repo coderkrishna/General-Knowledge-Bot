@@ -25,9 +25,6 @@
           "type": "Input.Text",
           "id": "appFeedback",
           "separator": true,
-          "validation": {
-            "necessity": "Required"
-          },
           "placeholder": "%shareAppFeedbackInputPlaceholder%",
           "isMultiline": true
         }

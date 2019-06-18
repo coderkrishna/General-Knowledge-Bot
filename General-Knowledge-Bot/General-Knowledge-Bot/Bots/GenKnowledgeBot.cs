@@ -8,11 +8,14 @@ namespace GeneralKnowledgeBot.Bots
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using GeneralKnowledgeBot.Models;
+    using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The class for all the bot interactions.
@@ -43,7 +46,15 @@ namespace GeneralKnowledgeBot.Bots
         {
             if (turnContext.Activity.Value != null && turnContext.Activity.Text == null)
             {
-                await turnContext.SendActivityAsync(MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now"));
+                var obj = JsonConvert.DeserializeObject<Feedback>(turnContext.Activity.Value.ToString());
+                if (obj.AppFeedback != null)
+                {
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Sending app feedback to my team"), cancellationToken);
+                }
+                else
+                {
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now"));
+                }
             }
             else
             {
