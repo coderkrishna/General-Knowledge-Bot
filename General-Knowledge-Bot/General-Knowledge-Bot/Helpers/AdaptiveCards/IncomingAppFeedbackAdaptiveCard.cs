@@ -25,8 +25,11 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// <summary>
         /// Method that returns the JSON string for the adaptive card.
         /// </summary>
+        /// <param name="appFeedback">The detailed feedback about the application.</param>
+        /// <param name="personName">The name of the person that is giving the feedback.</param>
+        /// <param name="personUpn">The email address of the person providing feedback - will be used in the deep link.</param>
         /// <returns>The JSON string.</returns>
-        public static string GetCard()
+        public static string GetCard(string appFeedback, string personName, string personUpn)
         {
             var cardBody = CardTemplate;
             return cardBody;

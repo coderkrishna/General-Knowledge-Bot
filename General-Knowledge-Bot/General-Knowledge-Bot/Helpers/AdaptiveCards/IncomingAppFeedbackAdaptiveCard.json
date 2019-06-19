@@ -36,7 +36,7 @@
     {
       "type": "Action.OpenUrl",
       "title": "Chat with Person",
-      "url": "http://adaptivecards.io"
+      "url": "https://teams.microsoft.com/l/chat/0/0?users=%personUpn%"
     }
   ],
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
