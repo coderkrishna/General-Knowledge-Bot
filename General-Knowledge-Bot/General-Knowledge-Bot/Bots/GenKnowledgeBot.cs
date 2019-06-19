@@ -9,7 +9,6 @@ namespace GeneralKnowledgeBot.Bots
     using System.Threading;
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Models;
-    using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
