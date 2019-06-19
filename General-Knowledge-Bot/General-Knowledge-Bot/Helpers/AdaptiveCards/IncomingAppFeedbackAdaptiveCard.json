@@ -9,7 +9,7 @@
           "separator": true,
           "size": "Medium",
           "weight": "Bolder",
-          "text": "Incoming App Feedback"
+          "text": "%incomingAppFeedbackTitleText%"
         }
       ]
     },
@@ -18,16 +18,17 @@
       "items": [
         {
           "type": "TextBlock",
-          "text": "NameOfPerson shares app feedback. The details are as follows:",
+          "text": "%incomingAppFeedbackSubHeaderText%",
           "wrap": true
         },
         {
           "type": "TextBlock",
-          "text": "Subject: App Feedback"
+          "text": "%incomingAppFeedbackSubjectLine%"
         },
         {
           "type": "TextBlock",
-          "text": "Details: FeedbackDetails"
+          "text": "%incomingAppFeedbackDetailsText%",
+          "wrap": true
         }
       ]
     }

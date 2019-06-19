@@ -31,7 +31,26 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// <returns>The JSON string.</returns>
         public static string GetCard(string appFeedback, string personName, string personUpn)
         {
+            var incomingAppFeedbackTitleText = Resource.IncomingAppFeedbackTitleText;
+            var incomingAppFeedbackSubHeaderText = string.Format(Resource.IncomingAppFeedbackSubHeaderText, personName);
+            var incomingAppFeedbackSubjectLine = Resource.IncomingAppFeedbackSubjectLine;
+            var incomingAppFeedbackDetailsText = string.Format(Resource.IncomingAppFeedbackDetailsText, appFeedback);
+
+            var variablesToValues = new Dictionary<string, string>()
+            {
+                { "incomingAppFeedbackTitleText", incomingAppFeedbackTitleText },
+                { "incomingAppFeedbackSubHeaderText", incomingAppFeedbackSubHeaderText },
+                { "incomingAppFeedbackSubjectLine", incomingAppFeedbackSubjectLine },
+                { "incomingAppFeedbackDetailsText", incomingAppFeedbackDetailsText },
+                { "personUpn", personUpn },
+            };
+
             var cardBody = CardTemplate;
+            foreach (var kvp in variablesToValues)
+            {
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+            }
+
             return cardBody;
         }
     }
