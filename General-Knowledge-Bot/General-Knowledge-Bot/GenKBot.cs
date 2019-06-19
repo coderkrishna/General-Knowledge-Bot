@@ -183,6 +183,23 @@ namespace GeneralKnowledgeBot
         }
 
         /// <summary>
+        /// Method that would fire when the app feedback is to be shared with the team.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="appId">The application Id of the bot.</param>
+        /// <param name="appPassword">The application password of the bot.</param>
+        /// <param name="channelId">The channel Id which the bot would post messages to.</param>
+        /// <param name="appFeedback">The actual feedback that has been captured.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task ShareAppFeedbackWithTeam(ITurnContext turnContext, string appId, string appPassword, string channelId, string appFeedback, CancellationToken cancellationToken)
+        {
+            var connectorClient = new ConnectorClient(new Uri(turnContext.Activity.ServiceUrl), appId, appPassword);
+            var shareAppFeedbackCardAttachment = Cards.CreateShareAppFeedbackAttachment();
+            await NotifyTeam(connectorClient, shareAppFeedbackCardAttachment, channelId, cancellationToken);
+        }
+
+        /// <summary>
         /// Method that fires to welcome a user.
         /// </summary>
         /// <param name="connectorClient">The connector client.</param>
@@ -239,7 +256,7 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution.</returns>
         private static async Task NotifyTeam(ConnectorClient connectorClient, Attachment attachmentToSend, string teamId, CancellationToken cancellationToken)
         {
-            var teamWelcomeActivity = new Activity()
+            var teamMessageActivity = new Activity()
             {
                 Type = ActivityTypes.Message,
                 Conversation = new ConversationAccount()
@@ -252,7 +269,7 @@ namespace GeneralKnowledgeBot
                 },
             };
 
-            await connectorClient.Conversations.SendToConversationAsync(teamId, teamWelcomeActivity, cancellationToken);
+            await connectorClient.Conversations.SendToConversationAsync(teamId, teamMessageActivity, cancellationToken);
         }
     }
 }

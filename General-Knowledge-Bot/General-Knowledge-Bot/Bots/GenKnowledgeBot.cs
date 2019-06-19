@@ -49,10 +49,12 @@ namespace GeneralKnowledgeBot.Bots
                 var obj = JsonConvert.DeserializeObject<Feedback>(turnContext.Activity.Value.ToString());
                 if (obj.AppFeedback != null)
                 {
+                    // TODO #1: await GenKBot.ShareAppFeedbackWithTeam(turnContext, channelId, obj.AppFeedback, cancellationToken);
                     await turnContext.SendActivityAsync(MessageFactory.Text("Sending app feedback to my team"), cancellationToken);
                 }
                 else if (obj.ResultsRelevancy != null)
                 {
+                    // TODO #2: await GenKBot.ShareResultsFeedbackWithTeam(turnContext, channelId, obj.ResultsRelevancy, cancellationToken);
                     await turnContext.SendActivityAsync(MessageFactory.Text("Sending the response feedback to my team"), cancellationToken);
                 }
                 else
