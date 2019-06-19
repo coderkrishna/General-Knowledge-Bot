@@ -18,5 +18,15 @@ namespace GeneralKnowledgeBot.Models
         /// Gets or sets the results relevancy.
         /// </summary>
         public string ResultsRelevancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the first name of the person providing the feedback.
+        /// </summary>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email address of the person providing the feedback.
+        /// </summary>
+        public string EmailAddress { get; set; }
     }
 }

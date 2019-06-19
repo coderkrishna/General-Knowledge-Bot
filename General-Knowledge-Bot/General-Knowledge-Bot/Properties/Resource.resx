@@ -265,4 +265,12 @@
     <value>Please share your thoughts....</value>
     <comment>The placeholder text for the multiline text input for the share app feedback adaptive card</comment>
   </data>
+  <data name="ShareAppFeedbackEmailInputPlaceholder" xml:space="preserve">
+    <value>Please provide your email (i.e. jschmoe@microsoft.com)</value>
+    <comment>The default text for providing the email address</comment>
+  </data>
+  <data name="ShareAppFeedbackFirstNamePlaceholder" xml:space="preserve">
+    <value>Please provide your first name</value>
+    <comment>The text for prompting the user to provide their first name</comment>
+  </data>
 </root>

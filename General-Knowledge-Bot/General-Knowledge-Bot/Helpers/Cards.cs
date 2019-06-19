@@ -179,6 +179,22 @@ namespace GeneralKnowledgeBot.Helpers
         }
 
         /// <summary>
+        /// Generates the adaptive card to be sent to the General channel.
+        /// </summary>
+        /// <returns>The adaptive card attachment.</returns>
+        public static Attachment CreateTeamAppFeedbackAttachment()
+        {
+            var teamAppFeedbackCardString = TeamAppFeedbackAdaptiveCard.GetCard();
+            var teamAppFeedbackAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(teamAppFeedbackCardString),
+            };
+
+            return teamAppFeedbackAttachment;
+        }
+
+        /// <summary>
         /// Generates the Self Assign Case card in the Team welcome tour.
         /// </summary>
         /// <returns>A hero card is returned.</returns>

@@ -195,8 +195,8 @@ namespace GeneralKnowledgeBot
         public static async Task ShareAppFeedbackWithTeam(ITurnContext turnContext, string appId, string appPassword, string channelId, string appFeedback, CancellationToken cancellationToken)
         {
             var connectorClient = new ConnectorClient(new Uri(turnContext.Activity.ServiceUrl), appId, appPassword);
-            var shareAppFeedbackCardAttachment = Cards.CreateShareAppFeedbackAttachment();
-            await NotifyTeam(connectorClient, shareAppFeedbackCardAttachment, channelId, cancellationToken);
+            var teamAppFeedbackCardAttachment = Cards.CreateShareAppFeedbackAttachment();
+            await NotifyTeam(connectorClient, teamAppFeedbackCardAttachment, channelId, cancellationToken);
         }
 
         /// <summary>

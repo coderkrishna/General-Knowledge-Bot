@@ -205,6 +205,24 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide your email (i.e. jschmoe@microsoft.com).
+        /// </summary>
+        public static string ShareAppFeedbackEmailInputPlaceholder {
+            get {
+                return ResourceManager.GetString("ShareAppFeedbackEmailInputPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide your first name.
+        /// </summary>
+        public static string ShareAppFeedbackFirstNamePlaceholder {
+            get {
+                return ResourceManager.GetString("ShareAppFeedbackFirstNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please share your thoughts.....
         /// </summary>
         public static string ShareAppFeedbackInputPlaceholder {
