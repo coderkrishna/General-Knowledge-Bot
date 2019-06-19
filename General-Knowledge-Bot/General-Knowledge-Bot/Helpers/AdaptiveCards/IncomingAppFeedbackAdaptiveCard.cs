@@ -35,6 +35,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var incomingAppFeedbackSubHeaderText = string.Format(Resource.IncomingAppFeedbackSubHeaderText, personName);
             var incomingAppFeedbackSubjectLine = Resource.IncomingAppFeedbackSubjectLine;
             var incomingAppFeedbackDetailsText = string.Format(Resource.IncomingAppFeedbackDetailsText, appFeedback);
+            var incomingAppFeedbackChatWithPersonButtonText = string.Format(Resource.IncomingAppFeedbackChatWithPersonButtonText, personName);
 
             var variablesToValues = new Dictionary<string, string>()
             {
@@ -42,6 +43,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "incomingAppFeedbackSubHeaderText", incomingAppFeedbackSubHeaderText },
                 { "incomingAppFeedbackSubjectLine", incomingAppFeedbackSubjectLine },
                 { "incomingAppFeedbackDetailsText", incomingAppFeedbackDetailsText },
+                { "incomingAppFeedbackChatWithPersonButtonText", incomingAppFeedbackChatWithPersonButtonText },
                 { "personUpn", personUpn },
             };
 

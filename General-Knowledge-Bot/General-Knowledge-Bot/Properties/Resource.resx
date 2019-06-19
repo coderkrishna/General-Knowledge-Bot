@@ -289,4 +289,8 @@
     <value>Incoming App Feedback</value>
     <comment>The title text for the incoming app feedback team adaptive card.</comment>
   </data>
+  <data name="IncomingAppFeedbackChatWithPersonButtonText" xml:space="preserve">
+    <value>Chat with {0}</value>
+    <comment>The button text to initiate a 1:1 chat with the person who submitted the application feedback. The placeholder {0} represents the person who submitted the feedback.</comment>
+  </data>
 </root>

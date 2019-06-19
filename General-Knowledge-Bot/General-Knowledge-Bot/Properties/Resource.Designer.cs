@@ -142,6 +142,15 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chat with {0}.
+        /// </summary>
+        public static string IncomingAppFeedbackChatWithPersonButtonText {
+            get {
+                return ResourceManager.GetString("IncomingAppFeedbackChatWithPersonButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details: {0}.
         /// </summary>
         public static string IncomingAppFeedbackDetailsText {
