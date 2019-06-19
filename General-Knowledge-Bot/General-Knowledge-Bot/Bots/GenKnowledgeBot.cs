@@ -49,8 +49,13 @@ namespace GeneralKnowledgeBot.Bots
                 var obj = JsonConvert.DeserializeObject<Feedback>(turnContext.Activity.Value.ToString());
                 if (obj.AppFeedback != null)
                 {
-                    // TODO #1: await GenKBot.ShareAppFeedbackWithTeam(turnContext, channelId, obj.AppFeedback, cancellationToken);
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Sending app feedback to my team"), cancellationToken);
+                    await GenKBot.ShareAppFeedbackWithTeam(
+                        turnContext,
+                        this.configuration["MicrosoftAppId"],
+                        this.configuration["MicrosoftAppPassword"],
+                        this.configuration["ChannelId"],
+                        obj.AppFeedback,
+                        cancellationToken);
                 }
                 else if (obj.ResultsRelevancy != null)
                 {
