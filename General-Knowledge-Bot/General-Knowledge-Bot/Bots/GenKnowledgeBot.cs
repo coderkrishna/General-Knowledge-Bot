@@ -55,6 +55,8 @@ namespace GeneralKnowledgeBot.Bots
                         this.configuration["MicrosoftAppPassword"],
                         this.configuration["ChannelId"],
                         obj.AppFeedback,
+                        obj.FirstName,
+                        obj.EmailAddress,
                         cancellationToken);
                 }
                 else if (obj.ResultsRelevancy != null)

@@ -181,10 +181,13 @@ namespace GeneralKnowledgeBot.Helpers
         /// <summary>
         /// Generates the adaptive card to be sent to the General channel.
         /// </summary>
+        /// <param name="appFeedback">The application related feedback.</param>
+        /// <param name="personName">The first name of the person giving the feedback.</param>
+        /// <param name="personEmail">The email address of the one who is giving feedback - to be used in the deep link.</param>
         /// <returns>The adaptive card attachment.</returns>
-        public static Attachment CreateTeamAppFeedbackAttachment()
+        public static Attachment CreateTeamAppFeedbackAttachment(string appFeedback, string personName, string personEmail)
         {
-            var teamAppFeedbackCardString = TeamAppFeedbackAdaptiveCard.GetCard();
+            var teamAppFeedbackCardString = IncomingAppFeedbackAdaptiveCard.GetCard(appFeedback, personName, personEmail);
             var teamAppFeedbackAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
