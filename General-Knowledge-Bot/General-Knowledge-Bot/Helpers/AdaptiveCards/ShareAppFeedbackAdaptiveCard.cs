@@ -42,7 +42,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "shareAppFeedbackAdaptiveCardContent", shareAppFeedbackAdaptiveCardContent },
                 { "shareAppFeedbackInputPlaceholder", shareAppFeedbackInputPlaceholder },
                 { "submitFeedbackButtonText", submitFeedbackButtonText },
-                { "shareAppFeedbackEmailInputPlaceholderText", shareAppFeedbackEmailInputPlaceholderText},
+                { "shareAppFeedbackEmailInputPlaceholderText", shareAppFeedbackEmailInputPlaceholderText },
             };
 
             var cardBody = CardTemplate;
