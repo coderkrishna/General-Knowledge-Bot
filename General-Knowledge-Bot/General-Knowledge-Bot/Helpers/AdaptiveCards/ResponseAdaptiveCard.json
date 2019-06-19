@@ -56,7 +56,7 @@
           {
             "type": "Input.Text",
             "placeholder": "Please provide the feedback on the results",
-            "id": "resultsFeedback",
+            "id": "resultsRelevancy",
             "isMultiline": true
           }
         ],

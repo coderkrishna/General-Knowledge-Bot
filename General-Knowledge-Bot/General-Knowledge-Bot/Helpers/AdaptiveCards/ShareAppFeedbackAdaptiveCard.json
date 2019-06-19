@@ -19,15 +19,22 @@
           "type": "TextBlock",
           "text": "%shareAppFeedbackAdaptiveCardContent%",
           "wrap": true,
-          "maxLines": 2
+          "maxLines": 3,
+          "separator": true
+        },
+        {
+          "type": "Input.Text",
+          "id": "firstName", 
+          "placeholder": "%shareAppFeedbackFirstNamePlaceholder%"
+        },
+        {
+          "type": "Input.Text",
+          "id": "emailAddress",
+          "placeholder": "%shareAppFeedbackEmailInputPlaceholder%"
         },
         {
           "type": "Input.Text",
           "id": "appFeedback",
-          "separator": true,
-          "validation": {
-            "necessity": "Required"
-          },
           "placeholder": "%shareAppFeedbackInputPlaceholder%",
           "isMultiline": true
         }

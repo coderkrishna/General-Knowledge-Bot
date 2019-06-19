@@ -142,6 +142,51 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chat with {0}.
+        /// </summary>
+        public static string IncomingAppFeedbackChatWithPersonButtonText {
+            get {
+                return ResourceManager.GetString("IncomingAppFeedbackChatWithPersonButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details: {0}.
+        /// </summary>
+        public static string IncomingAppFeedbackDetailsText {
+            get {
+                return ResourceManager.GetString("IncomingAppFeedbackDetailsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} shares app feedback. The details are as follows:.
+        /// </summary>
+        public static string IncomingAppFeedbackSubHeaderText {
+            get {
+                return ResourceManager.GetString("IncomingAppFeedbackSubHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject: App Feedback.
+        /// </summary>
+        public static string IncomingAppFeedbackSubjectLine {
+            get {
+                return ResourceManager.GetString("IncomingAppFeedbackSubjectLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incoming App Feedback.
+        /// </summary>
+        public static string IncomingAppFeedbackTitleText {
+            get {
+                return ResourceManager.GetString("IncomingAppFeedbackTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ❓: {0}.
         /// </summary>
         public static string QuestionLineText {
@@ -201,6 +246,24 @@ namespace GeneralKnowledgeBot.Properties {
         public static string ShareAppFeedbackCarouselTitle {
             get {
                 return ResourceManager.GetString("ShareAppFeedbackCarouselTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide your email (i.e. jschmoe@microsoft.com).
+        /// </summary>
+        public static string ShareAppFeedbackEmailInputPlaceholder {
+            get {
+                return ResourceManager.GetString("ShareAppFeedbackEmailInputPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide your first name.
+        /// </summary>
+        public static string ShareAppFeedbackFirstNamePlaceholder {
+            get {
+                return ResourceManager.GetString("ShareAppFeedbackFirstNamePlaceholder", resourceCulture);
             }
         }
         

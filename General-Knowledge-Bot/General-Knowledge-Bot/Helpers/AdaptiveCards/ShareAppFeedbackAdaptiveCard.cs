@@ -34,6 +34,8 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var shareAppFeedbackAdaptiveCardContent = Resource.ShareAppFeedbackAdaptiveCardContent;
             var shareAppFeedbackInputPlaceholder = Resource.ShareAppFeedbackInputPlaceholder;
             var submitFeedbackButtonText = Resource.SubmitFeedbackButtonText;
+            var shareAppFeedbackEmailInputPlaceholderText = Resource.ShareAppFeedbackEmailInputPlaceholder;
+            var shareAppFeedbackFirstNamePlaceholder = Resource.ShareAppFeedbackFirstNamePlaceholder;
 
             var variablesToValues = new Dictionary<string, string>()
             {
@@ -41,6 +43,8 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "shareAppFeedbackAdaptiveCardContent", shareAppFeedbackAdaptiveCardContent },
                 { "shareAppFeedbackInputPlaceholder", shareAppFeedbackInputPlaceholder },
                 { "submitFeedbackButtonText", submitFeedbackButtonText },
+                { "shareAppFeedbackEmailInputPlaceholder", shareAppFeedbackEmailInputPlaceholderText },
+                { "shareAppFeedbackFirstNamePlaceholder", shareAppFeedbackFirstNamePlaceholder },
             };
 
             var cardBody = CardTemplate;

@@ -59,16 +59,6 @@ namespace GeneralKnowledgeBot.Helpers
                 {
                     new CardImage("https://banner2.kisspng.com/20180423/eqq/kisspng-programmer-computer-programming-clip-art-bachelor-clipart-5add7deb3384b2.449284371524465131211.jpg"),
                 },
-                Buttons = new List<CardAction>()
-                {
-                    new CardAction()
-                    {
-                        Type = ActionTypes.MessageBack,
-                        Title = Resource.AskAnExpertCarouselButtonText,
-                        DisplayText = Resource.AskAnExpertCarouselButtonText,
-                        Text = Resource.AskAnExpertCarouselButtonText,
-                    },
-                },
             };
 
             return askAHumanCard;
@@ -186,6 +176,25 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return shareAppFeedbackAttachment;
+        }
+
+        /// <summary>
+        /// Generates the adaptive card to be sent to the General channel.
+        /// </summary>
+        /// <param name="appFeedback">The application related feedback.</param>
+        /// <param name="personName">The first name of the person giving the feedback.</param>
+        /// <param name="personEmail">The email address of the one who is giving feedback - to be used in the deep link.</param>
+        /// <returns>The adaptive card attachment.</returns>
+        public static Attachment CreateTeamAppFeedbackAttachment(string appFeedback, string personName, string personEmail)
+        {
+            var teamAppFeedbackCardString = IncomingAppFeedbackAdaptiveCard.GetCard(appFeedback, personName, personEmail);
+            var teamAppFeedbackAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(teamAppFeedbackCardString),
+            };
+
+            return teamAppFeedbackAttachment;
         }
 
         /// <summary>
