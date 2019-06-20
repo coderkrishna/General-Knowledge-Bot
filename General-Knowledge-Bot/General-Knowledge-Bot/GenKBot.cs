@@ -211,16 +211,21 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution.</returns>
         public static async Task UpdatePostFeedbackActivity(ITurnContext turnContext, string appId, string appPassword, CancellationToken cancellationToken)
         {
-            var activityId = turnContext.Activity.Id;
+            var activityId = turnContext.Activity.ReplyToId;
             var conversationId = turnContext.Activity.Conversation.Id;
             var connectorClient = new ConnectorClient(new Uri(turnContext.Activity.ServiceUrl), appId, appPassword);
-            var activity = new Activity()
+
+            var reply = turnContext.Activity.CreateReply();
+            reply.Attachments = new List<Attachment>()
             {
-                Type = ActivityTypes.Message,
-                Text = "Thank you for the feedback, someone will get back to you shortly",
+                new ThumbnailCard()
+                {
+                    Title = "Thank you!",
+                    Text = "Your feedback has been captured. Someone will get back to you shortly.",
+                }.ToAttachment(),
             };
 
-            await connectorClient.Conversations.UpdateActivityAsync(conversationId, activityId, activity, cancellationToken);
+            await connectorClient.Conversations.UpdateActivityAsync(conversationId, activityId, reply, cancellationToken);
         }
 
         /// <summary>
