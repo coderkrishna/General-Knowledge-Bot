@@ -48,6 +48,7 @@ namespace GeneralKnowledgeBot.Bots
                 var obj = JsonConvert.DeserializeObject<Feedback>(turnContext.Activity.Value.ToString());
                 if (obj.AppFeedback != null)
                 {
+                    var feedbackType = "App Feedback";
                     await GenKBot.ShareAppFeedbackWithTeam(
                         turnContext,
                         this.configuration["MicrosoftAppId"],

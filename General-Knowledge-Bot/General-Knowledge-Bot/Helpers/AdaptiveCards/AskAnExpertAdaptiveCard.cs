@@ -39,10 +39,20 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 
             var variablesToValues = new Dictionary<string, string>()
             {
-
+                { "askAnExpertAdaptiveCardTitle", askAnExpertAdaptiveCardTitle },
+                { "askAnExpertAdaptiveCardContent", askAnExpertAdaptiveCardContent },
+                { "askAnExpertAdaptiveCardFirstNamePlaceholder", askAnExpertAdaptiveCardFirstNamePlaceholder },
+                { "askAnExpertAdaptiveCardEmailAddressPlaceholder", askAnExpertAdaptiveCardEmailAddressPlaceholder },
+                { "askAnExpertAdaptiveCardQuestionPlaceholder", askAnExpertAdaptiveCardQuestionPlaceholder },
+                { "submitFeedbackButtonText", submitFeedbackButtonText },
             };
 
             var cardBody = CardTemplate;
+            foreach (var kvp in variablesToValues)
+            {
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+            }
+
             return cardBody;
         }
     }
