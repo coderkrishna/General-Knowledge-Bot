@@ -49,11 +49,12 @@ namespace GeneralKnowledgeBot.Bots
                 if (obj.AppFeedback != null)
                 {
                     var feedbackType = "App Feedback";
-                    await GenKBot.ShareAppFeedbackWithTeam(
+                    await GenKBot.BroadcastTeamMessage(
                         turnContext,
                         this.configuration["MicrosoftAppId"],
                         this.configuration["MicrosoftAppPassword"],
                         this.configuration["ChannelId"],
+                        feedbackType,
                         obj.AppFeedback,
                         obj.FirstName,
                         obj.EmailAddress,
@@ -62,7 +63,6 @@ namespace GeneralKnowledgeBot.Bots
                 }
                 else if (obj.ResultsRelevancy != null)
                 {
-                    // TODO #2: await GenKBot.ShareResultsFeedbackWithTeam(turnContext, channelId, obj.ResultsRelevancy, cancellationToken);
                     await turnContext.SendActivityAsync(MessageFactory.Text("Sending the response feedback to my team"), cancellationToken);
                 }
                 else
