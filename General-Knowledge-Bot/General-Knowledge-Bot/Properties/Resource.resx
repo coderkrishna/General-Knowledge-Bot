@@ -293,4 +293,12 @@
     <value>Chat with {0}</value>
     <comment>The button text to initiate a 1:1 chat with the person who submitted the application feedback. The placeholder {0} represents the person who submitted the feedback.</comment>
   </data>
+  <data name="ThankYouAdaptiveCardContent" xml:space="preserve">
+    <value>Your feedback has been captured and forwarded over to the team. Someone will get back to you in some time.</value>
+    <comment>The content for the thank you adaptive card which is shown whenever there is feedback captured about the app or about a response.</comment>
+  </data>
+  <data name="ThankYouAdaptiveCardTitleText" xml:space="preserve">
+    <value>Thank you!</value>
+    <comment>The title text for the thank you adaptive card which is shown whenever there is feedback captured about the app or about a response.</comment>
+  </data>
 </root>

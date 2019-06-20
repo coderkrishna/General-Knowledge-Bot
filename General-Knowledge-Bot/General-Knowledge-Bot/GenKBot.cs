@@ -215,14 +215,12 @@ namespace GeneralKnowledgeBot
             var conversationId = turnContext.Activity.Conversation.Id;
             var connectorClient = new ConnectorClient(new Uri(turnContext.Activity.ServiceUrl), appId, appPassword);
 
+            var thankYouAdaptiveCardAttachment = Cards.CreateThankYouCardAttachment();
+
             var reply = turnContext.Activity.CreateReply();
             reply.Attachments = new List<Attachment>()
             {
-                new ThumbnailCard()
-                {
-                    Title = "Thank you!",
-                    Text = "Your feedback has been captured. Someone will get back to you shortly.",
-                }.ToAttachment(),
+                thankYouAdaptiveCardAttachment,
             };
 
             await connectorClient.Conversations.UpdateActivityAsync(conversationId, activityId, reply, cancellationToken);
