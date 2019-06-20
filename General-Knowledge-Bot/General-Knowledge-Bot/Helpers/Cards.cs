@@ -226,5 +226,21 @@ namespace GeneralKnowledgeBot.Helpers
 
             return chatWithQuestionerHeroCard;
         }
+
+        /// <summary>
+        /// Generates an adaptive card attachment for the Thank You card.
+        /// </summary>
+        /// <returns>The card to be attached to a message.</returns>
+        public static Attachment CreateThankYouCardAttachment()
+        {
+            var thankYouCardString = ThankYouAdaptiveCard.GetCard();
+            var thankYouCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(thankYouCardString),
+            };
+
+            return thankYouCardAttachment;
+        }
     }
 }
