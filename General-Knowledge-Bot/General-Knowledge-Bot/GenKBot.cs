@@ -157,6 +157,18 @@ namespace GeneralKnowledgeBot
         }
 
         /// <summary>
+        /// Sends the adaptive card form when asking an expert command is sent to the bot.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task SendAskAnExpertCard(ITurnContext turnContext, CancellationToken cancellationToken)
+        {
+            var askAnExpertCardAttachment = Cards.CreateAskAnExpertAttachment();
+            await turnContext.SendActivityAsync(MessageFactory.Attachment(askAnExpertCardAttachment), cancellationToken);
+        }
+
+        /// <summary>
         /// Method that will generate the adaptive card that renders the answer.
         /// </summary>
         /// <param name="turnContext">The turn context.</param>
@@ -217,7 +229,7 @@ namespace GeneralKnowledgeBot
 
             var thankYouAdaptiveCardAttachment = Cards.CreateThankYouCardAttachment();
 
-            var reply = turnContext.Activity.CreateReply();
+            var reply = turnContext.Activity.CreateReply("<at>General</at>");
             reply.Attachments = new List<Attachment>()
             {
                 thankYouAdaptiveCardAttachment,

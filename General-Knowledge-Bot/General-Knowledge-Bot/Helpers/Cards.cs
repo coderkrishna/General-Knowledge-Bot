@@ -242,5 +242,21 @@ namespace GeneralKnowledgeBot.Helpers
 
             return thankYouCardAttachment;
         }
+
+        /// <summary>
+        /// Generates the adaptive card that contains a form for asking an expert.
+        /// </summary>
+        /// <returns>The card to be attached to a message.</returns>
+        public static Attachment CreateAskAnExpertAttachment()
+        {
+            var askAnExpertCardString = AskAnExpertAdaptiveCard.GetCard();
+            var askAnExpertAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(askAnExpertCardString),
+            };
+
+            return askAnExpertAttachment;
+        }
     }
 }

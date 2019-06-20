@@ -71,7 +71,7 @@ namespace GeneralKnowledgeBot.Bots
             }
             else
             {
-                var isQuery = turnContext.Activity.Text.EndsWith('?') || turnContext.Activity.Text.EndsWith('.');
+                var isQuery = turnContext.Activity.Text.Trim().EndsWith('?') || turnContext.Activity.Text.Trim().EndsWith('.');
                 if (isQuery)
                 {
                     var uri = this.configuration["KbHost"] + this.configuration["Service"] + "/knowledgebases/" + this.configuration["KbID"] + "/generateAnswer";
@@ -83,19 +83,19 @@ namespace GeneralKnowledgeBot.Bots
 
                     await GenKBot.GetAnswerFromQnAResource(uri, question, endpointKey, rankerType, turnContext, cancellationToken);
                 }
-                else if (turnContext.Activity.Text == "Take a tour")
+                else if (turnContext.Activity.Text.Trim() == "Take a tour")
                 {
                     await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
                 }
-                else if (turnContext.Activity.Text == "Take a team tour")
+                else if (turnContext.Activity.Text.Trim() == "Take a team tour")
                 {
                     await GenKBot.SendTeamTourCarouselCard(turnContext, cancellationToken);
                 }
-                else if (turnContext.Activity.Text == "Ask an expert")
+                else if (turnContext.Activity.Text.Trim() == "Ask an expert")
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("In order for me to consult with an expert, I may need to get in touch with a team...something I can't do right now"), cancellationToken);
+                    await GenKBot.SendAskAnExpertCard(turnContext, cancellationToken);
                 }
-                else if (turnContext.Activity.Text == "Share app feedback")
+                else if (turnContext.Activity.Text.Trim() == "Share app feedback")
                 {
                     await GenKBot.SendShareAppFeedbackCard(turnContext, cancellationToken);
                 }
