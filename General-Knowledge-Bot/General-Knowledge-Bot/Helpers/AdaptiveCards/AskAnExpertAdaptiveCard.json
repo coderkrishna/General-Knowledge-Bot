@@ -34,7 +34,7 @@
         },
         {
           "type": "Input.Text",
-          "id": "expertQuestion",
+          "id": "questionForExpert",
           "placeholder": "%askAnExpertAdaptiveCardQuestionPlaceholder%",
           "isMultiline": true
         }

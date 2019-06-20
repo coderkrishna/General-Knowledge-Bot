@@ -4,7 +4,9 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
+    using System.Collections.Generic;
     using System.IO;
+    using GeneralKnowledgeBot.Properties;
 
     /// <summary>
     /// The class responsible for the generation of the ask an expert adaptive card.
@@ -28,6 +30,18 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// <returns>JSON string.</returns>
         public static string GetCard()
         {
+            var askAnExpertAdaptiveCardTitle = Resource.AskAnExpertAdaptiveCardTitle;
+            var askAnExpertAdaptiveCardContent = Resource.AskAnExpertAdaptiveCardContent;
+            var askAnExpertAdaptiveCardFirstNamePlaceholder = Resource.AskAnExpertAdaptiveCardFirstNamePlaceholder;
+            var askAnExpertAdaptiveCardEmailAddressPlaceholder = Resource.AskAnExpertAdaptiveCardEmailAddressPlaceholder;
+            var askAnExpertAdaptiveCardQuestionPlaceholder = Resource.AskAnExpertAdaptiveCardQuestionPlaceholder;
+            var submitFeedbackButtonText = Resource.SubmitFeedbackButtonText;
+
+            var variablesToValues = new Dictionary<string, string>()
+            {
+
+            };
+
             var cardBody = CardTemplate;
             return cardBody;
         }

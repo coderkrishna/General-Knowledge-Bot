@@ -301,4 +301,24 @@
     <value>Thank you!</value>
     <comment>The title text for the thank you adaptive card which is shown whenever there is feedback captured about the app or about a response.</comment>
   </data>
+  <data name="AskAnExpertAdaptiveCardContent" xml:space="preserve">
+    <value>Please fill out the form below and I will forward your question to a team of experts. The good thing is that they will get in touch with you soon! 😁</value>
+    <comment>The card content for the adaptive card for asking an expert.</comment>
+  </data>
+  <data name="AskAnExpertAdaptiveCardEmailAddressPlaceholder" xml:space="preserve">
+    <value>Please give your email address</value>
+    <comment>The email field will be helpful in generating the 1:1 chat</comment>
+  </data>
+  <data name="AskAnExpertAdaptiveCardFirstNamePlaceholder" xml:space="preserve">
+    <value>Please give your first name</value>
+    <comment>Having the first name field for experts to engage in a 1:1 chat</comment>
+  </data>
+  <data name="AskAnExpertAdaptiveCardQuestionPlaceholder" xml:space="preserve">
+    <value>Please ask your question...</value>
+    <comment>Having the input field for having the ability for the user to ask the expert the question</comment>
+  </data>
+  <data name="AskAnExpertAdaptiveCardTitle" xml:space="preserve">
+    <value>Ask an Expert</value>
+    <comment>The card title for the adaptive card for asking an expert.</comment>
+  </data>
 </root>
