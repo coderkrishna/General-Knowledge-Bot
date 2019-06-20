@@ -202,6 +202,33 @@ namespace GeneralKnowledgeBot
         }
 
         /// <summary>
+        /// Method that would have to update the activity after the feedback is submitted.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="appId">The app id of the bot.</param>
+        /// <param name="appPassword">The app password of the bot.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task UpdatePostFeedbackActivity(ITurnContext turnContext, string appId, string appPassword, CancellationToken cancellationToken)
+        {
+            var activityId = turnContext.Activity.ReplyToId;
+            var conversationId = turnContext.Activity.Conversation.Id;
+            var connectorClient = new ConnectorClient(new Uri(turnContext.Activity.ServiceUrl), appId, appPassword);
+
+            var reply = turnContext.Activity.CreateReply();
+            reply.Attachments = new List<Attachment>()
+            {
+                new ThumbnailCard()
+                {
+                    Title = "Thank you!",
+                    Text = "Your feedback has been captured. Someone will get back to you shortly.",
+                }.ToAttachment(),
+            };
+
+            await connectorClient.Conversations.UpdateActivityAsync(conversationId, activityId, reply, cancellationToken);
+        }
+
+        /// <summary>
         /// Method that fires to welcome a user.
         /// </summary>
         /// <param name="connectorClient">The connector client.</param>
