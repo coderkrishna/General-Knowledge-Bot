@@ -313,6 +313,24 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your feedback has been captured and forwarded over to the team. Someone will get back to you in some time..
+        /// </summary>
+        public static string ThankYouAdaptiveCardContent {
+            get {
+                return ResourceManager.GetString("ThankYouAdaptiveCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you!.
+        /// </summary>
+        public static string ThankYouAdaptiveCardTitleText {
+            get {
+                return ResourceManager.GetString("ThankYouAdaptiveCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If you want to know more about the bulleted items that have been mentioned, make sure to click on the button that reads _Take a tour_.
         /// </summary>
         public static string TourIntroText {
