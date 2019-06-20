@@ -57,6 +57,7 @@ namespace GeneralKnowledgeBot.Bots
                         obj.FirstName,
                         obj.EmailAddress,
                         cancellationToken);
+                    await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
                 }
                 else if (obj.ResultsRelevancy != null)
                 {
