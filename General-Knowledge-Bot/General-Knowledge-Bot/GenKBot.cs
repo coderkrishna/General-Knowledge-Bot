@@ -202,6 +202,19 @@ namespace GeneralKnowledgeBot
         }
 
         /// <summary>
+        /// Method that would have to update the activity after the feedback is submitted.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="appId">The app id of the bot.</param>
+        /// <param name="appPassword">The app password of the bot.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task UpdatePostFeedbackActivity(ITurnContext turnContext, string appId, string appPassword, CancellationToken cancellationToken)
+        {
+
+        }
+
+        /// <summary>
         /// Method that fires to welcome a user.
         /// </summary>
         /// <param name="connectorClient">The connector client.</param>
