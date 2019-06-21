@@ -45,10 +45,11 @@ namespace GeneralKnowledgeBot.Bots
         {
             if (turnContext.Activity.Value != null && turnContext.Activity.Text == null)
             {
+                string feedbackType;
                 var obj = JsonConvert.DeserializeObject<Feedback>(turnContext.Activity.Value.ToString());
                 if (obj.AppFeedback != null)
                 {
-                    var feedbackType = "App Feedback";
+                    feedbackType = "App Feedback";
                     await GenKBot.BroadcastTeamMessage(
                         turnContext,
                         this.configuration["MicrosoftAppId"],
@@ -63,7 +64,18 @@ namespace GeneralKnowledgeBot.Bots
                 }
                 else if (obj.ResultsRelevancy != null)
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Sending the response feedback to my team"), cancellationToken);
+                    feedbackType = "Results Feedback";
+                    await GenKBot.BroadcastTeamMessage(
+                        turnContext,
+                        this.configuration["MicrosoftAppId"],
+                        this.configuration["MicrosoftAppPassword"],
+                        this.configuration["ChannelId"],
+                        feedbackType,
+                        obj.ResultsRelevancy,
+                        obj.FirstName,
+                        obj.EmailAddress,
+                        cancellationToken);
+                    await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
                 }
                 else
                 {
