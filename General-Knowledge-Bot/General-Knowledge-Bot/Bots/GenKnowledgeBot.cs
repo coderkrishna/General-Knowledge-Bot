@@ -77,9 +77,18 @@ namespace GeneralKnowledgeBot.Bots
                         cancellationToken);
                     await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
                 }
-                else if (obj.QuestionForExpert)
+                else if (obj.QuestionForExpert != null)
                 {
-
+                    await GenKBot.BroadcastTeamMessage(
+                        turnContext,
+                        this.configuration["MicrosoftAppId"],
+                        this.configuration["MicrosoftAppPassword"],
+                        this.configuration["ChannelId"],
+                        "Ask an Expert",
+                        obj.QuestionForExpert,
+                        obj.FirstName,
+                        obj.EmailAddress,
+                        cancellationToken);
                 }
                 else
                 {

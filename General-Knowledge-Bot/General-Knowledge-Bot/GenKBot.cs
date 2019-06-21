@@ -210,8 +210,18 @@ namespace GeneralKnowledgeBot
         public static async Task BroadcastTeamMessage(ITurnContext turnContext, string appId, string appPassword, string channelId, string feedbackType, string appFeedback, string personName, string personEmail, CancellationToken cancellationToken)
         {
             var connectorClient = new ConnectorClient(new Uri(turnContext.Activity.ServiceUrl), appId, appPassword);
-            var teamAppFeedbackCardAttachment = Cards.CreateTeamAppFeedbackAttachment(feedbackType, appFeedback, personName, personEmail);
-            await NotifyTeam(connectorClient, teamAppFeedbackCardAttachment, channelId, cancellationToken);
+            Attachment teamCardAttachment;
+
+            if (feedbackType == "App Feedback" || feedbackType == "Results Feedback")
+            {
+               teamCardAttachment = Cards.CreateTeamAppFeedbackAttachment(feedbackType, appFeedback, personName, personEmail);
+            }
+            else
+            {
+                teamCardAttachment = Cards.CreateTeamExpertAttachment(feedbackType, appFeedback, personName, personEmail);
+            }
+
+            await NotifyTeam(connectorClient, teamCardAttachment, channelId, cancellationToken);
         }
 
         /// <summary>

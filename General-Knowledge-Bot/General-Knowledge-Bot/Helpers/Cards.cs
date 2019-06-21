@@ -4,7 +4,6 @@
 
 namespace GeneralKnowledgeBot.Helpers
 {
-    using System;
     using System.Collections.Generic;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using GeneralKnowledgeBot.Properties;
@@ -258,6 +257,26 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return askAnExpertAttachment;
+        }
+
+        /// <summary>
+        /// Generates the adaptive card for the team which contains the question for the SME.
+        /// </summary>
+        /// <param name="feedbackType">The type of feedback - in this case: Ask an Expert.</param>
+        /// <param name="appFeedback">The actual question for the SME.</param>
+        /// <param name="personName">The name of the person asking the question.</param>
+        /// <param name="personEmail">The email address of the person asking the question - helps with</param>
+        /// <returns>An attachment that will be sent to the SME team.</returns>
+        public static Attachment CreateTeamExpertAttachment(string feedbackType, string appFeedback, string personName, string personEmail)
+        {
+            var incomingExpertInquiryCardString = IncomingExpertEnquiryAdaptiveCard.GetCard(feedbackType, appFeedback, personName, personEmail);
+            var incomingExpertInquiryAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(incomingExpertInquiryCardString),
+            };
+
+            return incomingExpertInquiryAttachment;
         }
     }
 }
