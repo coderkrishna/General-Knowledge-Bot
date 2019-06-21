@@ -24,12 +24,7 @@
         },
         {
           "type": "TextBlock",
-          "text": "%incomingExpertEnquirySubjectLineText%"
-        },
-        {
-          "type": "TextBlock",
-          "text": "%incomingExpertEnquiryDetailsText%",
-          "wrap": true
+          "text": "%incomingExpertEnquiryQuestionText%"
         }
       ]
     }
