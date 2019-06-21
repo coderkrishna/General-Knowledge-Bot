@@ -265,7 +265,7 @@ namespace GeneralKnowledgeBot.Helpers
         /// <param name="feedbackType">The type of feedback - in this case: Ask an Expert.</param>
         /// <param name="appFeedback">The actual question for the SME.</param>
         /// <param name="personName">The name of the person asking the question.</param>
-        /// <param name="personEmail">The email address of the person asking the question - helps with</param>
+        /// <param name="personEmail">The email address of the person asking the question - helps with the chat.</param>
         /// <returns>An attachment that will be sent to the SME team.</returns>
         public static Attachment CreateTeamExpertAttachment(string feedbackType, string appFeedback, string personName, string personEmail)
         {
