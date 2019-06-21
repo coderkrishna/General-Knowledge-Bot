@@ -205,7 +205,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} shares app feedback. The details are as follows:.
+        ///   Looks up a localized string similar to {0} shares {1}. The details are as follows:.
         /// </summary>
         public static string IncomingAppFeedbackSubHeaderText {
             get {
@@ -214,7 +214,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subject: App Feedback.
+        ///   Looks up a localized string similar to Subject: {0}.
         /// </summary>
         public static string IncomingAppFeedbackSubjectLine {
             get {

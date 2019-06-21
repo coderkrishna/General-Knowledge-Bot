@@ -278,12 +278,12 @@
     <comment>The exact details for the incoming app feedback. The placeholder {0} represents the detailed feedback which the user has provided.</comment>
   </data>
   <data name="IncomingAppFeedbackSubHeaderText" xml:space="preserve">
-    <value>{0} shares app feedback. The details are as follows:</value>
-    <comment>The subheader for the incoming app feedback adaptive card. The placeholder {0} represents the name of the person sharing the feedback.</comment>
+    <value>{0} shares {1}. The details are as follows:</value>
+    <comment>The subheader for the incoming app feedback adaptive card. The placeholder {0} represents the name of the person sharing the feedback. The placeholder {1} represents the feedback type.</comment>
   </data>
   <data name="IncomingAppFeedbackSubjectLine" xml:space="preserve">
-    <value>Subject: App Feedback</value>
-    <comment>The subject line for the incoming app feedback adaptive card.</comment>
+    <value>Subject: {0}</value>
+    <comment>The subject line for the incoming app feedback adaptive card - and the placeholder {0} represents the exact feedback type</comment>
   </data>
   <data name="IncomingAppFeedbackTitleText" xml:space="preserve">
     <value>Incoming App Feedback</value>
