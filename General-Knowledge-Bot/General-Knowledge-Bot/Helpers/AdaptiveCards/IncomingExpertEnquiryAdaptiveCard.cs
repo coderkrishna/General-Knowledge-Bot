@@ -20,7 +20,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// </summary>
         static IncomingExpertEnquiryAdaptiveCard()
         {
-            var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "IncomingExpertAdaptiveCard.json");
+            var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "IncomingExpertEnquiryAdaptiveCard.json");
             CardTemplate = File.ReadAllText(cardJsonFilePath);
         }
 
