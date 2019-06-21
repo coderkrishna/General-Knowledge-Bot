@@ -77,6 +77,10 @@ namespace GeneralKnowledgeBot.Bots
                         cancellationToken);
                     await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
                 }
+                else if (obj.QuestionForExpert)
+                {
+
+                }
                 else
                 {
                     await turnContext.SendActivityAsync(MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now"));

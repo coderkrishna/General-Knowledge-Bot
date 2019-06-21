@@ -32,14 +32,15 @@
   ],
   "actions": [
     {
-      "type": "Action.OpenUrl",
-      "title": "%viewFullArticleButtonText%",
-      "url": "http://adaptivecards.io"
-    },
-    {
-      "type": "Action.OpenUrl",
-      "title": "%viewRelatedArticlesButtonText%",
-      "url":  "https://www.google.com"
+      "type": "Action.Submit",
+      "title": "%askAnExpertButtonText%",
+      "data": {
+        "msteams": {
+          "type": "messageBack",
+          "displayText": "%askAnExpertButtonText%",
+          "text": "%askAnExpertButtonText%"
+        }
+      }
     },
     {
       "type": "Action.ShowCard",
