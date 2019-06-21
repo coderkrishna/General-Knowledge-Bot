@@ -4,7 +4,6 @@
 
 namespace GeneralKnowledgeBot.Helpers
 {
-    using System;
     using System.Collections.Generic;
     using GeneralKnowledgeBot.Helpers.AdaptiveCards;
     using GeneralKnowledgeBot.Properties;
@@ -181,13 +180,14 @@ namespace GeneralKnowledgeBot.Helpers
         /// <summary>
         /// Generates the adaptive card to be sent to the General channel.
         /// </summary>
+        /// <param name="feedbackType">The type of feedback.</param>
         /// <param name="appFeedback">The application related feedback.</param>
         /// <param name="personName">The first name of the person giving the feedback.</param>
         /// <param name="personEmail">The email address of the one who is giving feedback - to be used in the deep link.</param>
         /// <returns>The adaptive card attachment.</returns>
-        public static Attachment CreateTeamAppFeedbackAttachment(string appFeedback, string personName, string personEmail)
+        public static Attachment CreateTeamAppFeedbackAttachment(string feedbackType, string appFeedback, string personName, string personEmail)
         {
-            var teamAppFeedbackCardString = IncomingAppFeedbackAdaptiveCard.GetCard(appFeedback, personName, personEmail);
+            var teamAppFeedbackCardString = IncomingAppFeedbackAdaptiveCard.GetCard(feedbackType, appFeedback, personName, personEmail);
             var teamAppFeedbackAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
@@ -241,6 +241,42 @@ namespace GeneralKnowledgeBot.Helpers
             };
 
             return thankYouCardAttachment;
+        }
+
+        /// <summary>
+        /// Generates the adaptive card that contains a form for asking an expert.
+        /// </summary>
+        /// <returns>The card to be attached to a message.</returns>
+        public static Attachment CreateAskAnExpertAttachment()
+        {
+            var askAnExpertCardString = AskAnExpertAdaptiveCard.GetCard();
+            var askAnExpertAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(askAnExpertCardString),
+            };
+
+            return askAnExpertAttachment;
+        }
+
+        /// <summary>
+        /// Generates the adaptive card for the team which contains the question for the SME.
+        /// </summary>
+        /// <param name="feedbackType">The type of feedback - in this case: Ask an Expert.</param>
+        /// <param name="appFeedback">The actual question for the SME.</param>
+        /// <param name="personName">The name of the person asking the question.</param>
+        /// <param name="personEmail">The email address of the person asking the question - helps with the chat.</param>
+        /// <returns>An attachment that will be sent to the SME team.</returns>
+        public static Attachment CreateTeamExpertAttachment(string feedbackType, string appFeedback, string personName, string personEmail)
+        {
+            var incomingExpertInquiryCardString = IncomingExpertEnquiryAdaptiveCard.GetCard(feedbackType, appFeedback, personName, personEmail);
+            var incomingExpertInquiryAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(incomingExpertInquiryCardString),
+            };
+
+            return incomingExpertInquiryAttachment;
         }
     }
 }

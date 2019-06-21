@@ -157,6 +157,18 @@ namespace GeneralKnowledgeBot
         }
 
         /// <summary>
+        /// Sends the adaptive card form when asking an expert command is sent to the bot.
+        /// </summary>
+        /// <param name="turnContext">The turn context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public static async Task SendAskAnExpertCard(ITurnContext turnContext, CancellationToken cancellationToken)
+        {
+            var askAnExpertCardAttachment = Cards.CreateAskAnExpertAttachment();
+            await turnContext.SendActivityAsync(MessageFactory.Attachment(askAnExpertCardAttachment), cancellationToken);
+        }
+
+        /// <summary>
         /// Method that will generate the adaptive card that renders the answer.
         /// </summary>
         /// <param name="turnContext">The turn context.</param>
@@ -189,16 +201,25 @@ namespace GeneralKnowledgeBot
         /// <param name="appId">The application Id of the bot.</param>
         /// <param name="appPassword">The application password of the bot.</param>
         /// <param name="channelId">The channel Id which the bot would post messages to.</param>
+        /// <param name="feedbackType">The type of feedback.</param>
         /// <param name="appFeedback">The actual feedback that has been captured.</param>
         /// <param name="personName">The name of the person providing the feedback.</param>
         /// <param name="personEmail">The email of the person providing the feedback - using for the deep link to a chat.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>A unit of execution.</returns>
-        public static async Task ShareAppFeedbackWithTeam(ITurnContext turnContext, string appId, string appPassword, string channelId, string appFeedback, string personName, string personEmail, CancellationToken cancellationToken)
+        public static async Task BroadcastTeamMessage(ITurnContext turnContext, string appId, string appPassword, string channelId, string feedbackType, string appFeedback, string personName, string personEmail, CancellationToken cancellationToken)
         {
             var connectorClient = new ConnectorClient(new Uri(turnContext.Activity.ServiceUrl), appId, appPassword);
-            var teamAppFeedbackCardAttachment = Cards.CreateTeamAppFeedbackAttachment(appFeedback, personName, personEmail);
-            await NotifyTeam(connectorClient, teamAppFeedbackCardAttachment, channelId, cancellationToken);
+            if (feedbackType == "App Feedback" || feedbackType == "Results Feedback")
+            {
+                var teamCardAttachment = Cards.CreateTeamAppFeedbackAttachment(feedbackType, appFeedback, personName, personEmail);
+                await NotifyTeam(connectorClient, teamCardAttachment, channelId, cancellationToken);
+            }
+            else
+            {
+                var incomingExpertEnquiryAttachment = Cards.CreateTeamExpertAttachment(feedbackType, appFeedback, personName, personEmail);
+                await NotifyTeam(connectorClient, incomingExpertEnquiryAttachment, channelId, cancellationToken);
+            }
         }
 
         /// <summary>

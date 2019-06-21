@@ -1,0 +1,52 @@
+{
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "size": "Medium",
+          "weight": "Bolder",
+          "text": "%askAnExpertAdaptiveCardTitle%"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "%askAnExpertAdaptiveCardContent%",
+          "wrap": true,
+          "maxLines": 3,
+          "separator": true
+        },
+        {
+          "type": "Input.Text",
+          "id": "firstName", 
+          "placeholder": "%askAnExpertAdaptiveCardFirstNamePlaceholder%"
+        },
+        {
+          "type": "Input.Text",
+          "id": "emailAddress",
+          "placeholder": "%askAnExpertAdaptiveCardEmailAddressPlaceholder%"
+        },
+        {
+          "type": "Input.Text",
+          "id": "questionForExpert",
+          "placeholder": "%askAnExpertAdaptiveCardQuestionPlaceholder%",
+          "isMultiline": true
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "%submitFeedbackButtonText%"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}

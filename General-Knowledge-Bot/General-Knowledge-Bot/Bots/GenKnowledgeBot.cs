@@ -45,14 +45,17 @@ namespace GeneralKnowledgeBot.Bots
         {
             if (turnContext.Activity.Value != null && turnContext.Activity.Text == null)
             {
+                string feedbackType;
                 var obj = JsonConvert.DeserializeObject<Feedback>(turnContext.Activity.Value.ToString());
                 if (obj.AppFeedback != null)
                 {
-                    await GenKBot.ShareAppFeedbackWithTeam(
+                    feedbackType = "App Feedback";
+                    await GenKBot.BroadcastTeamMessage(
                         turnContext,
                         this.configuration["MicrosoftAppId"],
                         this.configuration["MicrosoftAppPassword"],
                         this.configuration["ChannelId"],
+                        feedbackType,
                         obj.AppFeedback,
                         obj.FirstName,
                         obj.EmailAddress,
@@ -61,8 +64,32 @@ namespace GeneralKnowledgeBot.Bots
                 }
                 else if (obj.ResultsRelevancy != null)
                 {
-                    // TODO #2: await GenKBot.ShareResultsFeedbackWithTeam(turnContext, channelId, obj.ResultsRelevancy, cancellationToken);
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Sending the response feedback to my team"), cancellationToken);
+                    feedbackType = "Results Feedback";
+                    await GenKBot.BroadcastTeamMessage(
+                        turnContext,
+                        this.configuration["MicrosoftAppId"],
+                        this.configuration["MicrosoftAppPassword"],
+                        this.configuration["ChannelId"],
+                        feedbackType,
+                        obj.ResultsRelevancy,
+                        obj.FirstName,
+                        obj.EmailAddress,
+                        cancellationToken);
+                    await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
+                }
+                else if (obj.QuestionForExpert != null)
+                {
+                    await GenKBot.BroadcastTeamMessage(
+                        turnContext,
+                        this.configuration["MicrosoftAppId"],
+                        this.configuration["MicrosoftAppPassword"],
+                        this.configuration["ChannelId"],
+                        "Ask an Expert",
+                        obj.QuestionForExpert,
+                        obj.FirstName,
+                        obj.EmailAddress,
+                        cancellationToken);
+                    await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
                 }
                 else
                 {
@@ -71,7 +98,7 @@ namespace GeneralKnowledgeBot.Bots
             }
             else
             {
-                var isQuery = turnContext.Activity.Text.EndsWith('?') || turnContext.Activity.Text.EndsWith('.');
+                var isQuery = turnContext.Activity.Text.Trim().EndsWith('?') || turnContext.Activity.Text.Trim().EndsWith('.');
                 if (isQuery)
                 {
                     var uri = this.configuration["KbHost"] + this.configuration["Service"] + "/knowledgebases/" + this.configuration["KbID"] + "/generateAnswer";
@@ -83,19 +110,19 @@ namespace GeneralKnowledgeBot.Bots
 
                     await GenKBot.GetAnswerFromQnAResource(uri, question, endpointKey, rankerType, turnContext, cancellationToken);
                 }
-                else if (turnContext.Activity.Text == "Take a tour")
+                else if (turnContext.Activity.Text.Trim() == "Take a tour")
                 {
                     await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
                 }
-                else if (turnContext.Activity.Text == "Take a team tour")
+                else if (turnContext.Activity.Text.Trim() == "Take a team tour")
                 {
                     await GenKBot.SendTeamTourCarouselCard(turnContext, cancellationToken);
                 }
-                else if (turnContext.Activity.Text == "Ask an expert")
+                else if (turnContext.Activity.Text.Trim() == "Ask an expert")
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("In order for me to consult with an expert, I may need to get in touch with a team...something I can't do right now"), cancellationToken);
+                    await GenKBot.SendAskAnExpertCard(turnContext, cancellationToken);
                 }
-                else if (turnContext.Activity.Text == "Share app feedback")
+                else if (turnContext.Activity.Text.Trim() == "Share app feedback")
                 {
                     await GenKBot.SendShareAppFeedbackCard(turnContext, cancellationToken);
                 }

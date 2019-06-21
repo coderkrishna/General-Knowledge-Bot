@@ -32,14 +32,15 @@
   ],
   "actions": [
     {
-      "type": "Action.OpenUrl",
-      "title": "%viewFullArticleButtonText%",
-      "url": "http://adaptivecards.io"
-    },
-    {
-      "type": "Action.OpenUrl",
-      "title": "%viewRelatedArticlesButtonText%",
-      "url":  "https://www.google.com"
+      "type": "Action.Submit",
+      "title": "%askAnExpertButtonText%",
+      "data": {
+        "msteams": {
+          "type": "messageBack",
+          "displayText": "%askAnExpertButtonText%",
+          "text": "%askAnExpertButtonText%"
+        }
+      }
     },
     {
       "type": "Action.ShowCard",
@@ -50,8 +51,18 @@
         "body": [
           {
             "type": "TextBlock",
-            "text": "%feedbackQuestionText%",
+            "text": "Fill out the necessary fields below to give us the feedback on the results.",
             "wrap": true
+          },
+          {
+            "type": "Input.Text",
+            "id": "firstName",
+            "placeholder": "Please enter your first name"
+          },
+          {
+            "type": "Input.Text",
+            "id": "emailAddress",
+            "placeholder": "Please enter your email address"
           },
           {
             "type": "Input.Text",

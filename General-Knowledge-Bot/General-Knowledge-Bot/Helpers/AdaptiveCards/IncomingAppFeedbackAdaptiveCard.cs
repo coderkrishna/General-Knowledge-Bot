@@ -25,16 +25,17 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// <summary>
         /// Method that returns the JSON string for the adaptive card.
         /// </summary>
+        /// <param name="feedbackType">The feedback type.</param>
         /// <param name="appFeedback">The detailed feedback about the application.</param>
         /// <param name="personName">The name of the person that is giving the feedback.</param>
         /// <param name="personUpn">The email address of the person providing feedback - will be used in the deep link.</param>
         /// <returns>The JSON string.</returns>
-        public static string GetCard(string appFeedback, string personName, string personUpn)
+        public static string GetCard(string feedbackType, string appFeedback, string personName, string personUpn)
         {
-            var incomingAppFeedbackTitleText = Resource.IncomingAppFeedbackTitleText;
-            var incomingAppFeedbackSubHeaderText = string.Format(Resource.IncomingAppFeedbackSubHeaderText, personName);
-            var incomingAppFeedbackSubjectLine = Resource.IncomingAppFeedbackSubjectLine;
-            var incomingAppFeedbackDetailsText = string.Format(Resource.IncomingAppFeedbackDetailsText, appFeedback);
+            var incomingAppFeedbackTitleText = feedbackType;
+            var incomingAppFeedbackSubHeaderText = string.Format(Resource.IncomingAppFeedbackSubHeaderText, personName, feedbackType);
+            var incomingAppFeedbackSubjectLine = string.Format(Resource.IncomingAppFeedbackSubjectLine, feedbackType);
+            var incomingAppFeedbackDetailsText = string.Format(Resource.IncomingAppFeedbackDetailsText, appFeedback, feedbackType);
             var incomingAppFeedbackChatWithPersonButtonText = string.Format(Resource.IncomingAppFeedbackChatWithPersonButtonText, personName);
 
             var variablesToValues = new Dictionary<string, string>()

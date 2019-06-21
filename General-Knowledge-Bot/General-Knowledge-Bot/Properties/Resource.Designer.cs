@@ -70,6 +70,51 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please fill out the form below and I will forward your question to a team of experts. The good thing is that they will get in touch with you soon! 😁.
+        /// </summary>
+        public static string AskAnExpertAdaptiveCardContent {
+            get {
+                return ResourceManager.GetString("AskAnExpertAdaptiveCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please give your email address.
+        /// </summary>
+        public static string AskAnExpertAdaptiveCardEmailAddressPlaceholder {
+            get {
+                return ResourceManager.GetString("AskAnExpertAdaptiveCardEmailAddressPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please give your first name.
+        /// </summary>
+        public static string AskAnExpertAdaptiveCardFirstNamePlaceholder {
+            get {
+                return ResourceManager.GetString("AskAnExpertAdaptiveCardFirstNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please ask your question....
+        /// </summary>
+        public static string AskAnExpertAdaptiveCardQuestionPlaceholder {
+            get {
+                return ResourceManager.GetString("AskAnExpertAdaptiveCardQuestionPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask an Expert.
+        /// </summary>
+        public static string AskAnExpertAdaptiveCardTitle {
+            get {
+                return ResourceManager.GetString("AskAnExpertAdaptiveCardTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ask an expert.
         /// </summary>
         public static string AskAnExpertCarouselButtonText {
@@ -160,7 +205,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} shares app feedback. The details are as follows:.
+        ///   Looks up a localized string similar to {0} shares {1}. The details are as follows:.
         /// </summary>
         public static string IncomingAppFeedbackSubHeaderText {
             get {
@@ -169,7 +214,7 @@ namespace GeneralKnowledgeBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subject: App Feedback.
+        ///   Looks up a localized string similar to Subject: {0}.
         /// </summary>
         public static string IncomingAppFeedbackSubjectLine {
             get {

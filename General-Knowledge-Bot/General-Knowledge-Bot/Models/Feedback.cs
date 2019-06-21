@@ -20,6 +20,11 @@ namespace GeneralKnowledgeBot.Models
         public string ResultsRelevancy { get; set; }
 
         /// <summary>
+        /// Gets or sets the question for the expert being asked by the user.
+        /// </summary>
+        public string QuestionForExpert { get; set; }
+
+        /// <summary>
         /// Gets or sets the first name of the person providing the feedback.
         /// </summary>
         public string FirstName { get; set; }
