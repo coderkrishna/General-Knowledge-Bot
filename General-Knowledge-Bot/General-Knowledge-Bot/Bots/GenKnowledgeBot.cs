@@ -79,16 +79,17 @@ namespace GeneralKnowledgeBot.Bots
                 }
                 else if (obj.QuestionForExpert != null)
                 {
-                    await GenKBot.BroadcastTeamMessage(
-                        turnContext,
-                        this.configuration["MicrosoftAppId"],
-                        this.configuration["MicrosoftAppPassword"],
-                        this.configuration["ChannelId"],
-                        "Ask an Expert",
-                        obj.QuestionForExpert,
-                        obj.FirstName,
-                        obj.EmailAddress,
-                        cancellationToken);
+                    // await GenKBot.BroadcastTeamMessage(
+                    // turnContext,
+                    // this.configuration["MicrosoftAppId"],
+                    // this.configuration["MicrosoftAppPassword"],
+                    // this.configuration["ChannelId"],
+                    // "Ask an Expert",
+                    // obj.QuestionForExpert,
+                    // obj.FirstName,
+                    // obj.EmailAddress,
+                    // cancellationToken);
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now"));
                 }
                 else
                 {

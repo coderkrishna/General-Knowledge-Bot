@@ -33,7 +33,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         public static string GetCard(string feedbackType, string appFeedback, string personName, string personUpn)
         {
             var incomingAppFeedbackTitleText = feedbackType;
-            var incomingAppFeedbackSubHeaderText = string.Format(Resource.IncomingAppFeedbackSubHeaderText, personName);
+            var incomingAppFeedbackSubHeaderText = string.Format(Resource.IncomingAppFeedbackSubHeaderText, personName, feedbackType);
             var incomingAppFeedbackSubjectLine = string.Format(Resource.IncomingAppFeedbackSubjectLine, feedbackType);
             var incomingAppFeedbackDetailsText = string.Format(Resource.IncomingAppFeedbackDetailsText, appFeedback, feedbackType);
             var incomingAppFeedbackChatWithPersonButtonText = string.Format(Resource.IncomingAppFeedbackChatWithPersonButtonText, personName);
