@@ -24,7 +24,8 @@
         },
         {
           "type": "TextBlock",
-          "text": "%incomingExpertEnquiryQuestionText%"
+          "text": "%incomingExpertEnquiryQuestionText%",
+          "wrap": true
         }
       ]
     }
