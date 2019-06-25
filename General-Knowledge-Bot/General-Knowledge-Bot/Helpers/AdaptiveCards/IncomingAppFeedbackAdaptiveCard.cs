@@ -16,6 +16,9 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
     {
         private static readonly string CardTemplate;
 
+        /// <summary>
+        /// Initializes static members of the <see cref="IncomingAppFeedbackAdaptiveCard"/> class.
+        /// </summary>
         static IncomingAppFeedbackAdaptiveCard()
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "IncomingAppFeedbackAdaptiveCard.json");

@@ -32,17 +32,6 @@
   ],
   "actions": [
     {
-      "type": "Action.Submit",
-      "title": "%askAnExpertButtonText%",
-      "data": {
-        "msteams": {
-          "type": "messageBack",
-          "displayText": "%askAnExpertButtonText%",
-          "text": "%askAnExpertButtonText%"
-        }
-      }
-    },
-    {
       "type": "Action.ShowCard",
       "title": "%giveFeedbackButtonText%",
       "card": {
