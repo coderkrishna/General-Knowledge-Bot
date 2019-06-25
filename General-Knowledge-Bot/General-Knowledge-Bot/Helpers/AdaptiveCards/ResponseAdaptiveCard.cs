@@ -40,7 +40,6 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var giveFeedbackButtonText = Resource.GiveFeedbackButtonText;
             var feedbackQuestionText = Resource.FeedbackQuestionText;
             var submitFeedbackButtonText = Resource.SubmitFeedbackButtonText;
-            var askAnExpertButtonText = Resource.AskAnExpertCarouselButtonText;
 
             var variablesToValues = new Dictionary<string, string>()
             {
@@ -52,7 +51,6 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
                 { "giveFeedbackButtonText", giveFeedbackButtonText },
                 { "feedbackQuestionText", feedbackQuestionText },
                 { "submitFeedbackButtonText", submitFeedbackButtonText },
-                { "askAnExpertButtonText", askAnExpertButtonText },
             };
 
             var cardBody = CardTemplate;

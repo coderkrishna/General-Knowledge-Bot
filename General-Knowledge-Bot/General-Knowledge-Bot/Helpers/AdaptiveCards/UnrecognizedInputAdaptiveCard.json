@@ -64,6 +64,17 @@
           "text": "%welcomeMessageButtonText%"
         }
       }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "%askAnExpertButtonText%",
+      "data": {
+        "msteams": {
+          "type": "messageBack",
+          "displayText": "%askAnExpertButtonText%",
+          "text": "%askAnExpertButtonText%"
+        }
+      }
     }
   ],
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
