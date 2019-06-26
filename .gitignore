@@ -283,3 +283,4 @@ General-Knowledge-Bot/General-Knowledge-Bot/obj/General-Knowledge-Bot.csproj.nug
 General-Knowledge-Bot/General-Knowledge-Bot/obj/General-Knowledge-Bot.csproj.nuget.g.props
 General-Knowledge-Bot/General-Knowledge-Bot/obj/project.assets.json
 General-Knowledge-Bot/.vs/General-Knowledge-Bot/v16/.suo
+*.pubxml
