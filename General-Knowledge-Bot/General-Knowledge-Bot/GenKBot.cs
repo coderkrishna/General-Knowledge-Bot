@@ -304,20 +304,27 @@ namespace GeneralKnowledgeBot
         /// <returns>A unit of execution.</returns>
         private static async Task NotifyTeam(ConnectorClient connectorClient, Attachment attachmentToSend, string teamId, CancellationToken cancellationToken)
         {
-            var teamMessageActivity = new Activity()
+            try
             {
-                Type = ActivityTypes.Message,
-                Conversation = new ConversationAccount()
+                var teamMessageActivity = new Activity()
                 {
-                    Id = teamId,
-                },
-                Attachments = new List<Attachment>()
+                    Type = ActivityTypes.Message,
+                    Conversation = new ConversationAccount()
+                    {
+                        Id = teamId,
+                    },
+                    Attachments = new List<Attachment>()
                 {
                     attachmentToSend,
                 },
-            };
+                };
 
-            await connectorClient.Conversations.SendToConversationAsync(teamId, teamMessageActivity, cancellationToken);
+                await connectorClient.Conversations.SendToConversationAsync(teamId, teamMessageActivity, cancellationToken);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
