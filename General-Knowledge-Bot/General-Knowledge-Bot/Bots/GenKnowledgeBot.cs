@@ -9,6 +9,7 @@ namespace GeneralKnowledgeBot.Bots
     using System.Threading;
     using System.Threading.Tasks;
     using GeneralKnowledgeBot.Models;
+    using Microsoft.ApplicationInsights;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
@@ -22,17 +23,19 @@ namespace GeneralKnowledgeBot.Bots
     public class GenKnowledgeBot : ActivityHandler
     {
         private readonly IConfiguration configuration;
-        private readonly ILogger<GenKnowledgeBot> logger;
+        private readonly TelemetryClient telemetryClient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenKnowledgeBot"/> class.
         /// </summary>
         /// <param name="configuration">The configuration - accessing appsettings.json file.</param>
-        /// <param name="logger">The logging mechanism.</param>
-        public GenKnowledgeBot(IConfiguration configuration, ILogger<GenKnowledgeBot> logger)
+        /// <param name="telemetryClient">ApplicationInsights DI.</param>
+        public GenKnowledgeBot(
+            IConfiguration configuration,
+            TelemetryClient telemetryClient)
         {
             this.configuration = configuration;
-            this.logger = logger;
+            this.telemetryClient = telemetryClient;
         }
 
         /// <summary>
@@ -60,7 +63,11 @@ namespace GeneralKnowledgeBot.Bots
                         obj.FirstName,
                         obj.EmailAddress,
                         cancellationToken);
-                    await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
+                    await GenKBot.UpdatePostFeedbackActivity(
+                        turnContext,
+                        this.configuration["MicrosoftAppId"],
+                        this.configuration["MicrosoftAppPassword"],
+                        cancellationToken);
                 }
                 else if (obj.ResultsRelevancy != null)
                 {
@@ -75,7 +82,11 @@ namespace GeneralKnowledgeBot.Bots
                         obj.FirstName,
                         obj.EmailAddress,
                         cancellationToken);
-                    await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
+                    await GenKBot.UpdatePostFeedbackActivity(
+                        turnContext,
+                        this.configuration["MicrosoftAppId"],
+                        this.configuration["MicrosoftAppPassword"],
+                        cancellationToken);
                 }
                 else if (obj.QuestionForExpert != null)
                 {
@@ -89,11 +100,16 @@ namespace GeneralKnowledgeBot.Bots
                         obj.FirstName,
                         obj.EmailAddress,
                         cancellationToken);
-                    await GenKBot.UpdatePostFeedbackActivity(turnContext, this.configuration["MicrosoftAppId"], this.configuration["MicrosoftAppPassword"], cancellationToken);
+                    await GenKBot.UpdatePostFeedbackActivity(
+                        turnContext,
+                        this.configuration["MicrosoftAppId"],
+                        this.configuration["MicrosoftAppPassword"],
+                        cancellationToken);
                 }
                 else
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now"));
+                    await turnContext.SendActivityAsync(
+                        MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now"));
                 }
             }
             else
@@ -106,7 +122,7 @@ namespace GeneralKnowledgeBot.Bots
                     var rankerType = this.configuration["RankerType"];
                     var endpointKey = this.configuration["EndpointKey"];
 
-                    this.logger.LogInformation("Calling QnA Maker");
+                    this.telemetryClient.TrackTrace("Calling QnAMaker");
 
                     await GenKBot.GetAnswerFromQnAResource(uri, question, endpointKey, rankerType, turnContext, cancellationToken);
                 }
@@ -140,14 +156,17 @@ namespace GeneralKnowledgeBot.Bots
         /// <param name="turnContext">The current turn/execution flow.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>A unit of execution.</returns>
-        protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        protected override async Task OnMembersAddedAsync(
+            IList<ChannelAccount> membersAdded,
+            ITurnContext<IConversationUpdateActivity> turnContext,
+            CancellationToken cancellationToken)
         {
             var teamId = turnContext.Activity.ChannelData["team"]["id"].ToString();
             var tenantId = turnContext.Activity.ChannelData["tenant"]["id"].ToString();
             var botDisplayName = this.configuration["BotDisplayName"];
             var teamName = turnContext.Activity.ChannelData["team"]["name"].ToString();
 
-            this.logger.LogInformation("Team members are being added");
+            this.telemetryClient.TrackTrace("Team members are being added");
 
             using (var connectorClient = new ConnectorClient(
                 new Uri(turnContext.Activity?.ServiceUrl),
@@ -158,12 +177,19 @@ namespace GeneralKnowledgeBot.Bots
                 {
                     if (member.Id != turnContext.Activity.Recipient.Id)
                     {
-                        this.logger.LogInformation($"Welcoming the user: {member.Id}");
-                        await GenKBot.SendUserWelcomeMessage(connectorClient, member.Id, teamId, tenantId, turnContext.Activity.Recipient.Id, botDisplayName, cancellationToken);
+                        this.telemetryClient.TrackTrace($"Welcoming the user: {member.Id}");
+                        await GenKBot.SendUserWelcomeMessage(
+                            connectorClient,
+                            member.Id,
+                            teamId,
+                            tenantId,
+                            turnContext.Activity.Recipient.Id,
+                            botDisplayName,
+                            cancellationToken);
                     }
                     else
                     {
-                        this.logger.LogInformation($"Welcoming the team: {teamId}");
+                        this.telemetryClient.TrackTrace($"Welcoming the team: {teamId}");
                         await GenKBot.SendTeamWelcomeMessage(connectorClient, teamName, teamId, botDisplayName, cancellationToken);
                     }
                 }
@@ -176,10 +202,12 @@ namespace GeneralKnowledgeBot.Bots
         /// <param name="turnContext">The turn context.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>A unit of execution.</returns>
-        protected override async Task OnConversationUpdateActivityAsync(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        protected override async Task OnConversationUpdateActivityAsync(
+            ITurnContext<IConversationUpdateActivity> turnContext,
+            CancellationToken cancellationToken)
         {
             var eventType = turnContext.Activity.ChannelData["eventType"].ToString();
-            this.logger.LogInformation($"Event has been found: {eventType}");
+            this.telemetryClient.TrackTrace($"Event has been found: {eventType}");
 
             if (eventType == "teamMemberAdded")
             {
