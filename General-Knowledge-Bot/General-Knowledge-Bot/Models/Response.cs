@@ -13,6 +13,6 @@ namespace GeneralKnowledgeBot.Models
         /// <summary>
         /// Gets or sets the answers that are returned from the KB.
         /// </summary>
-        public Answer[] answers { get; set; }
+        public QnaAnswer[] Answers { get; set; }
     }
 }

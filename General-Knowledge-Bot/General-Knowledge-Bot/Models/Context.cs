@@ -4,14 +4,17 @@
 
 namespace GeneralKnowledgeBot.Models
 {
+    using Newtonsoft.Json;
+
     /// <summary>
     /// Represents the Context navigation property.
     /// </summary>
     public class Context
     {
         /// <summary>
-        /// Gets or sets a value isContextOnly.
+        /// Gets or sets a value indicating whether isContextOnly.
         /// </summary>
-        public bool isContextOnly { get; set; }
+        [JsonProperty("isContextOnly")]
+        public bool IsContextOnly { get; set; }
     }
 }
