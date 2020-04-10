@@ -4,6 +4,7 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using GeneralKnowledgeBot.Properties;
@@ -11,14 +12,16 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
     /// <summary>
     /// The class responsible for having the Thank You adaptive card generated.
     /// </summary>
-    public class ThankYouAdaptiveCard
+    public static class ThankYouAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
         /// Initializes static members of the <see cref="ThankYouAdaptiveCard"/> class.
         /// </summary>
+#pragma warning disable CA1810 // Initialize reference type static fields inline
         static ThankYouAdaptiveCard()
+#pragma warning restore CA1810 // Initialize reference type static fields inline
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "ThankYouAdaptiveCard.json");
             CardTemplate = File.ReadAllText(cardJsonFilePath);
@@ -44,7 +47,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var cardBody = CardTemplate;
             foreach (var kvp in variablesToValues)
             {
-                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value, StringComparison.InvariantCultureIgnoreCase);
             }
 
             return cardBody;

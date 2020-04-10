@@ -4,21 +4,25 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
+    using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using GeneralKnowledgeBot.Properties;
 
     /// <summary>
     /// The class responsible generating the adaptive card representing asking an expert.
     /// </summary>
-    public class IncomingExpertEnquiryAdaptiveCard
+    public static class IncomingExpertEnquiryAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
         /// Initializes static members of the <see cref="IncomingExpertEnquiryAdaptiveCard"/> class.
         /// </summary>
+#pragma warning disable CA1810 // Initialize reference type static fields inline
         static IncomingExpertEnquiryAdaptiveCard()
+#pragma warning restore CA1810 // Initialize reference type static fields inline
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "IncomingExpertEnquiryAdaptiveCard.json");
             CardTemplate = File.ReadAllText(cardJsonFilePath);
@@ -27,7 +31,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// <summary>
         /// Method that would return the JSON string.
         /// </summary>
-        /// <param name="feedbackType">The feedback type - in this case, it's Ask an Expert</param>
+        /// <param name="feedbackType">The feedback type - in this case, it's Ask an Expert.</param>
         /// <param name="questionForExpert">The question being asked to the SME team.</param>
         /// <param name="personName">The person asking the question.</param>
         /// <param name="personEmail">The email of the person who asked the question.</param>
@@ -38,7 +42,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var incomingExpertEnquirySubtitleText = $"{personName} has asked a question, it's important to take a look at their inquiry!";
             var incomingExpertEnquiryQuestionText = $"Question: {questionForExpert}";
             var personUpn = personEmail;
-            var incomingExpertEnquiryChatWithPersonButtonText = string.Format(Resource.IncomingAppFeedbackChatWithPersonButtonText, personName);
+            var incomingExpertEnquiryChatWithPersonButtonText = string.Format(CultureInfo.InvariantCulture, Resource.IncomingAppFeedbackChatWithPersonButtonText, personName);
 
             var variablesToValues = new Dictionary<string, string>()
             {
@@ -52,7 +56,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var cardBody = CardTemplate;
             foreach (var kvp in variablesToValues)
             {
-                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value, StringComparison.InvariantCultureIgnoreCase);
             }
 
             return cardBody;

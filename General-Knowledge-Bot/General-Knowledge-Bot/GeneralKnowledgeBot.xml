@@ -1,0 +1,873 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GeneralKnowledgeBot</name>
+    </assembly>
+    <members>
+        <member name="T:GeneralKnowledgeBot.Bots.GenKnowledgeBot">
+            <summary>
+            The class for all the bot interactions.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Bots.GenKnowledgeBot.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.ApplicationInsights.TelemetryClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GeneralKnowledgeBot.Bots.GenKnowledgeBot"/> class.
+            </summary>
+            <param name="configuration">The configuration - accessing appsettings.json file.</param>
+            <param name="telemetryClient">ApplicationInsights DI.</param>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Bots.GenKnowledgeBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
+            <summary>
+            The method that gets invoked each time there is a message that is coming in.
+            </summary>
+            <param name="turnContext">The current turn.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Bots.GenKnowledgeBot.OnMembersAddedAsync(System.Collections.Generic.IList{Microsoft.Bot.Schema.ChannelAccount},Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
+            <summary>
+            The method that gets called when the bot is first opened after installation.
+            </summary>
+            <param name="membersAdded">The account that has been eiter added or interacting with the bot.</param>
+            <param name="turnContext">The current turn/execution flow.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Bots.GenKnowledgeBot.OnConversationUpdateActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
+            <summary>
+            Method which fires at the time there is a conversation update.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.ConfigurationCredentialProvider">
+            <summary>
+            The credential provider for the application.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.ConfigurationCredentialProvider.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GeneralKnowledgeBot.ConfigurationCredentialProvider"/> class.
+            </summary>
+            <param name="configuration">Key/Value application settings.</param>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Controllers.BotController">
+            <summary>
+            This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot
+            implementation at runtime.Multiple different IBot implementations running at different endpoints can be
+            achieved by specifying a more specific type for the bot constructor argument.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Controllers.BotController.#ctor(Microsoft.Bot.Builder.Integration.AspNet.Core.IBotFrameworkHttpAdapter,Microsoft.Bot.Builder.IBot)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GeneralKnowledgeBot.Controllers.BotController"/> class.
+            </summary>
+            <param name="adapter">The bot framework adapter.</param>
+            <param name="bot">The bot implementation.</param>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Controllers.BotController.PostAsync">
+            <summary>
+            Main point of execution for the bot code.
+            </summary>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.GenKBot">
+            <summary>
+            Implements the core logic of the General Knowledge Bot.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.SendTeamWelcomeMessage(Microsoft.Bot.Connector.ConnectorClient,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Having the method to send the welcome messge for the user.
+            </summary>
+            <param name="connectorClient">The turn context.</param>
+            <param name="teamName">The name of the team.</param>
+            <param name="teamId">The team id.</param>
+            <param name="botDisplayName">The bot display name (what name will show up in Teams).</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution that is tracked.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.GetAnswerFromQnAResource(System.String,System.String,System.String,System.String,Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
+            <summary>
+            Method that will be able to get an answer from the QnAMaker resource.
+            </summary>
+            <param name="uri">The request uri.</param>
+            <param name="question">The question that is asked to the bot.</param>
+            <param name="endpointKey">The QnAMaker endpoint key.</param>
+            <param name="rankerType">The ranker type.</param>
+            <param name="turnContext">The turn context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.SendUserWelcomeMessage(Microsoft.Bot.Connector.ConnectorClient,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Method to send the proactive welcome message to the user.
+            </summary>
+            <param name="connectorClient">The turn connector client - make sure to have the MicrosoftAppId and MicrosoftAppPassword fields filled in.</param>
+            <param name="memberAddedId">The id of the newly added member.</param>
+            <param name="teamId">The team id.</param>
+            <param name="tenantId">The tenant id.</param>
+            <param name="botId">The bot id.</param>
+            <param name="botDisplayName">The bot display name.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.SendTourCarouselCard(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
+            <summary>
+            Method that will send the tour carousel.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution that is tracked.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.SendTeamTourCarouselCard(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
+            <summary>
+            Method that will send the carousel tour in the context of a team.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.SendShareAppFeedbackCard(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
+            <summary>
+            Method to send the adaptive card to share the app feedback.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.SendAskAnExpertCard(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
+            <summary>
+            Sends the adaptive card form when asking an expert command is sent to the bot.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.SendAnswerMessage(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken,System.String,System.String)">
+            <summary>
+            Method that will generate the adaptive card that renders the answer.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="answer">The answer that is retrieved from the KB.</param>
+            <param name="question">The question that the user has asked the bot.</param>
+            <returns>A unit of execution that is tracked.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.SendUnrecognizedInputMessage(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
+            <summary>
+            Method that will generate the adaptive card which renders when there is an unrecognized input.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution that is tracked.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.BroadcastTeamMessage(Microsoft.Bot.Builder.ITurnContext,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Method that would fire when the app feedback is to be shared with the team.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="appId">The application Id of the bot.</param>
+            <param name="appPassword">The application password of the bot.</param>
+            <param name="channelId">The channel Id which the bot would post messages to.</param>
+            <param name="feedbackType">The type of feedback.</param>
+            <param name="appFeedback">The actual feedback that has been captured.</param>
+            <param name="personName">The name of the person providing the feedback.</param>
+            <param name="personEmail">The email of the person providing the feedback - using for the deep link to a chat.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.UpdatePostFeedbackActivity(Microsoft.Bot.Builder.ITurnContext,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Method that would have to update the activity after the feedback is submitted.
+            </summary>
+            <param name="turnContext">The turn context.</param>
+            <param name="appId">The app id of the bot.</param>
+            <param name="appPassword">The app password of the bot.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.NotifyUser(Microsoft.Bot.Connector.ConnectorClient,Microsoft.Bot.Schema.ChannelAccount,Microsoft.Bot.Schema.Attachment,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Method that executes to welcome a user.
+            </summary>
+            <param name="connectorClient">The connector client.</param>
+            <param name="userThatJustJoined">The newly added member.</param>
+            <param name="attachmentToSend">The attachment to send in the message.</param>
+            <param name="botId">The bot id.</param>
+            <param name="tenantId">The tenant id.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.GenKBot.NotifyTeam(Microsoft.Bot.Connector.ConnectorClient,Microsoft.Bot.Schema.Attachment,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Method that will formally notify the team.
+            </summary>
+            <param name="connectorClient">The connector client.</param>
+            <param name="attachmentToSend">The attachment to be sent.</param>
+            <param name="teamId">The team id.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.AskAnExpertAdaptiveCard">
+            <summary>
+            The class responsible for the generation of the ask an expert adaptive card.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.AskAnExpertAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.AskAnExpertAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.AskAnExpertAdaptiveCard.GetCard">
+            <summary>
+            Method that will return the JSON string of the adaptive card.
+            </summary>
+            <returns>JSON string.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.IncomingAppFeedbackAdaptiveCard">
+            <summary>
+            This class will be generating the adaptive card to be sent to the General channel of
+            the SME team relating to the application feedback.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.IncomingAppFeedbackAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.IncomingAppFeedbackAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.IncomingAppFeedbackAdaptiveCard.GetCard(System.String,System.String,System.String,System.String)">
+            <summary>
+            Method that returns the JSON string for the adaptive card.
+            </summary>
+            <param name="feedbackType">The feedback type.</param>
+            <param name="appFeedback">The detailed feedback about the application.</param>
+            <param name="personName">The name of the person that is giving the feedback.</param>
+            <param name="personUpn">The email address of the person providing feedback - will be used in the deep link.</param>
+            <returns>The JSON string.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.IncomingExpertEnquiryAdaptiveCard">
+            <summary>
+            The class responsible generating the adaptive card representing asking an expert.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.IncomingExpertEnquiryAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.IncomingExpertEnquiryAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.IncomingExpertEnquiryAdaptiveCard.GetCard(System.String,System.String,System.String,System.String)">
+            <summary>
+            Method that would return the JSON string.
+            </summary>
+            <param name="feedbackType">The feedback type - in this case, it's Ask an Expert.</param>
+            <param name="questionForExpert">The question being asked to the SME team.</param>
+            <param name="personName">The person asking the question.</param>
+            <param name="personEmail">The email of the person who asked the question.</param>
+            <returns>The card JSON string.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.ResponseAdaptiveCard">
+            <summary>
+            The class to build the adaptive card for the response.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.ResponseAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.ResponseAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.ResponseAdaptiveCard.GetCard(System.String,System.String)">
+            <summary>
+            Creates the necessary JSON string for the adaptive card to be shown in the response.
+            </summary>
+            <param name="question">The question that is asked from the user to the bot.</param>
+            <param name="answer">The answer that is returned after the query against QnAMaker is made.</param>
+            <returns>A JSON string.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.ShareAppFeedbackAdaptiveCard">
+            <summary>
+            The class for generating the share app feedback adaptive card.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.ShareAppFeedbackAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.ShareAppFeedbackAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.ShareAppFeedbackAdaptiveCard.GetCard">
+            <summary>
+            Generates the JSON string for the adaptive card.
+            </summary>
+            <returns>A JSON string.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.ThankYouAdaptiveCard">
+            <summary>
+            The class responsible for having the Thank You adaptive card generated.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.ThankYouAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.ThankYouAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.ThankYouAdaptiveCard.GetCard">
+            <summary>
+            Method that would return the JSON string of the Thank You adaptive card.
+            </summary>
+            <returns>The JSON string for the adaptive card.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.UnrecognizedInputAdaptiveCard">
+            <summary>
+            This class is responsible for generating the unrecognized input adaptive card.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.UnrecognizedInputAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.UnrecognizedInputAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.UnrecognizedInputAdaptiveCard.GetCard">
+            <summary>
+            Method that will generate the JSON string.
+            </summary>
+            <returns>JSON string is returned.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.WelcomeTeamAdaptiveCard">
+            <summary>
+            The class for the adaptive card to be shown in a team.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.WelcomeTeamAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.WelcomeTeamAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.WelcomeTeamAdaptiveCard.GetCard(System.String,System.String)">
+            <summary>
+            Method that returns the welcome team adaptive card.
+            </summary>
+            <param name="botDisplayName">The bot display name.</param>
+            <param name="teamName">The team name.</param>
+            <returns>The JSON string for the adaptive card.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.WelcomeUserAdaptiveCard">
+            <summary>
+            The class for the WelcomeUserAdaptiveCard.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.WelcomeUserAdaptiveCard.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:GeneralKnowledgeBot.Helpers.AdaptiveCards.WelcomeUserAdaptiveCard"/> class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.AdaptiveCards.WelcomeUserAdaptiveCard.GetCard(System.String)">
+            <summary>
+            Method that will produce the JSON string of the adaptive card.
+            </summary>
+            <param name="botDisplayName">The display name for the bot.</param>
+            <returns>The JSON string for the welcome adaptive card.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Helpers.Cards">
+            <summary>
+            The Cards class for the tour carousel.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.AskAQuestionCard">
+            <summary>
+            Method that will generate the first card in the carousel tour.
+            </summary>
+            <returns>Hero card gets returned.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.AskAnExpertCard">
+            <summary>
+            Ensuring to generate the adaptive card for asking a human.
+            </summary>
+            <returns>Hero card gets returned.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.ShareFeedbackCard">
+            <summary>
+            Ensuring to generate a card for giving feedback.
+            </summary>
+            <returns>Hero card gets returned.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateWelcomeUserCardAttachment(System.String)">
+            <summary>
+            Generates the welcome adaptive card.
+            </summary>
+            <param name="botDisplayName">The bot display name.</param>
+            <returns>The adaptive card attachment.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateWelcomeTeamCardAttachment(System.String,System.String)">
+            <summary>
+            The method that would generate the attachment for the team.
+            </summary>
+            <param name="botDisplayName">The bot display name.</param>
+            <param name="teamName">The team name.</param>
+            <returns>The attachment to be appended to the welcome message for the team.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateUnrecognizedInputCardAttachment">
+            <summary>
+            Generates the adaptive card for the unrecognized input scenario.
+            </summary>
+            <returns>The adaptive card attachment.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateResponseCardAttachment(System.String,System.String)">
+            <summary>
+            Generates the adaptive card for the response that is retrieved when the bot is asked a question by the user.
+            </summary>
+            <param name="question">The question that the user asks the bot.</param>
+            <param name="answer">The response that the bot retrieves after querying the knowledge base.</param>
+            <returns>The adaptive card attachment.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateShareAppFeedbackAttachment">
+            <summary>
+            Generates the adaptive card for the ability to share the app feedback.
+            </summary>
+            <returns>The adaptive card attachment.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateTeamAppFeedbackAttachment(System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates the adaptive card to be sent to the General channel.
+            </summary>
+            <param name="feedbackType">The type of feedback.</param>
+            <param name="appFeedback">The application related feedback.</param>
+            <param name="personName">The first name of the person giving the feedback.</param>
+            <param name="personEmail">The email address of the one who is giving feedback - to be used in the deep link.</param>
+            <returns>The adaptive card attachment.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.SelfAssignCaseCard">
+            <summary>
+            Generates the Self Assign Case card in the Team welcome tour.
+            </summary>
+            <returns>A hero card is returned.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.ChatWithQuestioner">
+            <summary>
+            Generates a hero card for describing the chat with questioner in the Team welcome tour.
+            </summary>
+            <returns>A hero card is returned.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateThankYouCardAttachment">
+            <summary>
+            Generates an adaptive card attachment for the Thank You card.
+            </summary>
+            <returns>The card to be attached to a message.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateAskAnExpertAttachment">
+            <summary>
+            Generates the adaptive card that contains a form for asking an expert.
+            </summary>
+            <returns>The card to be attached to a message.</returns>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Helpers.Cards.CreateTeamExpertAttachment(System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates the adaptive card for the team which contains the question for the SME.
+            </summary>
+            <param name="feedbackType">The type of feedback - in this case: Ask an Expert.</param>
+            <param name="appFeedback">The actual question for the SME.</param>
+            <param name="personName">The name of the person asking the question.</param>
+            <param name="personEmail">The email address of the person asking the question - helps with the chat.</param>
+            <returns>An attachment that will be sent to the SME team.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Models.Context">
+            <summary>
+            Represents the Context navigation property.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.Context.IsContextOnly">
+            <summary>
+            Gets or sets a value indicating whether isContextOnly.
+            </summary>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Models.Feedback">
+            <summary>
+            The feedback data model.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.Feedback.AppFeedback">
+            <summary>
+            Gets or sets the application feedback.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.Feedback.ResultsRelevancy">
+            <summary>
+            Gets or sets the results relevancy.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.Feedback.QuestionForExpert">
+            <summary>
+            Gets or sets the question for the expert being asked by the user.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.Feedback.FirstName">
+            <summary>
+            Gets or sets the first name of the person providing the feedback.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.Feedback.EmailAddress">
+            <summary>
+            Gets or sets the email address of the person providing the feedback.
+            </summary>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Models.QnaAnswer">
+            <summary>
+            This class models an answer from QnA Maker.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.QnaAnswer.Questions">
+            <summary>
+            Gets or sets the questions.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.QnaAnswer.Answer">
+            <summary>
+            Gets or sets the answer.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.QnaAnswer.Score">
+            <summary>
+            Gets or sets the score.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.QnaAnswer.Source">
+            <summary>
+            Gets or sets the source.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.QnaAnswer.Context">
+            <summary>
+            Gets or sets the context.
+            </summary>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Models.Response">
+            <summary>
+            This class will be responsible to model the response that is returned
+            after querying the QnAMaker KB.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Models.Response.Answers">
+            <summary>
+            Gets or sets the answers that are returned from the KB.
+            </summary>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Program">
+            <summary>
+            This is the main driver class.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Program.Main(System.String[])">
+            <summary>
+            The main driver method.
+            </summary>
+            <param name="args">Project specific, command line arguments.</param>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Method to create the hosting environment.
+            </summary>
+            <param name="args">Project specific, command line arguments.</param>
+            <returns>An instance of the hosting environment.</returns>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Properties.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AnswerLineText">
+            <summary>
+              Looks up a localized string similar to Here&apos;s what I found: {0}.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAnExpertAdaptiveCardContent">
+            <summary>
+              Looks up a localized string similar to Please fill out the form below and I will forward your question to a team of experts. The good thing is that they will get in touch with you soon! 😁.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAnExpertAdaptiveCardEmailAddressPlaceholder">
+            <summary>
+              Looks up a localized string similar to Please give your email address.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAnExpertAdaptiveCardFirstNamePlaceholder">
+            <summary>
+              Looks up a localized string similar to Please give your first name.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAnExpertAdaptiveCardQuestionPlaceholder">
+            <summary>
+              Looks up a localized string similar to Please ask your question....
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAnExpertAdaptiveCardTitle">
+            <summary>
+              Looks up a localized string similar to Ask an Expert.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAnExpertCarouselButtonText">
+            <summary>
+              Looks up a localized string similar to Ask an expert.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAnExpertCarouselContent">
+            <summary>
+              Looks up a localized string similar to If my answer isn&apos;t satisfactory, just let me know. I will connect you with our very capable experts!.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAnExpertCarouselTitle">
+            <summary>
+              Looks up a localized string similar to Ask an expert.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAQuestionCarouselButtonText">
+            <summary>
+              Looks up a localized string similar to Ask a question.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAQuestionCarouselCardTitle">
+            <summary>
+              Looks up a localized string similar to Ask a question.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.AskAQuestionCarouselContent">
+            <summary>
+              Looks up a localized string similar to You can ask me a question by typing in the chat box below and I&apos;ll tell you what I know about it....
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.FeedbackQuestionText">
+            <summary>
+              Looks up a localized string similar to How relevant are the search results that were returned by the bot?.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.GiveFeedbackButtonText">
+            <summary>
+              Looks up a localized string similar to Give feedback.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.IncomingAppFeedbackChatWithPersonButtonText">
+            <summary>
+              Looks up a localized string similar to Chat with {0}.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.IncomingAppFeedbackDetailsText">
+            <summary>
+              Looks up a localized string similar to Details: {0}.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.IncomingAppFeedbackSubHeaderText">
+            <summary>
+              Looks up a localized string similar to {0} shares {1}. The details are as follows:.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.IncomingAppFeedbackSubjectLine">
+            <summary>
+              Looks up a localized string similar to Subject: {0}.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.IncomingAppFeedbackTitleText">
+            <summary>
+              Looks up a localized string similar to Incoming App Feedback.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.QuestionLineText">
+            <summary>
+              Looks up a localized string similar to ❓: {0}.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ResponseCardTitleText">
+            <summary>
+              Looks up a localized string similar to Bingo! 🍀.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ShareAppFeedbackAdaptiveCardContent">
+            <summary>
+              Looks up a localized string similar to Thank you for taking the time to share feedback with both the SMEs and my creators. It is prudent that my tiny 🤖🧠 performs better..
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ShareAppFeedbackAdaptiveCardTitle">
+            <summary>
+              Looks up a localized string similar to Share App Feedback.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ShareAppFeedbackCarouselButtonText">
+            <summary>
+              Looks up a localized string similar to Share app feedback.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ShareAppFeedbackCarouselContent">
+            <summary>
+              Looks up a localized string similar to Help me become better! Please share feedback on how I am doing so that my expert team can coach me better to help you! 😀.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ShareAppFeedbackCarouselTitle">
+            <summary>
+              Looks up a localized string similar to Share app feedback.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ShareAppFeedbackEmailInputPlaceholder">
+            <summary>
+              Looks up a localized string similar to Please provide your email (i.e. jschmoe@microsoft.com).
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ShareAppFeedbackFirstNamePlaceholder">
+            <summary>
+              Looks up a localized string similar to Please provide your first name.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ShareAppFeedbackInputPlaceholder">
+            <summary>
+              Looks up a localized string similar to Please share your thoughts.....
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.SubmitFeedbackButtonText">
+            <summary>
+              Looks up a localized string similar to Submit.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.TakeATeamTourButtonText">
+            <summary>
+              Looks up a localized string similar to Take a team tour.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.TakeATourButtonText">
+            <summary>
+              Looks up a localized string similar to Take a tour.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.TeamTourIntroText">
+            <summary>
+              Looks up a localized string similar to If you want to know more about what goes on, click on the button that reads *Take a tour*.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ThankYouAdaptiveCardContent">
+            <summary>
+              Looks up a localized string similar to Your feedback has been captured and forwarded over to the team. Someone will get back to you in some time..
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ThankYouAdaptiveCardTitleText">
+            <summary>
+              Looks up a localized string similar to Thank you!.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.TourIntroText">
+            <summary>
+              Looks up a localized string similar to If you want to know more about the bulleted items that have been mentioned, make sure to click on the button that reads _Take a tour_.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.UnrecognizedInputCardContentPart1">
+            <summary>
+              Looks up a localized string similar to Turns out there is something that my tiny 🤖 🧠 just cannot figure out!.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.UnrecognizedInputCardContentPart2">
+            <summary>
+              Looks up a localized string similar to However, it may just be that you as the end user may not *have the right idea* about what I do. Click on the *Welcome Message* button to find out what I do.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.UnrecognizedInputCardTitleText">
+            <summary>
+              Looks up a localized string similar to Uh Oh!.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.UnrecognizedInputTakeATour">
+            <summary>
+              Looks up a localized string similar to Take a tour.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ViewFullArticleButtonText">
+            <summary>
+              Looks up a localized string similar to View Full Article.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.ViewRelatedArticlesButtonText">
+            <summary>
+              Looks up a localized string similar to View Related Articles.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeCardBulletListItem1">
+            <summary>
+              Looks up a localized string similar to * Benefits.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeCardBulletListItem2">
+            <summary>
+              Looks up a localized string similar to * Leave.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeCardBulletListItem3">
+            <summary>
+              Looks up a localized string similar to * Travel.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeCardContentPart1">
+            <summary>
+              Looks up a localized string similar to If you are reading this, it is because you are wondering about what I do. I am {0}, a simple bot that will query against a knowledge base and return you an answer..
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeCardContentPart2">
+            <summary>
+              Looks up a localized string similar to You can ask me about many topics such as:.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeCardContentPart3">
+            <summary>
+              Looks up a localized string similar to If I am unable to help you with a question, I will connect you with an expert..
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeCardTitleText">
+            <summary>
+              Looks up a localized string similar to Hello!.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeTeamCardContent">
+            <summary>
+              Looks up a localized string similar to Hi! I am {0} If you are reading this, it is because I have been installed to this team - *{1}* where you can do two things. Either you can: self assign a case to handle, or chat with a questioner. You are the subject matter experts (or SMEs) - and my job is to help you help the user! 😀.
+            </summary>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Properties.Resource.WelcomeTeamCardTitleText">
+            <summary>
+              Looks up a localized string similar to Hello {0}!.
+            </summary>
+        </member>
+        <member name="T:GeneralKnowledgeBot.Startup">
+            <summary>
+            The startup class for the bot.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GeneralKnowledgeBot.Startup"/> class.
+            </summary>
+            <param name="configuration">The key/value application settings.</param>
+        </member>
+        <member name="P:GeneralKnowledgeBot.Startup.Configuration">
+            <summary>
+            Gets the configuration.
+            </summary>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services">The collection of services.</param>
+        </member>
+        <member name="M:GeneralKnowledgeBot.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">The application builder.</param>
+            <param name="env">The hosting environment.</param>
+        </member>
+    </members>
+</doc>

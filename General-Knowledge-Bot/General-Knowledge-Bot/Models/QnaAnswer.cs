@@ -15,7 +15,9 @@ namespace GeneralKnowledgeBot.Models
         /// Gets or sets the questions.
         /// </summary>
         [JsonProperty("questions")]
+#pragma warning disable CA1819 // Properties should not return arrays
         public string[] Questions { get; set; }
+#pragma warning restore CA1819 // Properties should not return arrays
 
         /// <summary>
         /// Gets or sets the answer.

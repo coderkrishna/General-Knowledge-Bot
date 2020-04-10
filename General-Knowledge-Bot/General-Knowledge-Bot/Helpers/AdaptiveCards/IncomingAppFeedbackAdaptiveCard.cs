@@ -4,7 +4,9 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
+    using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using GeneralKnowledgeBot.Properties;
 
@@ -12,14 +14,16 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
     /// This class will be generating the adaptive card to be sent to the General channel of
     /// the SME team relating to the application feedback.
     /// </summary>
-    public class IncomingAppFeedbackAdaptiveCard
+    public static class IncomingAppFeedbackAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
         /// Initializes static members of the <see cref="IncomingAppFeedbackAdaptiveCard"/> class.
         /// </summary>
+#pragma warning disable CA1810 // Initialize reference type static fields inline
         static IncomingAppFeedbackAdaptiveCard()
+#pragma warning restore CA1810 // Initialize reference type static fields inline
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "IncomingAppFeedbackAdaptiveCard.json");
             CardTemplate = File.ReadAllText(cardJsonFilePath);
@@ -36,10 +40,10 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         public static string GetCard(string feedbackType, string appFeedback, string personName, string personUpn)
         {
             var incomingAppFeedbackTitleText = feedbackType;
-            var incomingAppFeedbackSubHeaderText = string.Format(Resource.IncomingAppFeedbackSubHeaderText, personName, feedbackType);
-            var incomingAppFeedbackSubjectLine = string.Format(Resource.IncomingAppFeedbackSubjectLine, feedbackType);
-            var incomingAppFeedbackDetailsText = string.Format(Resource.IncomingAppFeedbackDetailsText, appFeedback, feedbackType);
-            var incomingAppFeedbackChatWithPersonButtonText = string.Format(Resource.IncomingAppFeedbackChatWithPersonButtonText, personName);
+            var incomingAppFeedbackSubHeaderText = string.Format(CultureInfo.InvariantCulture, Resource.IncomingAppFeedbackSubHeaderText, personName, feedbackType);
+            var incomingAppFeedbackSubjectLine = string.Format(CultureInfo.InvariantCulture, Resource.IncomingAppFeedbackSubjectLine, feedbackType);
+            var incomingAppFeedbackDetailsText = string.Format(CultureInfo.InvariantCulture, Resource.IncomingAppFeedbackDetailsText, appFeedback, feedbackType);
+            var incomingAppFeedbackChatWithPersonButtonText = string.Format(CultureInfo.InvariantCulture, Resource.IncomingAppFeedbackChatWithPersonButtonText, personName);
 
             var variablesToValues = new Dictionary<string, string>()
             {
@@ -54,7 +58,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var cardBody = CardTemplate;
             foreach (var kvp in variablesToValues)
             {
-                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value, StringComparison.InvariantCultureIgnoreCase);
             }
 
             return cardBody;
