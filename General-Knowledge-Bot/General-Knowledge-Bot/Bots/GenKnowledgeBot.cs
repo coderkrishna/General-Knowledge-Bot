@@ -14,7 +14,6 @@ namespace GeneralKnowledgeBot.Bots
     using Microsoft.Bot.Connector;
     using Microsoft.Bot.Schema;
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -46,6 +45,11 @@ namespace GeneralKnowledgeBot.Bots
         /// <returns>A unit of execution.</returns>
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
+
             if (turnContext.Activity.Value != null && turnContext.Activity.Text == null)
             {
                 string feedbackType;
@@ -62,12 +66,13 @@ namespace GeneralKnowledgeBot.Bots
                         obj.AppFeedback,
                         obj.FirstName,
                         obj.EmailAddress,
-                        cancellationToken);
+                        cancellationToken).ConfigureAwait(false);
+
                     await GenKBot.UpdatePostFeedbackActivity(
                         turnContext,
                         this.configuration["MicrosoftAppId"],
                         this.configuration["MicrosoftAppPassword"],
-                        cancellationToken);
+                        cancellationToken).ConfigureAwait(false);
                 }
                 else if (obj.ResultsRelevancy != null)
                 {
@@ -81,12 +86,13 @@ namespace GeneralKnowledgeBot.Bots
                         obj.ResultsRelevancy,
                         obj.FirstName,
                         obj.EmailAddress,
-                        cancellationToken);
+                        cancellationToken).ConfigureAwait(false);
+
                     await GenKBot.UpdatePostFeedbackActivity(
                         turnContext,
                         this.configuration["MicrosoftAppId"],
                         this.configuration["MicrosoftAppPassword"],
-                        cancellationToken);
+                        cancellationToken).ConfigureAwait(false);
                 }
                 else if (obj.QuestionForExpert != null)
                 {
@@ -99,17 +105,17 @@ namespace GeneralKnowledgeBot.Bots
                         obj.QuestionForExpert,
                         obj.FirstName,
                         obj.EmailAddress,
-                        cancellationToken);
+                        cancellationToken).ConfigureAwait(false);
+
                     await GenKBot.UpdatePostFeedbackActivity(
                         turnContext,
                         this.configuration["MicrosoftAppId"],
                         this.configuration["MicrosoftAppPassword"],
-                        cancellationToken);
+                        cancellationToken).ConfigureAwait(false);
                 }
                 else
                 {
-                    await turnContext.SendActivityAsync(
-                        MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now"));
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Turns out I'm getting some good information...I may not be able to do anything with it right now")).ConfigureAwait(false);
                 }
             }
             else
@@ -124,27 +130,27 @@ namespace GeneralKnowledgeBot.Bots
 
                     this.telemetryClient.TrackTrace("Calling QnAMaker");
 
-                    await GenKBot.GetAnswerFromQnAResource(uri, question, endpointKey, rankerType, turnContext, cancellationToken);
+                    await GenKBot.GetAnswerFromQnAResource(uri, question, endpointKey, rankerType, turnContext, cancellationToken).ConfigureAwait(false);
                 }
                 else if (turnContext.Activity.Text.Trim() == "Take a tour")
                 {
-                    await GenKBot.SendTourCarouselCard(turnContext, cancellationToken);
+                    await GenKBot.SendTourCarouselCard(turnContext, cancellationToken).ConfigureAwait(false);
                 }
                 else if (turnContext.Activity.Text.Trim() == "Take a team tour")
                 {
-                    await GenKBot.SendTeamTourCarouselCard(turnContext, cancellationToken);
+                    await GenKBot.SendTeamTourCarouselCard(turnContext, cancellationToken).ConfigureAwait(false);
                 }
                 else if (turnContext.Activity.Text.Trim() == "Ask an expert")
                 {
-                    await GenKBot.SendAskAnExpertCard(turnContext, cancellationToken);
+                    await GenKBot.SendAskAnExpertCard(turnContext, cancellationToken).ConfigureAwait(false);
                 }
                 else if (turnContext.Activity.Text.Trim() == "Share app feedback")
                 {
-                    await GenKBot.SendShareAppFeedbackCard(turnContext, cancellationToken);
+                    await GenKBot.SendShareAppFeedbackCard(turnContext, cancellationToken).ConfigureAwait(false);
                 }
                 else
                 {
-                    await GenKBot.SendUnrecognizedInputMessage(turnContext, cancellationToken);
+                    await GenKBot.SendUnrecognizedInputMessage(turnContext, cancellationToken).ConfigureAwait(false);
                 }
             }
         }
@@ -161,6 +167,16 @@ namespace GeneralKnowledgeBot.Bots
             ITurnContext<IConversationUpdateActivity> turnContext,
             CancellationToken cancellationToken)
         {
+            if (membersAdded is null)
+            {
+                throw new ArgumentNullException(nameof(membersAdded));
+            }
+
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
+
             var teamId = turnContext.Activity.ChannelData["team"]["id"].ToString();
             var tenantId = turnContext.Activity.ChannelData["tenant"]["id"].ToString();
             var botDisplayName = this.configuration["BotDisplayName"];
@@ -185,12 +201,12 @@ namespace GeneralKnowledgeBot.Bots
                             tenantId,
                             turnContext.Activity.Recipient.Id,
                             botDisplayName,
-                            cancellationToken);
+                            cancellationToken).ConfigureAwait(false);
                     }
                     else
                     {
                         this.telemetryClient.TrackTrace($"Welcoming the team: {teamId}");
-                        await GenKBot.SendTeamWelcomeMessage(connectorClient, teamName, teamId, botDisplayName, cancellationToken);
+                        await GenKBot.SendTeamWelcomeMessage(connectorClient, teamName, teamId, botDisplayName, cancellationToken).ConfigureAwait(false);
                     }
                 }
             }
@@ -206,13 +222,18 @@ namespace GeneralKnowledgeBot.Bots
             ITurnContext<IConversationUpdateActivity> turnContext,
             CancellationToken cancellationToken)
         {
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
+
             var eventType = turnContext.Activity.ChannelData["eventType"].ToString();
             this.telemetryClient.TrackTrace($"Event has been found: {eventType}");
 
             if (eventType == "teamMemberAdded")
             {
                 var membersAdded = turnContext.Activity.MembersAdded;
-                await this.OnMembersAddedAsync(membersAdded, turnContext, cancellationToken);
+                await this.OnMembersAddedAsync(membersAdded, turnContext, cancellationToken).ConfigureAwait(false);
             }
         }
     }

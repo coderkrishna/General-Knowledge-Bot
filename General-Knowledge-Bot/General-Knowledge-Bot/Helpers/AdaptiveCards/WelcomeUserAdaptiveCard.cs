@@ -4,21 +4,25 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
+    using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using GeneralKnowledgeBot.Properties;
 
     /// <summary>
     /// The class for the WelcomeUserAdaptiveCard.
     /// </summary>
-    public class WelcomeUserAdaptiveCard
+    public static class WelcomeUserAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
         /// Initializes static members of the <see cref="WelcomeUserAdaptiveCard"/> class.
         /// </summary>
+#pragma warning disable CA1810 // Initialize reference type static fields inline
         static WelcomeUserAdaptiveCard()
+#pragma warning restore CA1810 // Initialize reference type static fields inline
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "WelcomeUserAdaptiveCard.json");
             CardTemplate = File.ReadAllText(cardJsonFilePath);
@@ -32,7 +36,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         public static string GetCard(string botDisplayName)
         {
             var welcomeCardTitleText = Resource.WelcomeCardTitleText;
-            var welcomeCardContentPart1 = string.Format(Resource.WelcomeCardContentPart1, botDisplayName);
+            var welcomeCardContentPart1 = string.Format(CultureInfo.InvariantCulture, Resource.WelcomeCardContentPart1, botDisplayName);
             var welcomeCardContentPart2 = Resource.WelcomeCardContentPart2;
             var welcomeCardContentPart3 = Resource.WelcomeCardContentPart3;
             var bulletListItem1 = Resource.WelcomeCardBulletListItem1;
@@ -57,7 +61,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var cardBody = CardTemplate;
             foreach (var kvp in variablesToValues)
             {
-                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value, StringComparison.InvariantCultureIgnoreCase);
             }
 
             return cardBody;

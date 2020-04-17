@@ -4,6 +4,7 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using GeneralKnowledgeBot.Properties;
@@ -11,14 +12,16 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
     /// <summary>
     /// This class is responsible for generating the unrecognized input adaptive card.
     /// </summary>
-    public class UnrecognizedInputAdaptiveCard
+    public static class UnrecognizedInputAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
         /// Initializes static members of the <see cref="UnrecognizedInputAdaptiveCard"/> class.
         /// </summary>
+#pragma warning disable CA1810 // Initialize reference type static fields inline
         static UnrecognizedInputAdaptiveCard()
+#pragma warning restore CA1810 // Initialize reference type static fields inline
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "UnrecognizedInputAdaptiveCard.json");
             CardTemplate = File.ReadAllText(cardJsonFilePath);
@@ -50,7 +53,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var cardBody = CardTemplate;
             foreach (var kvp in variablesToValues)
             {
-                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value, StringComparison.InvariantCultureIgnoreCase);
             }
 
             return cardBody;

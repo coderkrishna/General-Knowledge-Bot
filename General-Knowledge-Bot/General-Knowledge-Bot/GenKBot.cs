@@ -63,7 +63,7 @@ namespace GeneralKnowledgeBot
 
                 if (responseModel != null)
                 {
-                    await SendAnswerMessage(turnContext, cancellationToken, responseModel.answers[0].answer, question);
+                    await SendAnswerMessage(turnContext, cancellationToken, responseModel.Answers[0].Answer, question);
                 }
                 else
                 {
@@ -248,10 +248,11 @@ namespace GeneralKnowledgeBot
         }
 
         /// <summary>
-        /// Method that fires to welcome a user.
+        /// Method that executes to welcome a user.
         /// </summary>
         /// <param name="connectorClient">The connector client.</param>
         /// <param name="userThatJustJoined">The newly added member.</param>
+        /// <param name="attachmentToSend">The attachment to send in the message.</param>
         /// <param name="botId">The bot id.</param>
         /// <param name="tenantId">The tenant id.</param>
         /// <param name="cancellationToken">The cancellation token.</param>

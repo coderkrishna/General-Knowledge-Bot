@@ -13,6 +13,8 @@ namespace GeneralKnowledgeBot.Models
         /// <summary>
         /// Gets or sets the answers that are returned from the KB.
         /// </summary>
+#pragma warning disable CA1819 // Properties should not return arrays
         public QnaAnswer[] Answers { get; set; }
+#pragma warning restore CA1819 // Properties should not return arrays
     }
 }

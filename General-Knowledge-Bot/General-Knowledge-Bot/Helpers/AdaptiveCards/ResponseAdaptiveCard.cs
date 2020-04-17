@@ -4,21 +4,25 @@
 
 namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
 {
+    using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using GeneralKnowledgeBot.Properties;
 
     /// <summary>
     /// The class to build the adaptive card for the response.
     /// </summary>
-    public class ResponseAdaptiveCard
+    public static class ResponseAdaptiveCard
     {
         private static readonly string CardTemplate;
 
         /// <summary>
         /// Initializes static members of the <see cref="ResponseAdaptiveCard"/> class.
         /// </summary>
+#pragma warning disable CA1810 // Initialize reference type static fields inline
         static ResponseAdaptiveCard()
+#pragma warning restore CA1810 // Initialize reference type static fields inline
         {
             var cardJsonFilePath = Path.Combine(".", "Helpers", "AdaptiveCards", "ResponseAdaptiveCard.json");
             CardTemplate = File.ReadAllText(cardJsonFilePath);
@@ -32,9 +36,9 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
         /// <returns>A JSON string.</returns>
         public static string GetCard(string question, string answer)
         {
-            var questionLineText = string.Format(Resource.QuestionLineText, question);
+            var questionLineText = string.Format(CultureInfo.InvariantCulture, Resource.QuestionLineText, question);
             var responseCardTitleText = Resource.ResponseCardTitleText;
-            var answerLineText = string.Format(Resource.AnswerLineText, answer);
+            var answerLineText = string.Format(CultureInfo.InvariantCulture, Resource.AnswerLineText, answer);
             var viewFullArticleButtonText = Resource.ViewFullArticleButtonText;
             var viewRelatedArticlesButtonText = Resource.ViewRelatedArticlesButtonText;
             var giveFeedbackButtonText = Resource.GiveFeedbackButtonText;
@@ -56,7 +60,7 @@ namespace GeneralKnowledgeBot.Helpers.AdaptiveCards
             var cardBody = CardTemplate;
             foreach (var kvp in variablesToValues)
             {
-                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value);
+                cardBody = cardBody.Replace($"%{kvp.Key}%", kvp.Value, StringComparison.InvariantCultureIgnoreCase);
             }
 
             return cardBody;
